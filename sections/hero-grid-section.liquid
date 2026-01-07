@@ -1,0 +1,181 @@
+{{ 'hero-grid-section.css' | asset_url | stylesheet_tag }}
+
+
+<section class="s-hero-grid-section-{{ section.id }}" style="justify-items: center;">
+  <div class="container">
+    <div class="s-hero-grid-section__cards-wrapper">
+      {% for card in section.blocks %}
+        {% if card.type == 'card' %}
+          <div class="s-hero-grid-section__card block-id--{{ card.id }}">
+            <div class="s-hero-grid-section__card_image">
+              <img
+                src="{{ card.settings.image.src | img_url: 'master' }}"
+                alt="{{ card.settings.image.alt }}"
+                loading="lazy">
+            </div>
+            <div class="s-hero-grid-section__card_content 
+                                    s-hero-grid-section__card_content--{{ card.settings.vertical_alignment }}
+                                    s-hero-grid-section__card_content--{{ card.settings.horizontal_alignment }}
+                                    ">
+              <h2 class="card_content--title">{{ card.settings.title }}</h2>
+            </div>
+          </div>
+
+          <style>
+            .block-id--{{ card.id }} .card_content--title {
+              color: {{ card.settings.text_color }};
+              font-size: {{ card.settings.font_size }}px !important;
+              font-weight: {{ card.settings.font_weight }} !important;
+            }
+          </style>
+
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="s-hero-grid-section__testimonials-wrapper">
+      {% for testimonial in section.blocks %}
+        {% if testimonial.type == 'testimonial_card' %}
+          <div class="testimonial-card">
+            <div class="testimonial-card__image">
+              <img src="{{ testimonial.settings.image.src | img_url: 'master' }}" alt="{{ testimonial.settings.image.alt }}">
+            </div>
+            <div class="testimonial-card__content">
+              <h3 class="testimonial-card__content--title">
+                {{ testimonial.settings.title }}
+              </h3>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero grid section",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Card",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Caption"
+          },
+          {
+            "type": "header",
+            "content": "Typography"
+          },
+          {
+            "type": "range",
+            "id": "font_size",
+            "min": 12,
+            "max": 48,
+            "step": 1,
+            "unit": "px",
+            "label": "Font Size",
+            "default": 40
+          },
+          {
+            "type": "select",
+            "id": "font_weight",
+            "label": "Font Weight",
+            "options": [
+              {
+                "value": "300",
+                "label": "Light"
+              },
+              {
+                "value": "400",
+                "label": "Normal"
+              },
+              {
+                "value": "500",
+                "label": "Medium"
+              },
+              {
+                "value": "600",
+                "label": "Semi Bold"
+              },
+              {
+                "value": "700",
+                "label": "Bold"
+              }
+            ],
+            "default": "400"
+          },
+          {
+            "type": "select",
+            "id": "vertical_alignment",
+            "label": "Vertical alignment",
+            "options": [
+              {
+                "value": "top",
+                "label": "Top"
+              }, {
+                "value": "middle",
+                "label": "Middle"
+              }, {
+                "value": "bottom",
+                "label": "Bottom"
+              }
+            ],
+            "default": "middle"
+          }, {
+            "type": "select",
+            "id": "horizontal_alignment",
+            "label": "Horizontal alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "center",
+                "label": "Center"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "center"
+          }, {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#2B2B2B"
+          }
+        ]
+      }, {
+        "type": "testimonial_card",
+        "name": "Testimonial card",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero grid section"
+      }
+    ]
+  }
+{% endschema %}

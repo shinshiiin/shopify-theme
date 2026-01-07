@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_grid_section_9PcxTA": {
+      "type": "hero-grid-section",
+      "blocks": {
+        "testimonial_card_ALtc8T": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/Img6.webp",
+            "title": "weightless daily glow"
+          }
+        },
+        "testimonial_card_Wp3Cmq": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/Img5.webp",
+            "title": "effortless radiance"
+          }
+        },
+        "testimonial_card_QpcWqn": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/Img4.webp",
+            "title": "SPF 40 protection"
+          }
+        },
+        "testimonial_card_aBnqBt": {
+          "type": "testimonial_card",
+          "settings": {
+            "image": "shopify://shop_images/Img3.webp",
+            "title": "Luminous skin"
+          }
+        },
+        "card_3ayPWM": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Img9.png",
+            "title": "Breathable,   Lightweight  and  Radiant",
+            "font_size": 44,
+            "font_weight": "700",
+            "vertical_alignment": "top",
+            "horizontal_alignment": "right",
+            "text_color": "#2b2b2b"
+          }
+        },
+        "card_KwHDmk": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Img2.webp",
+            "title": "Your Skin, Only Better",
+            "font_size": 48,
+            "font_weight": "700",
+            "vertical_alignment": "top",
+            "horizontal_alignment": "left",
+            "text_color": "#2b2b2b"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_card_ALtc8T",
+        "testimonial_card_Wp3Cmq",
+        "testimonial_card_QpcWqn",
+        "testimonial_card_aBnqBt",
+        "card_3ayPWM",
+        "card_KwHDmk"
+      ],
+      "name": "Hero grid section",
+      "settings": {}
+    },
+    "image_with_text_F3qntr": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_J97QAJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text_dymC9p": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_Efc6Pj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_J97QAJ",
+        "text_dymC9p",
+        "button_Efc6Pj"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "hero_grid_section_9PcxTA",
+    "image_with_text_F3qntr"
+  ]
+}
