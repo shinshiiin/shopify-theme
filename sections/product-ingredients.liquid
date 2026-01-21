@@ -1,132 +1,130 @@
 <div class="product-ingredients-section">
   <div class="container">
-    <div class="one-whole column medium-down--one-whole text-center">
-      <div class="{{ content_wrap }} vwcm-container">
-        <!-- Section Title -->
-        
-        <h1 class="pdp-section-title vwcm-title">Product IngredientS</h1>
-        
-        <div class="vwcm-grid">
-          <!-- LEFT COLUMN - Ingredients A, B, C -->
-          <div class="vwcm-col first">
-            <!-- Ingredient A -->
-            {% if section_item.section_ingredient_title_a != blank %}
-              <div class="vwcm-item">
-                <div class="dot">
-                  {% if section_item.section_ingredient_icon_a != blank %}
-                    {% assign icon_a_url = section_item.section_ingredient_icon_a | file_url %}
-                    <img src="{{ icon_a_url }}" alt="{{ section_item.section_ingredient_title_a }}" class="ingredient-icon">
-                  {% endif %}
-                </div>
-                <h3>{{ section_item.section_ingredient_title_a | metafield_tag }}</h3>
-                <p>{{ section_item.section_ingredient_text_a | metafield_tag }}</p>
-              </div>
-            {% endif %}
+    <div class="{{ content_wrap }} vwcm-container">
+    <!-- Section Title -->
+    
+    <h1 class="pdp-section-title vwcm-title">Product IngredientS</h1>
+    
+    <div class="vwcm-grid">
+        <!-- LEFT COLUMN - Ingredients A, B, C -->
+        <div class="vwcm-col first">
+        <!-- Ingredient A -->
+        {% if section_item.section_ingredient_title_a != blank %}
+            <div class="vwcm-item">
+            <div class="dot">
+                {% if section_item.section_ingredient_icon_a != blank %}
+                {% assign icon_a_url = section_item.section_ingredient_icon_a | file_url %}
+                <img src="{{ icon_a_url }}" alt="{{ section_item.section_ingredient_title_a }}" class="ingredient-icon">
+                {% endif %}
+            </div>
+            <h3>{{ section_item.section_ingredient_title_a | metafield_tag }}</h3>
+            <p>{{ section_item.section_ingredient_text_a | metafield_tag }}</p>
+            </div>
+        {% endif %}
 
-            <!-- Ingredient B -->
-            {% if section_item.section_ingredient_title_b != blank %}
-              <div class="vwcm-item">
-                <div class="dot">
-                  {% if section_item.section_ingredient_icon_b != blank %}
-                    {% assign icon_b_url = section_item.section_ingredient_icon_b | file_url %}
-                    <img src="{{ icon_b_url }}" alt="{{ section_item.section_ingredient_title_b }}" class="ingredient-icon">
-                  {% endif %}
-                </div>
-                <h3>{{ section_item.section_ingredient_title_b | metafield_tag }}</h3>
-                <p>{{ section_item.section_ingredient_text_b | metafield_tag }}</p>
-              </div>
-            {% endif %}
+        <!-- Ingredient B -->
+        {% if section_item.section_ingredient_title_b != blank %}
+            <div class="vwcm-item">
+            <div class="dot">
+                {% if section_item.section_ingredient_icon_b != blank %}
+                {% assign icon_b_url = section_item.section_ingredient_icon_b | file_url %}
+                <img src="{{ icon_b_url }}" alt="{{ section_item.section_ingredient_title_b }}" class="ingredient-icon">
+                {% endif %}
+            </div>
+            <h3>{{ section_item.section_ingredient_title_b | metafield_tag }}</h3>
+            <p>{{ section_item.section_ingredient_text_b | metafield_tag }}</p>
+            </div>
+        {% endif %}
 
-            <!-- Ingredient C -->
-            {% if section_item.section_ingredient_title_c != blank %}
-              <div class="vwcm-item">
-                <div class="dot">
-                  {% if section_item.section_ingredient_icon_c != blank %}
-                    {% assign icon_c_url = section_item.section_ingredient_icon_c | file_url %}
-                    <img src="{{ icon_c_url }}" alt="{{ section_item.section_ingredient_title_c }}" class="ingredient-icon">
-                  {% endif %}
-                </div>
-                <h3>{{ section_item.section_ingredient_title_c | metafield_tag }}</h3>
-                <p>{{ section_item.section_ingredient_text_c | metafield_tag }}</p>
-              </div>
-            {% endif %}
-          </div>
-
-          <!-- CENTER IMAGE -->
-          <div class="vwcm-center">
-            <div class="center-bg"></div>
-            {% if section_item.section_image != blank %}
-              {% assign section_image_url = section_item.section_image | file_url %}
-              <img src="{{ section_image_url }}" class="mask-img" alt="{{ section_item.section_title }}">
-            {% endif %}
-          </div>
-
-          <!-- RIGHT COLUMN - Ingredients D, E, F -->
-          <div class="vwcm-col second">
-            <!-- Ingredient D -->
-            {% if section_item.section_ingredient_title_d != blank %}
-              <div class="vwcm-item">
-                <div class="dot">
-                  {% if section_item.section_ingredient_icon_d != blank %}
-                    {% assign icon_d_url = section_item.section_ingredient_icon_d | file_url %}
-                    <img src="{{ icon_d_url }}" alt="{{ section_item.section_ingredient_title_d }}" class="ingredient-icon">
-                  {% endif %}
-                </div>
-                <h3>{{ section_item.section_ingredient_title_d | metafield_tag }}</h3>
-                <p>{{ section_item.section_ingredient_text_d | metafield_tag }}</p>
-              </div>
-            {% endif %}
-
-            <!-- Ingredient E -->
-            {% if section_item.section_ingredient_title_e != blank %}
-              <div class="vwcm-item">
-                <div class="dot">
-                  {% if section_item.section_ingredient_icon_e != blank %}
-                    {% assign icon_e_url = section_item.section_ingredient_icon_e | file_url %}
-                    <img src="{{ icon_e_url }}" alt="{{ section_item.section_ingredient_title_e }}" class="ingredient-icon">
-                  {% endif %}
-                </div>
-                <h3>{{ section_item.section_ingredient_title_e | metafield_tag }}</h3>
-                <p>{{ section_item.section_ingredient_text_e | metafield_tag }}</p>
-              </div>
-            {% endif %}
-
-            <!-- Ingredient F -->
-            {% if section_item.section_ingredient_title_f != blank %}
-              <div class="vwcm-item">
-                <div class="dot">
-                  {% if section_item.section_ingredient_icon_f != blank %}
-                    {% assign icon_f_url = section_item.section_ingredient_icon_f | file_url %}
-                    <img src="{{ icon_f_url }}" alt="{{ section_item.section_ingredient_title_f }}" class="ingredient-icon">
-                  {% endif %}
-                </div>
-                <h3>{{ section_item.section_ingredient_title_f | metafield_tag }}</h3>
-                <p>{{ section_item.section_ingredient_text_f | metafield_tag }}</p>
-              </div>
-            {% endif %}
-          </div>
+        <!-- Ingredient C -->
+        {% if section_item.section_ingredient_title_c != blank %}
+            <div class="vwcm-item">
+            <div class="dot">
+                {% if section_item.section_ingredient_icon_c != blank %}
+                {% assign icon_c_url = section_item.section_ingredient_icon_c | file_url %}
+                <img src="{{ icon_c_url }}" alt="{{ section_item.section_ingredient_title_c }}" class="ingredient-icon">
+                {% endif %}
+            </div>
+            <h3>{{ section_item.section_ingredient_title_c | metafield_tag }}</h3>
+            <p>{{ section_item.section_ingredient_text_c | metafield_tag }}</p>
+            </div>
+        {% endif %}
         </div>
 
-        <!-- All Ingredients Dropdown -->
-        {% if section_item.section_all_ingredients != blank %}
-          <div class="all-ingredients">
-            <div class="drop-header">
-             <span class="metafield-single_line_text_field">All Ingredients </span>
-              
-              <span class="chevron">
-                  <img 
-                    src="{{ 'arrow.webp' | asset_url }}" 
-                    alt="Toggle ingredients"
-                    class="chevron-icon"
-                  >
-              </span>
-            </div>
-            <div class="drop-content">
-              {{ section_item.section_all_ingredients | metafield_tag }}
-            </div>
-          </div>
+        <!-- CENTER IMAGE -->
+        <div class="vwcm-center">
+        <div class="center-bg"></div>
+        {% if section_item.section_image != blank %}
+            {% assign section_image_url = section_item.section_image | file_url %}
+            <img src="{{ section_image_url }}" class="mask-img" alt="{{ section_item.section_title }}">
         {% endif %}
-      </div>
+        </div>
+
+        <!-- RIGHT COLUMN - Ingredients D, E, F -->
+        <div class="vwcm-col second">
+        <!-- Ingredient D -->
+        {% if section_item.section_ingredient_title_d != blank %}
+            <div class="vwcm-item">
+            <div class="dot">
+                {% if section_item.section_ingredient_icon_d != blank %}
+                {% assign icon_d_url = section_item.section_ingredient_icon_d | file_url %}
+                <img src="{{ icon_d_url }}" alt="{{ section_item.section_ingredient_title_d }}" class="ingredient-icon">
+                {% endif %}
+            </div>
+            <h3>{{ section_item.section_ingredient_title_d | metafield_tag }}</h3>
+            <p>{{ section_item.section_ingredient_text_d | metafield_tag }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Ingredient E -->
+        {% if section_item.section_ingredient_title_e != blank %}
+            <div class="vwcm-item">
+            <div class="dot">
+                {% if section_item.section_ingredient_icon_e != blank %}
+                {% assign icon_e_url = section_item.section_ingredient_icon_e | file_url %}
+                <img src="{{ icon_e_url }}" alt="{{ section_item.section_ingredient_title_e }}" class="ingredient-icon">
+                {% endif %}
+            </div>
+            <h3>{{ section_item.section_ingredient_title_e | metafield_tag }}</h3>
+            <p>{{ section_item.section_ingredient_text_e | metafield_tag }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Ingredient F -->
+        {% if section_item.section_ingredient_title_f != blank %}
+            <div class="vwcm-item">
+            <div class="dot">
+                {% if section_item.section_ingredient_icon_f != blank %}
+                {% assign icon_f_url = section_item.section_ingredient_icon_f | file_url %}
+                <img src="{{ icon_f_url }}" alt="{{ section_item.section_ingredient_title_f }}" class="ingredient-icon">
+                {% endif %}
+            </div>
+            <h3>{{ section_item.section_ingredient_title_f | metafield_tag }}</h3>
+            <p>{{ section_item.section_ingredient_text_f | metafield_tag }}</p>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+
+    <!-- All Ingredients Dropdown -->
+    {% if section_item.section_all_ingredients != blank %}
+        <div class="all-ingredients">
+        <div class="drop-header">
+            <span class="metafield-single_line_text_field">All Ingredients </span>
+            
+            <span class="chevron">
+                <img 
+                src="{{ 'arrow.webp' | asset_url }}" 
+                alt="Toggle ingredients"
+                class="chevron-icon"
+                >
+            </span>
+        </div>
+        <div class="drop-content">
+            {{ section_item.section_all_ingredients | metafield_tag }}
+        </div>
+        </div>
+    {% endif %}
     </div>
   </div>
 </div>
