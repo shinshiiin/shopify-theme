@@ -5,11 +5,39 @@
 
 {% liquid
   assign section_id = 'product-ingredients-' | append: section.id
+  
+  # Count ingredients per column
+  assign left_count = 0
+  assign right_count = 0
+  for block in section.blocks
+    if block.settings.column_position == 'left'
+      assign left_count = left_count | plus: 1
+    elsif block.settings.column_position == 'right'
+      assign right_count = right_count | plus: 1
+    endif
+  endfor
 %}
 
 <div class="product-ingredients-section {{ section_id }}">
   <div class="container">
     <div class="vwcm-container">
+      
+      {%- comment -%} Editor Warning {%- endcomment -%}
+      {%- if request.design_mode -%}
+        {%- if left_count > 5 or right_count > 5 -%}
+          <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 16px; margin-bottom: 24px; text-align: left;">
+            <strong style="color: #856404;">⚠️ Ingredient Limit Exceeded</strong>
+            <p style="color: #856404; margin: 8px 0 0 0; font-size: 14px;">
+              {%- if left_count > 5 -%}
+                Left column: {{ left_count }} ingredients (max 5). Only the first 5 will display.<br>
+              {%- endif -%}
+              {%- if right_count > 5 -%}
+                Right column: {{ right_count }} ingredients (max 5). Only the first 5 will display.
+              {%- endif -%}
+            </p>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
       
       {%- comment -%} Section Title {%- endcomment -%}
       {%- if section.settings.section_title != blank -%}
@@ -22,24 +50,28 @@
         
         {%- comment -%} LEFT COLUMN {%- endcomment -%}
         <div class="vwcm-col first">
+          {%- assign left_item_count = 0 -%}
           {%- for block in section.blocks -%}
             {%- if block.settings.column_position == 'left' -%}
-              <div class="vwcm-item" {{ block.shopify_attributes }}>
-                <div class="dot">
-                  {%- if block.settings.ingredient_icon != blank -%}
-                    <img 
-                      src="{{ block.settings.ingredient_icon | image_url: width: 72 }}" 
-                      alt="{{ block.settings.ingredient_title }}" 
-                      class="ingredient-icon"
-                      loading="lazy"
-                      width="36"
-                      height="36"
-                    >
-                  {%- endif -%}
+              {%- assign left_item_count = left_item_count | plus: 1 -%}
+              {%- if left_item_count <= 5 -%}
+                <div class="vwcm-item" {{ block.shopify_attributes }}>
+                  <div class="dot">
+                    {%- if block.settings.ingredient_icon != blank -%}
+                      <img 
+                        src="{{ block.settings.ingredient_icon | image_url: width: 72 }}" 
+                        alt="{{ block.settings.ingredient_title }}" 
+                        class="ingredient-icon"
+                        loading="lazy"
+                        width="36"
+                        height="36"
+                      >
+                    {%- endif -%}
+                  </div>
+                  <h3>{{ block.settings.ingredient_title }}</h3>
+                  <p>{{ block.settings.ingredient_text }}</p>
                 </div>
-                <h3>{{ block.settings.ingredient_title }}</h3>
-                <p>{{ block.settings.ingredient_text }}</p>
-              </div>
+              {%- endif -%}
             {%- endif -%}
           {%- endfor -%}
         </div>
@@ -59,24 +91,28 @@
 
         {%- comment -%} RIGHT COLUMN {%- endcomment -%}
         <div class="vwcm-col second">
+          {%- assign right_item_count = 0 -%}
           {%- for block in section.blocks -%}
             {%- if block.settings.column_position == 'right' -%}
-              <div class="vwcm-item" {{ block.shopify_attributes }}>
-                <div class="dot">
-                  {%- if block.settings.ingredient_icon != blank -%}
-                    <img 
-                      src="{{ block.settings.ingredient_icon | image_url: width: 72 }}" 
-                      alt="{{ block.settings.ingredient_title }}" 
-                      class="ingredient-icon"
-                      loading="lazy"
-                      width="36"
-                      height="36"
-                    >
-                  {%- endif -%}
+              {%- assign right_item_count = right_item_count | plus: 1 -%}
+              {%- if right_item_count <= 5 -%}
+                <div class="vwcm-item" {{ block.shopify_attributes }}>
+                  <div class="dot">
+                    {%- if block.settings.ingredient_icon != blank -%}
+                      <img 
+                        src="{{ block.settings.ingredient_icon | image_url: width: 72 }}" 
+                        alt="{{ block.settings.ingredient_title }}" 
+                        class="ingredient-icon"
+                        loading="lazy"
+                        width="36"
+                        height="36"
+                      >
+                    {%- endif -%}
+                  </div>
+                  <h3>{{ block.settings.ingredient_title }}</h3>
+                  <p>{{ block.settings.ingredient_text }}</p>
                 </div>
-                <h3>{{ block.settings.ingredient_title }}</h3>
-                <p>{{ block.settings.ingredient_text }}</p>
-              </div>
+              {%- endif -%}
             {%- endif -%}
           {%- endfor -%}
         </div>
@@ -432,6 +468,7 @@
 {% schema %}
 {
   "name": "Product Ingredients",
+  "max_blocks": 10,
   "settings": [
     {
       "type": "text",
@@ -455,6 +492,7 @@
     {
       "type": "ingredient",
       "name": "Ingredient",
+      "limit": 10,
       "settings": [
         {
           "type": "select",
@@ -470,7 +508,8 @@
               "label": "Right"
             }
           ],
-          "default": "left"
+          "default": "left",
+          "info": "Maximum 5 ingredients per column recommended"
         },
         {
           "type": "image_picker",
