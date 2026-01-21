@@ -73,20 +73,19 @@
 
         {%- comment -%} CENTER IMAGE {%- endcomment -%}
         <div class="vwcm-center">
-          <div class="center-bg"></div>
-          {% if block.settings.image %}
-              <img
+            {% if block.settings.image %}
+                <img
                 src="{{ block.settings.image | image_url: width: 1000 }}"
                 alt="{{ block.settings.customer_name | default: 'Customer' }}"
                 loading="lazy"
                 style="object-position: {{ block.settings.position }};"
-              >
+                >
             {% else %}
-              <img
+                <img
                 src="{{ 'placeholder.webp' | asset_url }}"
                 alt="{{ block.settings.customer_name | default: 'Customer' }}"
                 loading="lazy"
-              >
+                >
             {% endif %}
         </div>
 
@@ -290,7 +289,7 @@
   transform: translate(-50%, -50%);
 }
 
-.{{ section_id }} .center-bg img {
+.{{ section_id }} .vwcm-center img {
     width: 500px;
 }
 
