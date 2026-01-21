@@ -22,9 +22,9 @@
             "button_label": "Button label",
             "link": "",
             "button_style_secondary": false,
-            "show_text_box": true,
-            "box_align": "middle-center",
-            "text_alignment": "center",
+            "show_text_box": false,
+            "box_align": "middle-left",
+            "text_alignment": "left",
             "text_alignment_mobile": "center",
             "color_scheme": ""
           }
