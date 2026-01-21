@@ -132,7 +132,7 @@
 </div>
 
 {% style %}
-.{{ section_id }} .{{ content_wrap }} {
+.{{ content_wrap }} {
   max-width: 1100px;
   /* margin: auto;
   padding: 60px 20px; */
@@ -145,26 +145,26 @@
   gap: 32px;
 }
 
-/* .{{ section_id }} .vwcm-title {
+/* .vwcm-title {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 32px !important;
   color: #3d3451;
 } */
 
-.{{ section_id }} .vwcm-grid {
+.vwcm-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
   align-items: center;
 }
 
-.{{ section_id }} .wrap-product-ingredients-a-4.vwcm-container {
+.wrap-product-ingredients-a-4.vwcm-container {
   justify-self: center;
 }
 
 /* Ingredient Columns */
-.{{ section_id }} .vwcm-col {
+.vwcm-col {
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -172,50 +172,50 @@
   justify-content: space-between;
 }
 
-.{{ section_id }} .vwcm-item {
+.vwcm-item {
   text-align: left;
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.{{ section_id }} .vwcm-col .vwcm-item .dot{
+.vwcm-col .vwcm-item .dot{
     width: 36px; !important;
 }
 
-.{{ section_id }} .vwcm-col.first .vwcm-item {
+.vwcm-col.first .vwcm-item {
   align-items: end;
   text-align: end;
 }
 
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2) {
+.vwcm-col.first .vwcm-item:nth-child(2) {
   padding-right: 40px;
 }
 
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2) {
+.vwcm-col.second .vwcm-item:nth-child(2) {
   padding-left: 40px;
 }
 
-.{{ section_id }} .vwcm-item h3 {
+.vwcm-item h3 {
   font-size: 24px;
   /* font-weight: 700;
   color: #4d4563;
   margin-bottom: 6px; */
 }
 
-.{{ section_id }} .vwcm-item p {
+.vwcm-item p {
   font-size: 14px;
   line-height: 1.5;
   color: #746c8a;
 }
 
 /* Center Image */
-.{{ section_id }} .vwcm-center {
+.vwcm-center {
   position: relative;
   text-align: center;
 }
 
-.{{ section_id }} .center-bg {
+.center-bg {
   width: 400px;
   height: 400px;
   background: linear-gradient(900deg, #B9B2E1 0%, #F7F6FF 100%);
@@ -226,14 +226,14 @@
   transform: translate(-50%, -50%);
 }
 
-.{{ section_id }} .mask-img {
+.mask-img {
   position: relative;
   width: 100%;
   z-index: 2;
 }
 
 /* Ingredients Dropdown */
-.{{ section_id }} .all-ingredients {
+.all-ingredients {
   /* margin-top: 70px; */
   padding: 0;
   background: #FDFDFD;
@@ -245,7 +245,7 @@
 }
 
 /* Header */
-.{{ section_id }} .drop-header {
+.drop-header {
   /* font-weight: 700; */
   font-size: 24px !important;
   cursor: pointer;
@@ -259,24 +259,24 @@
 }
 
 /* Chevron arrow */
-.{{ section_id }} .chevron {
+.chevron {
   display: inline-flex;
   align-items: center;
 }
 
 
-.{{ section_id }} .chevron-icon {
+.chevron-icon {
   width: 14px; /* adjust if needed */
   height: auto;
   transition: transform 0.3s ease;
 }
 /* Rotate when open */
-.{{ section_id }} .all-ingredients.open .chevron-icon {
+.all-ingredients.open .chevron-icon {
   transform: rotate(180deg);
 }
 
 /* Dropdown content */
-.{{ section_id }} .drop-content {
+.drop-content {
   padding: 0 24px 20px;
   line-height: 1.6;
   color: #6b657c;
@@ -285,41 +285,41 @@
   text-align: center;
 }
 
-.{{ section_id }} .all-ingredients.open .drop-content {
+.all-ingredients.open .drop-content {
   display: block;
   font-family: 'Chivo Mono';
 }
 
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
-  .{{ section_id }} .{{ content_wrap }} {
+  .{{ content_wrap }} {
     padding: 40px 20px;
   }
 
-  .{{ section_id }} .vwcm-title {
+  .vwcm-title {
     font-size: 26px;
     margin-bottom: 40px;
   }
 
   /* Stack everything */
-  .{{ section_id }} .vwcm-grid {
+  .vwcm-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
   /* ORDERING */
-  .{{ section_id }} .vwcm-center {
+  .vwcm-center {
     order: 1;
   }
 
-  .{{ section_id }} .vwcm-col.first {
+  .vwcm-col.first {
     order: 2;
     align-items: flex-start !important;
     text-align: left !important;
     gap: 16px !important;
   }
 
-  .{{ section_id }} .vwcm-col.second {
+  .vwcm-col.second {
     order: 3;
     align-items: flex-start !important;
     text-align: left !important;
@@ -327,7 +327,7 @@
   }
 
   /* Fix alignment on mobile */
-  .{{ section_id }} .vwcm-item {
+  .vwcm-item {
     flex-direction: column;
     gap: 8px;
     align-items: center !important;
@@ -337,53 +337,53 @@
     border-radius: 12px !important;
   }
 
-  .{{ section_id }} .vwcm-item h3 {
+  .vwcm-item h3 {
     margin: 0;
     text-align: center;
   }
 
-  .{{ section_id }} .vwcm-item p {
+  .vwcm-item p {
     margin-top: 2px;
     text-align: center;
   }
 
-  .{{ section_id }} .vwcm-col.second .vwcm-item,
-  .{{ section_id }} .vwcm-col.first .vwcm-item {
+  .vwcm-col.second .vwcm-item,
+  .vwcm-col.first .vwcm-item {
     text-align: center !important;
   }
 
   /* Center image resize */
-  .{{ section_id }} .center-bg {
+  .center-bg {
     width: 389px;
     height: 389px;
   }
 
-  .{{ section_id }} .mask-img {
+  .mask-img {
     width: 210px;
   }
 
   /* Ingredients dropdown spacing */
-  .{{ section_id }} .all-ingredients {
+  .all-ingredients {
     margin-top: 40px;
   }
 
-  .{{ section_id }} .drop-content {
+  .drop-content {
     text-align: left;
   }
 }
 
 /* EXTRA SMALL SCREEN */
 @media (max-width: 480px) {
-  .{{ section_id }} .vwcm-title {
+  .vwcm-title {
     font-size: 22px;
   }
 
-  .{{ section_id }} .center-bg {
+  .center-bg {
     width: 290px;
     height: 290px;
   }
 
-    /* .{{ section_id }} .mask-img {
+    /* .mask-img {
       width: 160px;
     } */
 }
