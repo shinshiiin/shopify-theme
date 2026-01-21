@@ -229,22 +229,6 @@
     "product_ingredients_iCbEhF": {
       "type": "product-ingredients",
       "blocks": {
-        "ingredient_T7cBzL": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "left",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
-        "ingredient_AFi6Uy": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "left",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
         "ingredient_CPmjdk": {
           "type": "ingredient",
           "settings": {
@@ -311,8 +295,6 @@
         }
       },
       "block_order": [
-        "ingredient_T7cBzL",
-        "ingredient_AFi6Uy",
         "ingredient_CPmjdk",
         "ingredient_t36acQ",
         "ingredient_YQH3bx",
