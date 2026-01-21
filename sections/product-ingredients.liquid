@@ -1,168 +1,140 @@
-<div class="product-ingredients-section">
+{% comment %}
+  Product Ingredients Section with Dynamic Blocks
+  Each ingredient is now a block that can be added, removed, and reordered
+{% endcomment %}
+
+{% liquid
+  assign section_id = 'product-ingredients-' | append: section.id
+%}
+
+<div class="product-ingredients-section {{ section_id }}">
   <div class="container">
-    <div class="{{ content_wrap }} vwcm-container">
-    <!-- Section Title -->
-    
-    <h1 class="pdp-section-title vwcm-title">Product Ingredients</h1>
-    
-    <div class="vwcm-grid">
-        <!-- LEFT COLUMN - Ingredients A, B, C -->
+    <div class="vwcm-container">
+      
+      {%- comment -%} Section Title {%- endcomment -%}
+      {%- if section.settings.section_title != blank -%}
+        <h1 class="pdp-section-title vwcm-title">
+          {{ section.settings.section_title }}
+        </h1>
+      {%- endif -%}
+      
+      <div class="vwcm-grid">
+        
+        {%- comment -%} LEFT COLUMN {%- endcomment -%}
         <div class="vwcm-col first">
-        <!-- Ingredient A -->
-        {% if section_item.section_ingredient_title_a != blank %}
-            <div class="vwcm-item">
-            <div class="dot">
-                {% if section_item.section_ingredient_icon_a != blank %}
-                {% assign icon_a_url = section_item.section_ingredient_icon_a | file_url %}
-                <img src="{{ icon_a_url }}" alt="{{ section_item.section_ingredient_title_a }}" class="ingredient-icon">
-                {% endif %}
-            </div>
-            <h3>{{ section_item.section_ingredient_title_a | metafield_tag }}</h3>
-            <p>{{ section_item.section_ingredient_text_a | metafield_tag }}</p>
-            </div>
-        {% endif %}
-
-        <!-- Ingredient B -->
-        {% if section_item.section_ingredient_title_b != blank %}
-            <div class="vwcm-item">
-            <div class="dot">
-                {% if section_item.section_ingredient_icon_b != blank %}
-                {% assign icon_b_url = section_item.section_ingredient_icon_b | file_url %}
-                <img src="{{ icon_b_url }}" alt="{{ section_item.section_ingredient_title_b }}" class="ingredient-icon">
-                {% endif %}
-            </div>
-            <h3>{{ section_item.section_ingredient_title_b | metafield_tag }}</h3>
-            <p>{{ section_item.section_ingredient_text_b | metafield_tag }}</p>
-            </div>
-        {% endif %}
-
-        <!-- Ingredient C -->
-        {% if section_item.section_ingredient_title_c != blank %}
-            <div class="vwcm-item">
-            <div class="dot">
-                {% if section_item.section_ingredient_icon_c != blank %}
-                {% assign icon_c_url = section_item.section_ingredient_icon_c | file_url %}
-                <img src="{{ icon_c_url }}" alt="{{ section_item.section_ingredient_title_c }}" class="ingredient-icon">
-                {% endif %}
-            </div>
-            <h3>{{ section_item.section_ingredient_title_c | metafield_tag }}</h3>
-            <p>{{ section_item.section_ingredient_text_c | metafield_tag }}</p>
-            </div>
-        {% endif %}
+          {%- for block in section.blocks -%}
+            {%- if block.settings.column_position == 'left' -%}
+              <div class="vwcm-item" {{ block.shopify_attributes }}>
+                <div class="dot">
+                  {%- if block.settings.ingredient_icon != blank -%}
+                    <img 
+                      src="{{ block.settings.ingredient_icon | image_url: width: 72 }}" 
+                      alt="{{ block.settings.ingredient_title }}" 
+                      class="ingredient-icon"
+                      loading="lazy"
+                      width="36"
+                      height="36"
+                    >
+                  {%- endif -%}
+                </div>
+                <h3>{{ block.settings.ingredient_title }}</h3>
+                <p>{{ block.settings.ingredient_text }}</p>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
         </div>
 
-        <!-- CENTER IMAGE -->
+        {%- comment -%} CENTER IMAGE {%- endcomment -%}
         <div class="vwcm-center">
-        <div class="center-bg"></div>
-        {% if section_item.section_image != blank %}
-            {% assign section_image_url = section_item.section_image | file_url %}
-            <img src="{{ section_image_url }}" class="mask-img" alt="{{ section_item.section_title }}">
-        {% endif %}
+          <div class="center-bg"></div>
+          {%- if section.settings.center_image != blank -%}
+            <img 
+              src="{{ section.settings.center_image | image_url: width: 800 }}" 
+              class="mask-img" 
+              alt="{{ section.settings.section_title }}"
+              loading="lazy"
+            >
+          {%- endif -%}
         </div>
 
-        <!-- RIGHT COLUMN - Ingredients D, E, F -->
+        {%- comment -%} RIGHT COLUMN {%- endcomment -%}
         <div class="vwcm-col second">
-        <!-- Ingredient D -->
-        {% if section_item.section_ingredient_title_d != blank %}
-            <div class="vwcm-item">
-            <div class="dot">
-                {% if section_item.section_ingredient_icon_d != blank %}
-                {% assign icon_d_url = section_item.section_ingredient_icon_d | file_url %}
-                <img src="{{ icon_d_url }}" alt="{{ section_item.section_ingredient_title_d }}" class="ingredient-icon">
-                {% endif %}
-            </div>
-            <h3>{{ section_item.section_ingredient_title_d | metafield_tag }}</h3>
-            <p>{{ section_item.section_ingredient_text_d | metafield_tag }}</p>
-            </div>
-        {% endif %}
-
-        <!-- Ingredient E -->
-        {% if section_item.section_ingredient_title_e != blank %}
-            <div class="vwcm-item">
-            <div class="dot">
-                {% if section_item.section_ingredient_icon_e != blank %}
-                {% assign icon_e_url = section_item.section_ingredient_icon_e | file_url %}
-                <img src="{{ icon_e_url }}" alt="{{ section_item.section_ingredient_title_e }}" class="ingredient-icon">
-                {% endif %}
-            </div>
-            <h3>{{ section_item.section_ingredient_title_e | metafield_tag }}</h3>
-            <p>{{ section_item.section_ingredient_text_e | metafield_tag }}</p>
-            </div>
-        {% endif %}
-
-        <!-- Ingredient F -->
-        {% if section_item.section_ingredient_title_f != blank %}
-            <div class="vwcm-item">
-            <div class="dot">
-                {% if section_item.section_ingredient_icon_f != blank %}
-                {% assign icon_f_url = section_item.section_ingredient_icon_f | file_url %}
-                <img src="{{ icon_f_url }}" alt="{{ section_item.section_ingredient_title_f }}" class="ingredient-icon">
-                {% endif %}
-            </div>
-            <h3>{{ section_item.section_ingredient_title_f | metafield_tag }}</h3>
-            <p>{{ section_item.section_ingredient_text_f | metafield_tag }}</p>
-            </div>
-        {% endif %}
+          {%- for block in section.blocks -%}
+            {%- if block.settings.column_position == 'right' -%}
+              <div class="vwcm-item" {{ block.shopify_attributes }}>
+                <div class="dot">
+                  {%- if block.settings.ingredient_icon != blank -%}
+                    <img 
+                      src="{{ block.settings.ingredient_icon | image_url: width: 72 }}" 
+                      alt="{{ block.settings.ingredient_title }}" 
+                      class="ingredient-icon"
+                      loading="lazy"
+                      width="36"
+                      height="36"
+                    >
+                  {%- endif -%}
+                </div>
+                <h3>{{ block.settings.ingredient_title }}</h3>
+                <p>{{ block.settings.ingredient_text }}</p>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
         </div>
-    </div>
+      </div>
 
-    <!-- All Ingredients Dropdown -->
-    {% if section_item.section_all_ingredients != blank %}
+      {%- comment -%} All Ingredients Dropdown {%- endcomment -%}
+      {%- if section.settings.all_ingredients != blank -%}
         <div class="all-ingredients">
-        <div class="drop-header">
-            <span class="metafield-single_line_text_field">All Ingredients </span>
-            
+          <div class="drop-header">
+            <span>All Ingredients</span>
             <span class="chevron">
-                <img 
+              <img 
                 src="{{ 'arrow.webp' | asset_url }}" 
                 alt="Toggle ingredients"
                 class="chevron-icon"
-                >
+                width="14"
+                height="14"
+              >
             </span>
+          </div>
+          <div class="drop-content">
+            {{ section.settings.all_ingredients }}
+          </div>
         </div>
-        <div class="drop-content">
-            {{ section_item.section_all_ingredients | metafield_tag }}
-        </div>
-        </div>
-    {% endif %}
+      {%- endif -%}
+      
     </div>
   </div>
 </div>
 
 {% style %}
-.{{ content_wrap }} {
+/* ========================================
+   CONTAINER & LAYOUT
+   ======================================== */
+.{{ section_id }} .vwcm-container {
   max-width: 1100px;
-  /* margin: auto;
-  padding: 60px 20px; */
-  text-align: center;
-  font-family: "Inter", sans-serif;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 32px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
 }
 
-/* .vwcm-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 32px !important;
-  color: #3d3451;
-} */
-
-.vwcm-grid {
+.{{ section_id }} .vwcm-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
   align-items: center;
+  width: 100%;
 }
 
-.wrap-product-ingredients-a-4.vwcm-container {
-  justify-self: center;
-}
-
-/* Ingredient Columns */
-.vwcm-col {
+/* ========================================
+   INGREDIENT COLUMNS
+   ======================================== */
+.{{ section_id }} .vwcm-col {
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -170,53 +142,64 @@
   justify-content: space-between;
 }
 
-.vwcm-item {
-  text-align: left;
+.{{ section_id }} .vwcm-item {
   position: relative;
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
-.vwcm-col .vwcm-item .dot{
-    width: 36px; !important;
+.{{ section_id }} .vwcm-col .vwcm-item .dot {
+  width: 36px;
+  margin-bottom: 12px;
 }
 
-.vwcm-col.first .vwcm-item {
+.{{ section_id }} .ingredient-icon {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Left Column Alignment */
+.{{ section_id }} .vwcm-col.first .vwcm-item {
   align-items: end;
   text-align: end;
 }
 
-.vwcm-col.first .vwcm-item:nth-child(2) {
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2) {
   padding-right: 40px;
 }
 
-.vwcm-col.second .vwcm-item:nth-child(2) {
+/* Right Column Alignment */
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2) {
   padding-left: 40px;
 }
 
-.vwcm-item h3 {
+/* Typography */
+.{{ section_id }} .vwcm-item h3 {
   font-size: 24px;
-  /* font-weight: 700;
-  color: #4d4563;
-  margin-bottom: 6px; */
+  margin-bottom: 8px;
 }
 
-.vwcm-item p {
+.{{ section_id }} .vwcm-item p {
   font-size: 14px;
   line-height: 1.5;
   color: #746c8a;
+  margin: 0;
 }
 
-/* Center Image */
-.vwcm-center {
+/* ========================================
+   CENTER IMAGE
+   ======================================== */
+.{{ section_id }} .vwcm-center {
   position: relative;
   text-align: center;
 }
 
-.center-bg {
+.{{ section_id }} .center-bg {
   width: 400px;
   height: 400px;
-  background: linear-gradient(900deg, #B9B2E1 0%, #F7F6FF 100%);
+  background: linear-gradient(90deg, #B9B2E1 0%, #F7F6FF 100%);
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -224,191 +207,298 @@
   transform: translate(-50%, -50%);
 }
 
-.mask-img {
+.{{ section_id }} .mask-img {
   position: relative;
   width: 100%;
+  max-width: 400px;
+  height: auto;
   z-index: 2;
 }
 
-/* Ingredients Dropdown */
-.all-ingredients {
-  /* margin-top: 70px; */
+/* ========================================
+   INGREDIENTS DROPDOWN
+   ======================================== */
+.{{ section_id }} .all-ingredients {
+  max-width: 839px;
+  width: 100%;
   padding: 0;
   background: #FDFDFD;
   border-radius: 14px;
   overflow: hidden;
   text-align: left;
-  max-width: 839px;
-  width: 100%;
 }
 
-/* Header */
-.drop-header {
-  /* font-weight: 700; */
-  font-size: 24px !important;
-  cursor: pointer;
-  padding: 18px 24px;
-  font-size: 18px;
+.{{ section_id }} .drop-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #4d4563;
   gap: 15px;
+  padding: 18px 24px;
+  font-size: 24px;
+  color: #4d4563;
+  cursor: pointer;
+  user-select: none;
 }
 
-/* Chevron arrow */
-.chevron {
+.{{ section_id }} .chevron {
   display: inline-flex;
   align-items: center;
 }
 
-
-.chevron-icon {
-  width: 14px; /* adjust if needed */
+.{{ section_id }} .chevron-icon {
+  width: 14px;
   height: auto;
   transition: transform 0.3s ease;
 }
-/* Rotate when open */
-.all-ingredients.open .chevron-icon {
+
+.{{ section_id }} .all-ingredients.open .chevron-icon {
   transform: rotate(180deg);
 }
 
-/* Dropdown content */
-.drop-content {
+.{{ section_id }} .drop-content {
+  display: none;
   padding: 0 24px 20px;
+  font-size: 14px;
   line-height: 1.6;
   color: #6b657c;
-  font-size: 14px;
-  display: none;
   text-align: center;
 }
 
-.all-ingredients.open .drop-content {
+.{{ section_id }} .all-ingredients.open .drop-content {
   display: block;
-  font-family: 'Chivo Mono';
+  font-family: 'Chivo Mono', monospace;
 }
 
-/* MOBILE RESPONSIVENESS */
+/* ========================================
+   MOBILE RESPONSIVENESS
+   ======================================== */
 @media (max-width: 768px) {
-  .{{ content_wrap }} {
+  .{{ section_id }} .vwcm-container {
     padding: 40px 20px;
   }
 
-  .vwcm-title {
+  .{{ section_id }} .vwcm-title {
     font-size: 26px;
     margin-bottom: 40px;
   }
 
-  /* Stack everything */
-  .vwcm-grid {
+  .{{ section_id }} .vwcm-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  /* ORDERING */
-  .vwcm-center {
+  /* Reorder Grid Items */
+  .{{ section_id }} .vwcm-center {
     order: 1;
   }
 
-  .vwcm-col.first {
+  .{{ section_id }} .vwcm-col.first {
     order: 2;
-    align-items: flex-start !important;
-    text-align: left !important;
-    gap: 16px !important;
   }
 
-  .vwcm-col.second {
+  .{{ section_id }} .vwcm-col.second {
     order: 3;
-    align-items: flex-start !important;
-    text-align: left !important;
-    gap: 16px !important;
   }
 
-  /* Fix alignment on mobile */
-  .vwcm-item {
+  /* Reset Column Styling */
+  .{{ section_id }} .vwcm-col.first,
+  .{{ section_id }} .vwcm-col.second {
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+  }
+
+  /* Mobile Ingredient Cards */
+  .{{ section_id }} .vwcm-item {
     flex-direction: column;
     gap: 8px;
-    align-items: center !important;
+    align-items: center;
     justify-content: center;
-    padding: 12px 32px !important;
-    background-color: #FDFDFD !important;
-    border-radius: 12px !important;
+    padding: 12px 32px;
+    background-color: #FDFDFD;
+    border-radius: 12px;
+    text-align: center;
   }
 
-  .vwcm-item h3 {
+  .{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2),
+  .{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2) {
+    padding: 12px 32px;
+  }
+
+  .{{ section_id }} .vwcm-item h3 {
     margin: 0;
     text-align: center;
   }
 
-  .vwcm-item p {
+  .{{ section_id }} .vwcm-item p {
     margin-top: 2px;
     text-align: center;
   }
 
-  .vwcm-col.second .vwcm-item,
-  .vwcm-col.first .vwcm-item {
-    text-align: center !important;
-  }
-
-  /* Center image resize */
-  .center-bg {
+  /* Center Image Resize */
+  .{{ section_id }} .center-bg {
     width: 389px;
     height: 389px;
   }
 
-  .mask-img {
-    width: 210px;
+  .{{ section_id }} .mask-img {
+    max-width: 210px;
   }
 
-  /* Ingredients dropdown spacing */
-  .all-ingredients {
+  /* Dropdown Spacing */
+  .{{ section_id }} .all-ingredients {
     margin-top: 40px;
   }
 
-  .drop-content {
+  .{{ section_id }} .drop-content {
     text-align: left;
   }
 }
 
-/* EXTRA SMALL SCREEN */
+/* Extra Small Screens */
 @media (max-width: 480px) {
-  .vwcm-title {
+  .{{ section_id }} .vwcm-title {
     font-size: 22px;
   }
 
-  .center-bg {
+  .{{ section_id }} .center-bg {
     width: 290px;
     height: 290px;
   }
-
-    /* .mask-img {
-      width: 160px;
-    } */
 }
 {% endstyle %}
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const block = document.querySelector(".all-ingredients");
-  if (block) {
-    const header = block.querySelector(".drop-header");
-    header.addEventListener("click", () => {
-      block.classList.toggle("open");
-    });
-  }
-});
+  document.addEventListener('DOMContentLoaded', function() {
+    const ingredientsBlock = document.querySelector('.{{ section_id }} .all-ingredients');
+    
+    if (ingredientsBlock) {
+      const header = ingredientsBlock.querySelector('.drop-header');
+      
+      header.addEventListener('click', function() {
+        ingredientsBlock.classList.toggle('open');
+      });
+    }
+  });
 </script>
 
-
 {% schema %}
-  {
-    "name": "Product Ingredients",
-    "settings": [],
-    "presets": [
+{
+  "name": "Product Ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Product Ingredients"
+    },
+    {
+      "type": "image_picker",
+      "id": "center_image",
+      "label": "Center Image"
+    },
+    {
+      "type": "richtext",
+      "id": "all_ingredients",
+      "label": "All Ingredients List",
+      "info": "Full ingredient list shown in dropdown"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "select",
+          "id": "column_position",
+          "label": "Column Position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "image_picker",
+          "id": "ingredient_icon",
+          "label": "Ingredient Icon"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_title",
+          "label": "Ingredient Title",
+          "default": "Ingredient Name"
+        },
+        {
+          "type": "textarea",
+          "id": "ingredient_text",
+          "label": "Ingredient Description",
+          "default": "Brief description of this ingredient and its benefits."
+        }
+      ]
+    }
+  ],
+  "presets": [
     {
       "name": "Product Ingredients",
-      "settings": {},
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Vitamin C",
+            "ingredient_text": "Brightens and evens skin tone"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Hyaluronic Acid",
+            "ingredient_text": "Deep hydration and plumping"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Niacinamide",
+            "ingredient_text": "Minimizes pores and refines texture"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Retinol",
+            "ingredient_text": "Reduces fine lines and wrinkles"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Peptides",
+            "ingredient_text": "Boosts collagen production"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Green Tea Extract",
+            "ingredient_text": "Antioxidant protection"
+          }
+        }
+      ]
     }
-    ],
-  }
-{% endschema %} 
+  ]
+}
+{% endschema %}
