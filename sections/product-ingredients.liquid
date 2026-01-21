@@ -76,15 +76,20 @@
 
         {%- comment -%} CENTER IMAGE {%- endcomment -%}
         <div class="vwcm-center">
-          <div class="center-bg"></div>
-          {%- if section.settings.center_image != blank -%}
-            <img 
-              src="{{ section.settings.center_image | image_url: width: 800 }}" 
-              class="mask-img" 
-              alt="{{ section.settings.section_title }}"
-              loading="lazy"
-            >
-          {%- endif -%}
+          {% if block.settings.image %}
+              <img
+                src="{{ block.settings.image | image_url: width: 1000 }}"
+                alt="{{ block.settings.customer_name | default: 'Customer' }}"
+                loading="lazy"
+                style="object-position: {{ block.settings.position }};"
+              >
+            {% else %}
+              <img
+                src="{{ 'placeholder.webp' | asset_url }}"
+                alt="{{ block.settings.customer_name | default: 'Customer' }}"
+                loading="lazy"
+              >
+            {% endif %}
         </div>
 
         {%- comment -%} RIGHT COLUMN {%- endcomment -%}
