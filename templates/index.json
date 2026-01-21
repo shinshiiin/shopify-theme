@@ -229,30 +229,6 @@
     "product_ingredients_iCbEhF": {
       "type": "product-ingredients",
       "blocks": {
-        "ingredient_jnHXmd": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "left",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
-        "ingredient_UjPNkX": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
-        "ingredient_tzNCqp": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
         "ingredient_7G7wJW": {
           "type": "ingredient",
           "settings": {
@@ -262,14 +238,6 @@
           }
         },
         "ingredient_TV6Tpt": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "left",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
-        "ingredient_t36acQ": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
@@ -311,12 +279,8 @@
         }
       },
       "block_order": [
-        "ingredient_jnHXmd",
-        "ingredient_UjPNkX",
-        "ingredient_tzNCqp",
         "ingredient_7G7wJW",
         "ingredient_TV6Tpt",
-        "ingredient_t36acQ",
         "ingredient_YQH3bx",
         "ingredient_tY3Pjz",
         "ingredient_hFq3Am",
@@ -325,6 +289,12 @@
       "name": "Product Ingredients",
       "settings": {
         "section_title": "Product Ingredients",
+        "title_color": "#605471",
+        "title_size": 40,
+        "section_subtitle": "Verified Customer Reviews",
+        "subtitle_color": "#656565",
+        "subtitle_size": 20,
+        "section_background": "#f7f9fd",
         "all_ingredients": ""
       }
     }
