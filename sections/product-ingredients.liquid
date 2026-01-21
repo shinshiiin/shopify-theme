@@ -75,7 +75,7 @@
         </div>
 
         {%- comment -%} CENTER IMAGE {%- endcomment -%}
-        <div class="vwcm-center">
+        <div class="center-column">
           {% if block.settings.image %}
               <img
                 src="{{ block.settings.image | image_url: width: 1000 }}"
@@ -93,7 +93,7 @@
         </div>
 
         {%- comment -%} RIGHT COLUMN {%- endcomment -%}
-        <div class="left-column second">
+        <div class="left-column">
           {%- assign right_item_count = 0 -%}
           {%- for block in section.blocks -%}
             {%- if block.settings.column_position == 'right' -%}
@@ -235,20 +235,20 @@
 /* Right Column Alignment */
 /* Dynamic Middle Item Padding - Right Column */
 /* 3 items: middle item (2nd) gets padding */
-.product-ingredients-section .left-column.second .vwcm-item:nth-child(2):nth-last-child(2) {
+.product-ingredients-section .left-column .vwcm-item:nth-child(2):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 4 items: 2nd and 3rd items get padding */
-.product-ingredients-section .left-column.second .vwcm-item:nth-child(2):nth-last-child(3),
-.product-ingredients-section .left-column.second .vwcm-item:nth-child(3):nth-last-child(2) {
+.product-ingredients-section .left-column .vwcm-item:nth-child(2):nth-last-child(3),
+.product-ingredients-section .left-column .vwcm-item:nth-child(3):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 5 items: 2nd, 3rd, and 4th items get padding */
-.product-ingredients-section .left-column.second .vwcm-item:nth-child(2):nth-last-child(4),
-.product-ingredients-section .left-column.second .vwcm-item:nth-child(3):nth-last-child(3),
-.product-ingredients-section .left-column.second .vwcm-item:nth-child(4):nth-last-child(2) {
+.product-ingredients-section .left-column .vwcm-item:nth-child(2):nth-last-child(4),
+.product-ingredients-section .left-column .vwcm-item:nth-child(3):nth-last-child(3),
+.product-ingredients-section .left-column .vwcm-item:nth-child(4):nth-last-child(2) {
   padding-left: 40px;
 }
 
@@ -268,12 +268,12 @@
 /* ========================================
    CENTER IMAGE
    ======================================== */
-.product-ingredients-section .vwcm-center {
+.product-ingredients-section .center-column {
   position: relative;
   text-align: center;
 }
 
-.vwcm-center img {
+.center-column img {
     width: 500px;
 }
 
@@ -358,7 +358,7 @@
   }
 
   /* Reorder Grid Items */
-  .product-ingredients-section .vwcm-center {
+  .product-ingredients-section .center-column {
     order: 1;
   }
 
@@ -366,13 +366,13 @@
     order: 2;
   }
 
-  .product-ingredients-section .left-column.second {
+  .product-ingredients-section .left-column {
     order: 3;
   }
 
   /* Reset Column Styling */
   .product-ingredients-section .left-column,
-  .product-ingredients-section .left-column.second {
+  .product-ingredients-section .left-column {
     align-items: flex-start;
     text-align: left;
     gap: 16px;
@@ -392,7 +392,7 @@
 
   /* Reset all dynamic padding on mobile */
   .product-ingredients-section .left-column .vwcm-item,
-  .product-ingredients-section .left-column.second .vwcm-item {
+  .product-ingredients-section .left-column .vwcm-item {
     padding: 12px 32px !important;
   }
 
