@@ -70,6 +70,7 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/Rectangle_158_1.png",
+            "position": "center",
             "customer_name": "John Doe",
             "customer_age": "",
             "customer_rating": 5,
@@ -81,6 +82,7 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/Rectangle_158.png",
+            "position": "top",
             "customer_name": "John Doe",
             "customer_age": "",
             "customer_rating": 5,
@@ -91,6 +93,7 @@
         "testimonial_mYD98B": {
           "type": "testimonial",
           "settings": {
+            "position": "center",
             "customer_name": "John Doe",
             "customer_age": "",
             "customer_rating": 5,
@@ -101,6 +104,7 @@
         "testimonial_y7WfgY": {
           "type": "testimonial",
           "settings": {
+            "position": "center",
             "customer_name": "John Doe",
             "customer_age": "",
             "customer_rating": 5,
@@ -111,6 +115,7 @@
         "testimonial_be3m8f": {
           "type": "testimonial",
           "settings": {
+            "position": "center",
             "customer_name": "John Doe",
             "customer_age": "",
             "customer_rating": 5,
@@ -121,6 +126,7 @@
         "testimonial_6qYLTb": {
           "type": "testimonial",
           "settings": {
+            "position": "center",
             "customer_name": "John Doe",
             "customer_age": "",
             "customer_rating": 5,
