@@ -73,7 +73,7 @@
             "customer_age": "",
             "customer_rating": 5,
             "customer_heading": "Great Product!",
-            "customer_review": "This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!"
+            "customer_review": "This product exceeded my expectations. Highly recommend!"
           }
         },
         "testimonial_YML8zx": {
@@ -151,6 +151,7 @@
         "testimonial_star_color": "#ffa500",
         "testimonial_author_color": "#000000",
         "testimonial_author_size": 22,
+        "badge_color": "#000000",
         "testimonial_title_color": "#000000",
         "testimonial_title_size": 18,
         "testimonial_content_color": "#656565",
@@ -163,35 +164,30 @@
         "testimonial_card_ALtc8T": {
           "type": "testimonial_card",
           "settings": {
-            "image": "shopify://shop_images/Img6.webp",
             "title": "weightless daily glow"
           }
         },
         "testimonial_card_Wp3Cmq": {
           "type": "testimonial_card",
           "settings": {
-            "image": "shopify://shop_images/Img5.webp",
             "title": "effortless radiance"
           }
         },
         "testimonial_card_QpcWqn": {
           "type": "testimonial_card",
           "settings": {
-            "image": "shopify://shop_images/Img4.webp",
             "title": "SPF 40 protection"
           }
         },
         "testimonial_card_aBnqBt": {
           "type": "testimonial_card",
           "settings": {
-            "image": "shopify://shop_images/Img3.webp",
             "title": "Luminous skin"
           }
         },
         "card_3ayPWM": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/Img9.png",
             "title": "Breathable,   Lightweight  and  Radiant",
             "font_size": 44,
             "font_weight": "700",
@@ -203,7 +199,6 @@
         "card_KwHDmk": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/Img2.webp",
             "title": "Your Skin, Only Better",
             "font_size": 48,
             "font_weight": "700",
