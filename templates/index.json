@@ -261,14 +261,6 @@
             "ingredient_text": "Brief description of this ingredient and its benefits."
           }
         },
-        "ingredient_h6nmMj": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
         "ingredient_PQBWB4": {
           "type": "ingredient",
           "settings": {
@@ -283,7 +275,6 @@
         "ingredient_YQH3bx",
         "ingredient_tY3Pjz",
         "ingredient_hFq3Am",
-        "ingredient_h6nmMj",
         "ingredient_PQBWB4"
       ],
       "name": "Product Ingredients",
