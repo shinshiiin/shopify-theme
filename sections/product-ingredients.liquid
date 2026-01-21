@@ -30,17 +30,18 @@
         {%- endif -%}
       {%- endif -%}
       
-      {%- comment -%} Section Title {%- endcomment -%}
-      {%- if section.settings.section_title != blank -%}
-        <h1 class="section-title">
-          {{ section.settings.section_title }}
-        </h1>
-      {%- endif -%}
-      {%- if section.settings.section_subtitle != blank -%}
-        <h2 class="section-subtitle">
-          {{ section.settings.section_subtitle }}
-        </h2>
-      {%- endif -%}
+      <div class="title-section">
+        {%- if section.settings.section_title != blank -%}
+            <h1 class="section-title">
+            {{ section.settings.section_title }}
+            </h1>
+        {%- endif -%}
+        {%- if section.settings.section_subtitle != blank -%}
+            <h2 class="section-subtitle">
+            {{ section.settings.section_subtitle }}
+            </h2>
+        {%- endif -%}
+      </div>
       
       <div class="grid-container">
         
@@ -147,11 +148,9 @@
    CONTAINER & LAYOUT
    ======================================== */
 .product-ingredients-section .section-title {
-    text-align: center;
     margin: 0 0 15px 0;
 }
 .product-ingredients-section .section-subtitle {
-    text-align: center;
     margin: 0;
 }
 .product-ingredients-section .grid-container {
