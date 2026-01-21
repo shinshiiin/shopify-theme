@@ -1,29 +1,30 @@
 {% liquid
   # Count ingredients per column
-  assign left_count = 0
-  assign right_count = 0
+  assign left_column_count = 0
+  assign right_column_count = 0
   for block in section.blocks
     if block.settings.column_position == 'left'
-      assign left_count = left_count | plus: 1
+      assign left_column_count = left_column_count | plus: 1
     elsif block.settings.column_position == 'right'
-      assign right_count = right_count | plus: 1
+      assign right_column_count = right_column_count | plus: 1
     endif
   endfor
 %}
 
 <div class="product-ingredients-section">
   <div class="container">
+
       {%- comment -%} Editor Warning {%- endcomment -%}
       {%- if request.design_mode -%}
-        {%- if left_count > 5 or right_count > 5 -%}
+        {%- if left_column_count > 5 or right_column_count > 5 -%}
           <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 16px; margin-bottom: 24px; text-align: left;">
             <strong style="color: #856404;">⚠️ Ingredient Limit Exceeded</strong>
             <p style="color: #856404; margin: 8px 0 0 0; font-size: 14px;">
-              {%- if left_count > 5 -%}
-                Left column: {{ left_count }} ingredients (max 5). Only the first 5 will display.<br>
+              {%- if left_column_count > 5 -%}
+                Left column: {{ left_column_count }} ingredients (max 5). Only the 5 will display.<br>
               {%- endif -%}
-              {%- if right_count > 5 -%}
-                Right column: {{ right_count }} ingredients (max 5). Only the first 5 will display.
+              {%- if right_column_count > 5 -%}
+                Right column: {{ right_column_count }} ingredients (max 5). Only the 5 will display.
               {%- endif -%}
             </p>
           </div>
@@ -45,8 +46,8 @@
       
       <div class="grid-container">
         
-        {%- comment -%} LEFT COLUMN {%- endcomment -%}
-        <div class="vwcm-col first">
+        {%- comment -%} Left Column {%- endcomment -%}
+        <div class="left-column">
           {%- assign left_item_count = 0 -%}
           {%- for block in section.blocks -%}
             {%- if block.settings.column_position == 'left' -%}
@@ -92,7 +93,7 @@
         </div>
 
         {%- comment -%} RIGHT COLUMN {%- endcomment -%}
-        <div class="vwcm-col second">
+        <div class="left-column second">
           {%- assign right_item_count = 0 -%}
           {%- for block in section.blocks -%}
             {%- if block.settings.column_position == 'right' -%}
@@ -151,6 +152,7 @@
     justify-items: center;
     margin-bottom: 40px;
 }
+
 .product-ingredients-section .section-title {
     margin: 0 0 15px 0;
     font-family: 'Albert Sans', sans-serif; 
@@ -161,11 +163,13 @@
     color: {{ section.settings.title_color }} !important; 
     font-size: {{ section.settings.title_size }}px !important;
 }
+
 .product-ingredients-section .section-subtitle {
     margin: 0;
     color: {{ section.settings.subtitle_color }}; 
     font-size: {{ section.settings.subtitle_size }}px;
 }
+
 .product-ingredients-section .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -177,7 +181,7 @@
 /* ========================================
    INGREDIENT COLUMNS
    ======================================== */
-.product-ingredients-section .vwcm-col {
+.product-ingredients-section .left-column {
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -192,7 +196,7 @@
   text-align: left;
 }
 
-.product-ingredients-section .vwcm-col .vwcm-item .dot {
+.product-ingredients-section .left-column .vwcm-item .dot {
   width: 36px;
   margin-bottom: 12px;
 }
@@ -204,47 +208,47 @@
 }
 
 /* Left Column Alignment */
-.product-ingredients-section .vwcm-col.first .vwcm-item {
+.product-ingredients-section .left-column .vwcm-item {
   align-items: end;
   text-align: end;
 }
 
 /* Dynamic Middle Item Padding - Left Column */
 /* 3 items: middle item (2nd) gets padding */
-.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(2) {
+.product-ingredients-section .left-column .vwcm-item:nth-child(2):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* 4 items: 2nd and 3rd items get padding */
-.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(3),
-.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(2) {
+.product-ingredients-section .left-column .vwcm-item:nth-child(2):nth-last-child(3),
+.product-ingredients-section .left-column .vwcm-item:nth-child(3):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* 5 items: 2nd, 3rd, and 4th items get padding */
-.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(4),
-.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(3),
-.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(4):nth-last-child(2) {
+.product-ingredients-section .left-column .vwcm-item:nth-child(2):nth-last-child(4),
+.product-ingredients-section .left-column .vwcm-item:nth-child(3):nth-last-child(3),
+.product-ingredients-section .left-column .vwcm-item:nth-child(4):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* Right Column Alignment */
 /* Dynamic Middle Item Padding - Right Column */
 /* 3 items: middle item (2nd) gets padding */
-.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(2) {
+.product-ingredients-section .left-column.second .vwcm-item:nth-child(2):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 4 items: 2nd and 3rd items get padding */
-.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(3),
-.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(2) {
+.product-ingredients-section .left-column.second .vwcm-item:nth-child(2):nth-last-child(3),
+.product-ingredients-section .left-column.second .vwcm-item:nth-child(3):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 5 items: 2nd, 3rd, and 4th items get padding */
-.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(4),
-.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(3),
-.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(4):nth-last-child(2) {
+.product-ingredients-section .left-column.second .vwcm-item:nth-child(2):nth-last-child(4),
+.product-ingredients-section .left-column.second .vwcm-item:nth-child(3):nth-last-child(3),
+.product-ingredients-section .left-column.second .vwcm-item:nth-child(4):nth-last-child(2) {
   padding-left: 40px;
 }
 
@@ -358,17 +362,17 @@
     order: 1;
   }
 
-  .product-ingredients-section .vwcm-col.first {
+  .product-ingredients-section .left-column {
     order: 2;
   }
 
-  .product-ingredients-section .vwcm-col.second {
+  .product-ingredients-section .left-column.second {
     order: 3;
   }
 
   /* Reset Column Styling */
-  .product-ingredients-section .vwcm-col.first,
-  .product-ingredients-section .vwcm-col.second {
+  .product-ingredients-section .left-column,
+  .product-ingredients-section .left-column.second {
     align-items: flex-start;
     text-align: left;
     gap: 16px;
@@ -387,8 +391,8 @@
   }
 
   /* Reset all dynamic padding on mobile */
-  .product-ingredients-section .vwcm-col.first .vwcm-item,
-  .product-ingredients-section .vwcm-col.second .vwcm-item {
+  .product-ingredients-section .left-column .vwcm-item,
+  .product-ingredients-section .left-column.second .vwcm-item {
     padding: 12px 32px !important;
   }
 
