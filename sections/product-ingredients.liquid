@@ -166,12 +166,58 @@
   text-align: end;
 }
 
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2) {
+/* Dynamic Middle Item Padding - Left Column */
+/* 3 items: middle item (2nd) gets padding */
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(2) {
+  padding-right: 40px;
+}
+
+/* 4 items: 2nd and 3rd items get padding */
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(3),
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(2) {
+  padding-right: 40px;
+}
+
+/* 5 items: 2nd, 3rd, and 4th items get padding */
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(4),
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(3),
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(4):nth-last-child(2) {
+  padding-right: 40px;
+}
+
+/* 6 items: 2nd, 3rd, 4th, and 5th items get padding */
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(5),
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(4),
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(4):nth-last-child(3),
+.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(5):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* Right Column Alignment */
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2) {
+/* Dynamic Middle Item Padding - Right Column */
+/* 3 items: middle item (2nd) gets padding */
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(2) {
+  padding-left: 40px;
+}
+
+/* 4 items: 2nd and 3rd items get padding */
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(3),
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(2) {
+  padding-left: 40px;
+}
+
+/* 5 items: 2nd, 3rd, and 4th items get padding */
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(4),
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(3),
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(4):nth-last-child(2) {
+  padding-left: 40px;
+}
+
+/* 6 items: 2nd, 3rd, 4th, and 5th items get padding */
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(5),
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(4),
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(4):nth-last-child(3),
+.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(5):nth-last-child(2) {
   padding-left: 40px;
 }
 
@@ -320,9 +366,10 @@
     text-align: center;
   }
 
-  .{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2),
-  .{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2) {
-    padding: 12px 32px;
+  /* Reset all dynamic padding on mobile */
+  .{{ section_id }} .vwcm-col.first .vwcm-item,
+  .{{ section_id }} .vwcm-col.second .vwcm-item {
+    padding: 12px 32px !important;
   }
 
   .{{ section_id }} .vwcm-item h3 {
