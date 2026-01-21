@@ -56,7 +56,7 @@
                     style="margin-right:4px;"
                   >
                     <!-- Circle background -->
-                    <circle cx="12" cy="12" r="12" fill="#605471" />
+                    <circle cx="12" cy="12" r="12" />
 
                     <!-- Check icon -->
                     <path
@@ -258,8 +258,8 @@
     white-space: nowrap;
   }
 
-  .author-verified svg {
-    color: {{ section.settings.badge_color }};
+  .author-verified circle {
+    fill: {{ section.settings.badge_color }};
   }
 
   .author-stars {

@@ -9,6 +9,60 @@
  */
 {
   "sections": {
+    "slideshow_TGFeGq": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_YYfLra": {
+          "type": "slide",
+          "settings": {
+            "image_overlay_opacity": 0,
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_HYD63D": {
+          "type": "slide",
+          "settings": {
+            "image_overlay_opacity": 0,
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_YYfLra",
+        "slide_HYD63D"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
     "verified_review_carousel_CpTyWn": {
       "type": "verified-review-carousel",
       "blocks": {
@@ -19,7 +73,7 @@
             "customer_age": "",
             "customer_rating": 5,
             "customer_heading": "Great Product!",
-            "customer_review": "This product exceeded my expectations. Highly recommend!"
+            "customer_review": "This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!This product exceeded my expectations. Highly recommend!"
           }
         },
         "testimonial_YML8zx": {
@@ -97,7 +151,6 @@
         "testimonial_star_color": "#ffa500",
         "testimonial_author_color": "#000000",
         "testimonial_author_size": 22,
-        "badge_color": "#605471",
         "testimonial_title_color": "#000000",
         "testimonial_title_size": 18,
         "testimonial_content_color": "#656565",
@@ -110,30 +163,35 @@
         "testimonial_card_ALtc8T": {
           "type": "testimonial_card",
           "settings": {
+            "image": "shopify://shop_images/Img6.webp",
             "title": "weightless daily glow"
           }
         },
         "testimonial_card_Wp3Cmq": {
           "type": "testimonial_card",
           "settings": {
+            "image": "shopify://shop_images/Img5.webp",
             "title": "effortless radiance"
           }
         },
         "testimonial_card_QpcWqn": {
           "type": "testimonial_card",
           "settings": {
+            "image": "shopify://shop_images/Img4.webp",
             "title": "SPF 40 protection"
           }
         },
         "testimonial_card_aBnqBt": {
           "type": "testimonial_card",
           "settings": {
+            "image": "shopify://shop_images/Img3.webp",
             "title": "Luminous skin"
           }
         },
         "card_3ayPWM": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/Img9.png",
             "title": "Breathable,   Lightweight  and  Radiant",
             "font_size": 44,
             "font_weight": "700",
@@ -145,6 +203,7 @@
         "card_KwHDmk": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/Img2.webp",
             "title": "Your Skin, Only Better",
             "font_size": 48,
             "font_weight": "700",
@@ -168,6 +227,7 @@
     }
   },
   "order": [
+    "slideshow_TGFeGq",
     "verified_review_carousel_CpTyWn",
     "hero_grid_section_9PcxTA"
   ]
