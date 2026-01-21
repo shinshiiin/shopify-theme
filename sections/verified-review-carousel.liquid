@@ -730,17 +730,14 @@
           "label": "Customer Image (Optional)"
         },
         {
-          "type": "select",
-          "id": "alignment",
-          "label": "Text alignment",
+          "type": "radio",
+          "id": "layout",
+          "label": "Layout",
           "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" },
-            { "value": "top", "label": "Top" },
-            { "value": "bottom", "label": "Bottom" }
+            { "value": "grid", "label": "Grid" },
+            { "value": "list", "label": "List" }
           ],
-          "default": "center"
+          "default": "grid"
         },
         {
           "type": "text",
