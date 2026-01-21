@@ -1,6 +1,9 @@
+{% comment %}
+  Product Ingredients Section with Dynamic Blocks
+  Each ingredient is now a block that can be added, removed, and reordered
+{% endcomment %}
+
 {% liquid
-  assign section_id = 'product-ingredients-' | append: section.id
-  
   # Count ingredients per column
   assign left_count = 0
   assign right_count = 0
@@ -13,7 +16,7 @@
   endfor
 %}
 
-<div class="product-ingredients-section {{ section_id }}">
+<div class="product-ingredients-section">
   <div class="container">
     <div class="vwcm-container">
       
@@ -73,20 +76,15 @@
 
         {%- comment -%} CENTER IMAGE {%- endcomment -%}
         <div class="vwcm-center">
-            {% if block.settings.image %}
-                <img
-                src="{{ block.settings.image | image_url: width: 1000 }}"
-                alt="{{ block.settings.customer_name | default: 'Customer' }}"
-                loading="lazy"
-                style="object-position: {{ block.settings.position }};"
-                >
-            {% else %}
-                <img
-                src="{{ 'placeholder.webp' | asset_url }}"
-                alt="{{ block.settings.customer_name | default: 'Customer' }}"
-                loading="lazy"
-                >
-            {% endif %}
+          <div class="center-bg"></div>
+          {%- if section.settings.center_image != blank -%}
+            <img 
+              src="{{ section.settings.center_image | image_url: width: 800 }}" 
+              class="mask-img" 
+              alt="{{ section.settings.section_title }}"
+              loading="lazy"
+            >
+          {%- endif -%}
         </div>
 
         {%- comment -%} RIGHT COLUMN {%- endcomment -%}
@@ -147,7 +145,7 @@
 /* ========================================
    CONTAINER & LAYOUT
    ======================================== */
-.{{ section_id }} .vwcm-container {
+.product-ingredients-section .vwcm-container {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
@@ -159,7 +157,7 @@
   font-family: "Inter", sans-serif;
 }
 
-.{{ section_id }} .vwcm-grid {
+.product-ingredients-section .vwcm-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
@@ -170,7 +168,7 @@
 /* ========================================
    INGREDIENT COLUMNS
    ======================================== */
-.{{ section_id }} .vwcm-col {
+.product-ingredients-section .vwcm-col {
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -178,92 +176,92 @@
   justify-content: space-between;
 }
 
-.{{ section_id }} .vwcm-item {
+.product-ingredients-section .vwcm-item {
   position: relative;
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
-.{{ section_id }} .vwcm-col .vwcm-item .dot {
+.product-ingredients-section .vwcm-col .vwcm-item .dot {
   width: 36px;
   margin-bottom: 12px;
 }
 
-.{{ section_id }} .ingredient-icon {
+.product-ingredients-section .ingredient-icon {
   display: block;
   width: 100%;
   height: auto;
 }
 
 /* Left Column Alignment */
-.{{ section_id }} .vwcm-col.first .vwcm-item {
+.product-ingredients-section .vwcm-col.first .vwcm-item {
   align-items: end;
   text-align: end;
 }
 
 /* Dynamic Middle Item Padding - Left Column */
 /* 3 items: middle item (2nd) gets padding */
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(2) {
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* 4 items: 2nd and 3rd items get padding */
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(3),
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(2) {
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(3),
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* 5 items: 2nd, 3rd, and 4th items get padding */
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(4),
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(3),
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(4):nth-last-child(2) {
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(4),
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(3),
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(4):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* 6 items: 2nd, 3rd, 4th, and 5th items get padding */
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(5),
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(4),
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(4):nth-last-child(3),
-.{{ section_id }} .vwcm-col.first .vwcm-item:nth-child(5):nth-last-child(2) {
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(2):nth-last-child(5),
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(3):nth-last-child(4),
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(4):nth-last-child(3),
+.product-ingredients-section .vwcm-col.first .vwcm-item:nth-child(5):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* Right Column Alignment */
 /* Dynamic Middle Item Padding - Right Column */
 /* 3 items: middle item (2nd) gets padding */
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(2) {
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 4 items: 2nd and 3rd items get padding */
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(3),
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(2) {
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(3),
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 5 items: 2nd, 3rd, and 4th items get padding */
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(4),
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(3),
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(4):nth-last-child(2) {
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(4),
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(3),
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(4):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 6 items: 2nd, 3rd, 4th, and 5th items get padding */
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(5),
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(4),
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(4):nth-last-child(3),
-.{{ section_id }} .vwcm-col.second .vwcm-item:nth-child(5):nth-last-child(2) {
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(2):nth-last-child(5),
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(3):nth-last-child(4),
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(4):nth-last-child(3),
+.product-ingredients-section .vwcm-col.second .vwcm-item:nth-child(5):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* Typography */
-.{{ section_id }} .vwcm-item h3 {
+.product-ingredients-section .vwcm-item h3 {
   font-size: 24px;
   margin-bottom: 8px;
 }
 
-.{{ section_id }} .vwcm-item p {
+.product-ingredients-section .vwcm-item p {
   font-size: 14px;
   line-height: 1.5;
   color: #746c8a;
@@ -273,12 +271,12 @@
 /* ========================================
    CENTER IMAGE
    ======================================== */
-.{{ section_id }} .vwcm-center {
+.product-ingredients-section .vwcm-center {
   position: relative;
   text-align: center;
 }
 
-.{{ section_id }} .center-bg {
+.product-ingredients-section .center-bg {
   width: 400px;
   height: 400px;
   background: linear-gradient(90deg, #B9B2E1 0%, #F7F6FF 100%);
@@ -289,11 +287,7 @@
   transform: translate(-50%, -50%);
 }
 
-.{{ section_id }} .vwcm-center img {
-    width: 500px;
-}
-
-.{{ section_id }} .mask-img {
+.product-ingredients-section .mask-img {
   position: relative;
   width: 100%;
   max-width: 400px;
@@ -304,7 +298,7 @@
 /* ========================================
    INGREDIENTS DROPDOWN
    ======================================== */
-.{{ section_id }} .all-ingredients {
+.product-ingredients-section .all-ingredients {
   max-width: 839px;
   width: 100%;
   padding: 0;
@@ -314,7 +308,7 @@
   text-align: left;
 }
 
-.{{ section_id }} .drop-header {
+.product-ingredients-section .drop-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -326,22 +320,22 @@
   user-select: none;
 }
 
-.{{ section_id }} .chevron {
+.product-ingredients-section .chevron {
   display: inline-flex;
   align-items: center;
 }
 
-.{{ section_id }} .chevron-icon {
+.product-ingredients-section .chevron-icon {
   width: 14px;
   height: auto;
   transition: transform 0.3s ease;
 }
 
-.{{ section_id }} .all-ingredients.open .chevron-icon {
+.product-ingredients-section .all-ingredients.open .chevron-icon {
   transform: rotate(180deg);
 }
 
-.{{ section_id }} .drop-content {
+.product-ingredients-section .drop-content {
   display: none;
   padding: 0 24px 20px;
   font-size: 14px;
@@ -350,7 +344,7 @@
   text-align: center;
 }
 
-.{{ section_id }} .all-ingredients.open .drop-content {
+.product-ingredients-section .all-ingredients.open .drop-content {
   display: block;
   font-family: 'Chivo Mono', monospace;
 }
@@ -359,43 +353,43 @@
    MOBILE RESPONSIVENESS
    ======================================== */
 @media (max-width: 768px) {
-  .{{ section_id }} .vwcm-container {
+  .product-ingredients-section .vwcm-container {
     padding: 40px 20px;
   }
 
-  .{{ section_id }} .vwcm-title {
+  .product-ingredients-section .vwcm-title {
     font-size: 26px;
     margin-bottom: 40px;
   }
 
-  .{{ section_id }} .vwcm-grid {
+  .product-ingredients-section .vwcm-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
   /* Reorder Grid Items */
-  .{{ section_id }} .vwcm-center {
+  .product-ingredients-section .vwcm-center {
     order: 1;
   }
 
-  .{{ section_id }} .vwcm-col.first {
+  .product-ingredients-section .vwcm-col.first {
     order: 2;
   }
 
-  .{{ section_id }} .vwcm-col.second {
+  .product-ingredients-section .vwcm-col.second {
     order: 3;
   }
 
   /* Reset Column Styling */
-  .{{ section_id }} .vwcm-col.first,
-  .{{ section_id }} .vwcm-col.second {
+  .product-ingredients-section .vwcm-col.first,
+  .product-ingredients-section .vwcm-col.second {
     align-items: flex-start;
     text-align: left;
     gap: 16px;
   }
 
   /* Mobile Ingredient Cards */
-  .{{ section_id }} .vwcm-item {
+  .product-ingredients-section .vwcm-item {
     flex-direction: column;
     gap: 8px;
     align-items: center;
@@ -407,48 +401,48 @@
   }
 
   /* Reset all dynamic padding on mobile */
-  .{{ section_id }} .vwcm-col.first .vwcm-item,
-  .{{ section_id }} .vwcm-col.second .vwcm-item {
+  .product-ingredients-section .vwcm-col.first .vwcm-item,
+  .product-ingredients-section .vwcm-col.second .vwcm-item {
     padding: 12px 32px !important;
   }
 
-  .{{ section_id }} .vwcm-item h3 {
+  .product-ingredients-section .vwcm-item h3 {
     margin: 0;
     text-align: center;
   }
 
-  .{{ section_id }} .vwcm-item p {
+  .product-ingredients-section .vwcm-item p {
     margin-top: 2px;
     text-align: center;
   }
 
   /* Center Image Resize */
-  .{{ section_id }} .center-bg {
+  .product-ingredients-section .center-bg {
     width: 389px;
     height: 389px;
   }
 
-  .{{ section_id }} .mask-img {
+  .product-ingredients-section .mask-img {
     max-width: 210px;
   }
 
   /* Dropdown Spacing */
-  .{{ section_id }} .all-ingredients {
+  .product-ingredients-section .all-ingredients {
     margin-top: 40px;
   }
 
-  .{{ section_id }} .drop-content {
+  .product-ingredients-section .drop-content {
     text-align: left;
   }
 }
 
 /* Extra Small Screens */
 @media (max-width: 480px) {
-  .{{ section_id }} .vwcm-title {
+  .product-ingredients-section .vwcm-title {
     font-size: 22px;
   }
 
-  .{{ section_id }} .center-bg {
+  .product-ingredients-section .center-bg {
     width: 290px;
     height: 290px;
   }
@@ -457,7 +451,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const ingredientsBlock = document.querySelector('.{{ section_id }} .all-ingredients');
+    const ingredientsBlock = document.querySelector('.product-ingredients-section .all-ingredients');
     
     if (ingredientsBlock) {
       const header = ingredientsBlock.querySelector('.drop-header');
