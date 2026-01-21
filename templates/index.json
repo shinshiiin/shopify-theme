@@ -225,11 +225,17 @@
       "disabled": true,
       "name": "Hero grid section",
       "settings": {}
+    },
+    "product_ingredients_iCbEhF": {
+      "type": "product-ingredients",
+      "name": "Product Ingredients",
+      "settings": {}
     }
   },
   "order": [
     "slideshow_TGFeGq",
     "verified_review_carousel_CpTyWn",
-    "hero_grid_section_9PcxTA"
+    "hero_grid_section_9PcxTA",
+    "product_ingredients_iCbEhF"
   ]
 }

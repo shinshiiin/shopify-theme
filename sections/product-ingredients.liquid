@@ -1,20 +1,4 @@
-{% comment %}
-  Metaobject: Product Ingredients - Product Ingredients
-  Fields from your metaobject definition:
-  - Name
-  - Section Type
-  - Section Title
-  - Section Image
-  - Section Ingredient Title - A through F
-  - Section Ingredient Text - A through F
-  - Section Ingredient Icon - A through F
-  - Section All Ingredients (from your second image)
-{% endcomment %}
-
-{% capture section_id %}pdp-section-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
-{% capture content_wrap %}wrap-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
-
-<div class="section is-width-standard {{ section_id }}">
+<div class="product-ingredients-section">
   <div class="container">
     <div class="one-whole column medium-down--one-whole text-center">
       <div class="{{ content_wrap }} vwcm-container">
