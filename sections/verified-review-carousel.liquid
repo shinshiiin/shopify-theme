@@ -455,8 +455,18 @@
       const cardWidth = allCards[0].offsetWidth;
       const style = window.getComputedStyle(track);
       const gap = parseInt(style.columnGap || style.gap || 20);
-      const offset = currentIndex * (cardWidth + gap);
+      //const offset = currentIndex * (cardWidth + gap);
       
+      // Calculate offset with centering for mobile
+      let offset = currentIndex * (cardWidth + gap);
+      
+      // Center the card on mobile screens
+      if (window.innerWidth <= 640) {
+        const carouselWidth = track.parentElement.offsetWidth;
+        const centerOffset = (carouselWidth - cardWidth) / 2;
+        offset = offset - centerOffset;
+      }
+
       if (!animate) {
         track.style.transition = 'none';
       } else {
