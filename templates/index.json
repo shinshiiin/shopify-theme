@@ -82,7 +82,7 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/Rectangle_158.png",
-            "position": "top",
+            "position": "center",
             "customer_name": "John Doe",
             "customer_age": "",
             "customer_rating": 5,
