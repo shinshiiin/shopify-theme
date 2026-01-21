@@ -70,7 +70,7 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/Rectangle_158_1.png",
-            "position": "center",
+            "position": "bottom",
             "customer_name": "John Doe",
             "customer_age": "",
             "customer_rating": 5,
@@ -82,7 +82,7 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/Rectangle_158.png",
-            "position": "center",
+            "position": "left",
             "customer_name": "John Doe",
             "customer_age": "",
             "customer_rating": 5,
