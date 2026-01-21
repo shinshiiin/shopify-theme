@@ -461,9 +461,9 @@
       let offset = currentIndex * (cardWidth + gap);
       
       // Center the card on mobile screens
-      if (window.innerWidth <= 640) {
+      if (window.innerWidth <= 480) {
         const carouselWidth = track.parentElement.offsetWidth;
-        const centerOffset = (carouselWidth - cardWidth) / 2;
+        const centerOffset = (carouselWidth - cardWidth) / 1;
         offset = offset - centerOffset;
       }
 
