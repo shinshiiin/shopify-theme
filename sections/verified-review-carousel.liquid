@@ -21,6 +21,7 @@
                 src="{{ block.settings.image | image_url: width: 1000 }}"
                 alt="{{ block.settings.customer_name | default: 'Customer' }}"
                 loading="lazy"
+                style="object-position: {{ block.settings.position }};"
               >
             {% else %}
               <img
@@ -184,7 +185,6 @@
     width: 335px;
     height: 350px;
     object-fit: cover;
-    object-position: {{ block.settings.position }};
   }
 
   .testimonial-card.active {
