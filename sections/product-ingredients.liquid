@@ -36,6 +36,11 @@
           {{ section.settings.section_title }}
         </h1>
       {%- endif -%}
+      {%- if section.settings.section_subtitle != blank -%}
+        <h2 class="section-subtitle">
+          {{ section.settings.section_subtitle }}
+        </h2>
+      {%- endif -%}
       
       <div class="grid-container">
         
