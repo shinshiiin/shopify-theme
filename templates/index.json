@@ -229,6 +229,38 @@
     "product_ingredients_iCbEhF": {
       "type": "product-ingredients",
       "blocks": {
+        "ingredient_4caJ4p": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Ingredient Name",
+            "ingredient_text": "Brief description of this ingredient and its benefits."
+          }
+        },
+        "ingredient_3ew98F": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Ingredient Name",
+            "ingredient_text": "Brief description of this ingredient and its benefits."
+          }
+        },
+        "ingredient_DGGcFa": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Ingredient Name",
+            "ingredient_text": "Brief description of this ingredient and its benefits."
+          }
+        },
+        "ingredient_D4NmUg": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Ingredient Name",
+            "ingredient_text": "Brief description of this ingredient and its benefits."
+          }
+        },
         "ingredient_7G7wJW": {
           "type": "ingredient",
           "settings": {
@@ -256,7 +288,7 @@
         "ingredient_tY3Pjz": {
           "type": "ingredient",
           "settings": {
-            "column_position": "left",
+            "column_position": "right",
             "ingredient_title": "Ingredient Name",
             "ingredient_text": "Brief description of this ingredient and its benefits."
           }
@@ -279,6 +311,10 @@
         }
       },
       "block_order": [
+        "ingredient_4caJ4p",
+        "ingredient_3ew98F",
+        "ingredient_DGGcFa",
+        "ingredient_D4NmUg",
         "ingredient_7G7wJW",
         "ingredient_TV6Tpt",
         "ingredient_YQH3bx",
