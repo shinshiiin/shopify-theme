@@ -24,12 +24,11 @@
     </div>
     <div class="two-sixths">
       {% if section.settings.image %}
-        <img {{ section.settings.image
-          | image_url: width: 1000
-          | image_tag:
-            loading: 'lazy',
-            alt: section.settings.image.alt
-        }}>
+        <img
+          src="{{ section.settings.image | image_url: width: 1000 }}"
+          alt="{{ section.settings.image.alt }}"
+          loading="lazy"
+        >
       {% else %}
         <img
           src="{{ 'placeholder.webp' | asset_url }}"
