@@ -334,12 +334,22 @@
         "image_size": 360,
         "all_ingredients": "<p>Full ingredient list shown in dropdown<br/></p>"
       }
+    },
+    "guarantee_section_BjpgBW": {
+      "type": "guarantee-section",
+      "name": "Guarantee Section",
+      "settings": {
+        "title": "30-Day Satisfaction Guarantee",
+        "subtitle": "Not thrilled? Contact us within 30 days and we'll make it right. No hassle. Just honest support, 24/7.",
+        "cta_text": "GET YOURS TODAY"
+      }
     }
   },
   "order": [
     "slideshow_TGFeGq",
     "verified_review_carousel_CpTyWn",
     "hero_grid_section_9PcxTA",
-    "product_ingredients_CBkiHQ"
+    "product_ingredients_CBkiHQ",
+    "guarantee_section_BjpgBW"
   ]
 }
