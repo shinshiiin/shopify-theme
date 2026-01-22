@@ -543,53 +543,53 @@
       "name": "Ingredient",
       "limit": 10,
       "settings": [
-        {
-          "type": "select",
-          "id": "column_position",
-          "label": "Column Position",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "right",
-              "label": "Right"
+                {
+                  "type": "select",
+                  "id": "column_position",
+                  "label": "Column Position",
+                  "options": [
+                    {
+                      "value": "left",
+                      "label": "Left"
+                    },
+                    {
+                      "value": "right",
+                      "label": "Right"
+                    }
+                  ],
+                  "default": "left",
+                  "info": "Maximum 5 ingredients per column recommended"
+                },
+                {
+                  "type": "image_picker",
+                  "id": "ingredient_icon",
+                  "label": "Ingredient Icon"
+                },
+                {
+                  "type": "text",
+                  "id": "ingredient_title",
+                  "label": "Ingredient Title",
+                  "default": "Ingredient Name"
+                },
+                {
+                  "type": "textarea",
+                  "id": "ingredient_text",
+                  "label": "Ingredient Description",
+                  "default": "Brief description of this ingredient and its benefits."
+                }
+              ]
             }
           ],
-          "default": "left",
-          "info": "Maximum 5 ingredients per column recommended"
-        },
-        {
-          "type": "image_picker",
-          "id": "ingredient_icon",
-          "label": "Ingredient Icon"
-        },
-        {
-          "type": "text",
-          "id": "ingredient_title",
-          "label": "Ingredient Title",
-          "default": "Ingredient Name"
-        },
-        {
-          "type": "textarea",
-          "id": "ingredient_text",
-          "label": "Ingredient Description",
-          "default": "Brief description of this ingredient and its benefits."
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product Ingredients",
-      "blocks": [
+          "presets": [
+            {
+              "name": "Product Ingredients",
+              "blocks": [
         {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
             "ingredient_title": "Vitamin C",
-            "ingredient_text": "Brightens and evens skin tone"
+            "ingredient_text": "Brightens skin and helps even out tone"
           }
         },
         {
@@ -597,7 +597,7 @@
           "settings": {
             "column_position": "left",
             "ingredient_title": "Hyaluronic Acid",
-            "ingredient_text": "Deep hydration and plumping"
+            "ingredient_text": "Provides deep hydration and plumps the skin"
           }
         },
         {
@@ -605,23 +605,23 @@
           "settings": {
             "column_position": "left",
             "ingredient_title": "Niacinamide",
-            "ingredient_text": "Minimizes pores and refines texture"
+            "ingredient_text": "Helps minimize pores and improve skin texture"
           }
         },
         {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
-            "ingredient_title": "Niacinamide",
-            "ingredient_text": "Minimizes pores and refines texture"
+            "ingredient_title": "Alpha Arbutin",
+            "ingredient_text": "Targets dark spots and promotes a more even complexion"
           }
         },
         {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
-            "ingredient_title": "Niacinamide",
-            "ingredient_text": "Minimizes pores and refines texture"
+            "ingredient_title": "Panthenol (Vitamin B5)",
+            "ingredient_text": "Soothes skin and supports the moisture barrier"
           }
         },
         {
@@ -629,7 +629,7 @@
           "settings": {
             "column_position": "right",
             "ingredient_title": "Retinol",
-            "ingredient_text": "Reduces fine lines and wrinkles"
+            "ingredient_text": "Reduces the appearance of fine lines and wrinkles"
           }
         },
         {
@@ -637,23 +637,15 @@
           "settings": {
             "column_position": "right",
             "ingredient_title": "Peptides",
-            "ingredient_text": "Boosts collagen production"
+            "ingredient_text": "Supports collagen production for firmer-looking skin"
           }
         },
         {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
-            "ingredient_title": "Peptides",
-            "ingredient_text": "Boosts collagen production"
-          }
-        },
-        {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Peptides",
-            "ingredient_text": "Boosts collagen production"
+            "ingredient_title": "Ceramides",
+            "ingredient_text": "Strengthens the skin barrier and locks in moisture"
           }
         },
         {
@@ -661,7 +653,15 @@
           "settings": {
             "column_position": "right",
             "ingredient_title": "Green Tea Extract",
-            "ingredient_text": "Antioxidant protection"
+            "ingredient_text": "Provides antioxidant protection against environmental stress"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Licorice Root Extract",
+            "ingredient_text": "Calms irritation and helps brighten uneven skin tone"
           }
         }
       ]
