@@ -332,7 +332,7 @@
         "subtitle_size": 20,
         "section_background": "#f7f9fd",
         "image_size": 360,
-        "all_ingredients": ""
+        "all_ingredients": "<p>Full ingredient list shown in dropdown<br/></p>"
       }
     }
   },
