@@ -13,11 +13,13 @@
           }}
         </div>
       {%- else -%}
-        <img
-          src="{{ 'guarantee_logo.webp' | asset_url }}"
-          alt="{{ block.settings.customer_name | default: 'Customer' }}"
-          loading="lazy"
-        >
+        <div class="logo">
+          <img
+            src="{{ 'guarantee_logo.webp' | asset_url }}"
+            alt="{{ block.settings.customer_name | default: 'Customer' }}"
+            loading="lazy"
+          >
+        </div>
       {%- endif -%}
       
       <div class="pdp-section-title-wrap">
