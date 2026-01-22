@@ -343,7 +343,6 @@
       "type": "guarantee-section",
       "name": "Guarantee Section",
       "settings": {
-        "image": "shopify://shop_images/Rectangle_158_1.png",
         "title": "30-Day Satisfaction Guarantee",
         "subtitle": "Not thrilled? Contact us within 30 days and we'll make it right. No hassle. Just honest support, 24/7.",
         "cta_text": "GET YOURS TODAY"
