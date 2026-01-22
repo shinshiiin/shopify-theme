@@ -226,101 +226,101 @@
       "name": "Hero grid section",
       "settings": {}
     },
-    "product_ingredients_FiBLyf": {
+    "product_ingredients_CBkiHQ": {
       "type": "product-ingredients",
       "blocks": {
-        "ingredient_JiGFBw": {
+        "ingredient_UKq4tt": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
             "ingredient_title": "Vitamin C",
-            "ingredient_text": "Brightens and evens skin tone"
+            "ingredient_text": "Brightens skin and helps even out tone"
           }
         },
-        "ingredient_3PcUMd": {
+        "ingredient_hUTxD9": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
             "ingredient_title": "Hyaluronic Acid",
-            "ingredient_text": "Deep hydration and plumping"
+            "ingredient_text": "Provides deep hydration and plumps the skin"
           }
         },
-        "ingredient_bDzrX9": {
+        "ingredient_MBg3cA": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
             "ingredient_title": "Niacinamide",
-            "ingredient_text": "Minimizes pores and refines texture"
+            "ingredient_text": "Helps minimize pores and improve skin texture"
           }
         },
-        "ingredient_JAVMEi": {
+        "ingredient_Jxcf4M": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
-            "ingredient_title": "Niacinamide",
-            "ingredient_text": "Minimizes pores and refines texture"
+            "ingredient_title": "Alpha Arbutin",
+            "ingredient_text": "Targets dark spots and promotes a more even complexion"
           }
         },
-        "ingredient_MqdNGg": {
+        "ingredient_tHDLTh": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
-            "ingredient_title": "Niacinamide",
-            "ingredient_text": "Minimizes pores and refines texture"
+            "ingredient_title": "Panthenol (Vitamin B5)",
+            "ingredient_text": "Soothes skin and supports the moisture barrier"
           }
         },
-        "ingredient_rgwDpg": {
+        "ingredient_cdrRPX": {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
             "ingredient_title": "Retinol",
-            "ingredient_text": "Reduces fine lines and wrinkles"
+            "ingredient_text": "Reduces the appearance of fine lines and wrinkles"
           }
         },
-        "ingredient_zJzB8c": {
+        "ingredient_e4Mfj7": {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
             "ingredient_title": "Peptides",
-            "ingredient_text": "Boosts collagen production"
+            "ingredient_text": "Supports collagen production for firmer-looking skin"
           }
         },
-        "ingredient_E9Vrp6": {
+        "ingredient_QHLYAA": {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
-            "ingredient_title": "Peptides",
-            "ingredient_text": "Boosts collagen production"
+            "ingredient_title": "Ceramides",
+            "ingredient_text": "Strengthens the skin barrier and locks in moisture"
           }
         },
-        "ingredient_gnK8KT": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Peptides",
-            "ingredient_text": "Boosts collagen production"
-          }
-        },
-        "ingredient_KLt6p8": {
+        "ingredient_QkEe8D": {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
             "ingredient_title": "Green Tea Extract",
-            "ingredient_text": "Antioxidant protection"
+            "ingredient_text": "Provides antioxidant protection against environmental stress"
+          }
+        },
+        "ingredient_4PHxEy": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Licorice Root Extract",
+            "ingredient_text": "Calms irritation and helps brighten uneven skin tone"
           }
         }
       },
       "block_order": [
-        "ingredient_JiGFBw",
-        "ingredient_3PcUMd",
-        "ingredient_bDzrX9",
-        "ingredient_JAVMEi",
-        "ingredient_MqdNGg",
-        "ingredient_rgwDpg",
-        "ingredient_zJzB8c",
-        "ingredient_E9Vrp6",
-        "ingredient_gnK8KT",
-        "ingredient_KLt6p8"
+        "ingredient_UKq4tt",
+        "ingredient_hUTxD9",
+        "ingredient_MBg3cA",
+        "ingredient_Jxcf4M",
+        "ingredient_tHDLTh",
+        "ingredient_cdrRPX",
+        "ingredient_e4Mfj7",
+        "ingredient_QHLYAA",
+        "ingredient_QkEe8D",
+        "ingredient_4PHxEy"
       ],
       "name": "Product Ingredients",
       "settings": {
@@ -331,7 +331,6 @@
         "subtitle_color": "#656565",
         "subtitle_size": 20,
         "section_background": "#f7f9fd",
-        "center_image": "shopify://shop_images/Rectangle_158_1.png",
         "image_size": 360,
         "all_ingredients": ""
       }
@@ -341,6 +340,6 @@
     "slideshow_TGFeGq",
     "verified_review_carousel_CpTyWn",
     "hero_grid_section_9PcxTA",
-    "product_ingredients_FiBLyf"
+    "product_ingredients_CBkiHQ"
   ]
 }

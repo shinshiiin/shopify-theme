@@ -76,7 +76,7 @@
 
         {%- comment -%} CENTER IMAGE {%- endcomment -%}
         <div class="vwcm-center">
-          {% if block.settings.image %}
+          {% if section.settings.center_image %}
               <img
                 src="{{ section.settings.center_image | image_url: width: 1000 }}"
                 alt="{{ block.settings.customer_name | default: 'Customer' }}"
