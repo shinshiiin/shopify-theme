@@ -36,12 +36,11 @@
             alt: section.settings.image.alt
         }}
       {%- else -%}
-        {{ 'placeholder.webp'
-          | asset_url
-          | image_tag:
-            loading: 'lazy',
-            alt: 'Guarantee placeholder'
-        }}
+        <img
+          src="{{ 'placeholder.webp' | asset_url }}"
+          alt="{{ block.settings.customer_name | default: 'Customer' }}"
+          loading="lazy"
+        >
       {%- endif -%}
     </div>
   </div>
