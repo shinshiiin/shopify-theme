@@ -53,7 +53,7 @@
             {%- if block.settings.column_position == 'left' -%}
               {%- assign left_item_count = left_item_count | plus: 1 -%}
               {%- if left_item_count <= 5 -%}
-                <div class="vwcm-item" {{ block.shopify_attributes }}>
+                <div class="ingredient" {{ block.shopify_attributes }}>
                   <div class="dot">
                     {%- if block.settings.ingredient_icon != blank -%}
                       <img 
@@ -104,7 +104,7 @@
             {%- if block.settings.column_position == 'right' -%}
               {%- assign right_item_count = right_item_count | plus: 1 -%}
               {%- if right_item_count <= 5 -%}
-                <div class="vwcm-item" {{ block.shopify_attributes }}>
+                <div class="ingredient" {{ block.shopify_attributes }}>
                   <div class="dot">
                     {%- if block.settings.ingredient_icon != blank -%}
                       <img 
@@ -200,14 +200,14 @@
   justify-content: space-between;
 }
 
-.product-ingredients-section .vwcm-item {
+.product-ingredients-section .ingredient {
   position: relative;
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
-.product-ingredients-section .columns .vwcm-item .dot img{
+.product-ingredients-section .columns .ingredient .dot img{
   width: 36px;
   margin-bottom: 12px;
 }
@@ -219,58 +219,58 @@
 }
 
 /* Left Column Alignment */
-.product-ingredients-section .columns.left .vwcm-item {
+.product-ingredients-section .columns.left .ingredient {
   align-items: end;
   text-align: end;
 }
 
 /* Dynamic Middle Item Padding - Left Column */
 /* 3 items: middle item (2nd) gets padding */
-.product-ingredients-section .columns.left .vwcm-item:nth-child(2):nth-last-child(2) {
+.product-ingredients-section .columns.left .ingredient:nth-child(2):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* 4 items: 2nd and 3rd items get padding */
-.product-ingredients-section .columns.left .vwcm-item:nth-child(2):nth-last-child(3),
-.product-ingredients-section .columns.left .vwcm-item:nth-child(3):nth-last-child(2) {
+.product-ingredients-section .columns.left .ingredient:nth-child(2):nth-last-child(3),
+.product-ingredients-section .columns.left .ingredient:nth-child(3):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* 5 items: 2nd, 3rd, and 4th items get padding */
-.product-ingredients-section .columns.left .vwcm-item:nth-child(2):nth-last-child(4),
-.product-ingredients-section .columns.left .vwcm-item:nth-child(3):nth-last-child(3),
-.product-ingredients-section .columns.left .vwcm-item:nth-child(4):nth-last-child(2) {
+.product-ingredients-section .columns.left .ingredient:nth-child(2):nth-last-child(4),
+.product-ingredients-section .columns.left .ingredient:nth-child(3):nth-last-child(3),
+.product-ingredients-section .columns.left .ingredient:nth-child(4):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* Right Column Alignment */
 /* Dynamic Middle Item Padding - Right Column */
 /* 3 items: middle item (2nd) gets padding */
-.product-ingredients-section .columns.right .vwcm-item:nth-child(2):nth-last-child(2) {
+.product-ingredients-section .columns.right .ingredient:nth-child(2):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 4 items: 2nd and 3rd items get padding */
-.product-ingredients-section .columns.right .vwcm-item:nth-child(2):nth-last-child(3),
-.product-ingredients-section .columns.right .vwcm-item:nth-child(3):nth-last-child(2) {
+.product-ingredients-section .columns.right .ingredient:nth-child(2):nth-last-child(3),
+.product-ingredients-section .columns.right .ingredient:nth-child(3):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 5 items: 2nd, 3rd, and 4th items get padding */
-.product-ingredients-section .columns.right .vwcm-item:nth-child(2):nth-last-child(4),
-.product-ingredients-section .columns.right .vwcm-item:nth-child(3):nth-last-child(3),
-.product-ingredients-section .columns.right .vwcm-item:nth-child(4):nth-last-child(2) {
+.product-ingredients-section .columns.right .ingredient:nth-child(2):nth-last-child(4),
+.product-ingredients-section .columns.right .ingredient:nth-child(3):nth-last-child(3),
+.product-ingredients-section .columns.right .ingredient:nth-child(4):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* Typography */
-.product-ingredients-section .vwcm-item h3 {
+.product-ingredients-section .ingredient h3 {
   font-size: 24px;
   margin-bottom: 8px;
   margin-top: 0;
 }
 
-.product-ingredients-section .vwcm-item p {
+.product-ingredients-section .ingredient p {
   font-size: 14px;
   line-height: 1.5;
   color: #746c8a;
@@ -390,7 +390,7 @@
   }
 
   /* Mobile Ingredient Cards */
-  .product-ingredients-section .vwcm-item {
+  .product-ingredients-section .ingredient {
     flex-direction: column;
     gap: 8px;
     align-items: center;
@@ -402,17 +402,17 @@
   }
 
   /* Reset all dynamic padding on mobile */
-  .product-ingredients-section .columns.left .vwcm-item,
-  .product-ingredients-section .columns.right .vwcm-item {
+  .product-ingredients-section .columns.left .ingredient,
+  .product-ingredients-section .columns.right .ingredient {
     padding: 12px 32px !important;
   }
 
-  .product-ingredients-section .vwcm-item h3 {
+  .product-ingredients-section .ingredient h3 {
     margin: 0;
     text-align: center;
   }
 
-  .product-ingredients-section .vwcm-item p {
+  .product-ingredients-section .ingredient p {
     margin-top: 2px;
     text-align: center;
   }
