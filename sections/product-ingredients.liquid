@@ -271,15 +271,16 @@
 
 /* Typography */
 .product-ingredients-section .ingredient h3 {
-  font-size: 24px;
+  color: {{ section.settings.ingredient_name_color }};
+  font-size: {{ section.settings.ingredient_name_size }}px;
   margin-bottom: 8px;
   margin-top: 0;
 }
 
 .product-ingredients-section .ingredient p {
-  font-size: 14px;
+  font-size: {{ section.settings.description_size }}px;
   line-height: 1.5;
-  color: #746c8a;
+  color:{{ section.settings.description_color }};
   margin: 0;
 }
 
@@ -528,6 +529,42 @@
       "id": "section_background",
       "label": "Section Background Color",
       "default": "#f7f9fd"
+    },
+    {
+      "type": "header",
+      "content": "Ingredients Styling"
+    },
+    {
+      "type": "range",
+      "id": "ingredient_name_size",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Ingredient Name Size",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "ingredient_name_color",
+      "label": "Ingredient Name Color",
+      "default": "#282828"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Descripton Color",
+      "default": "#746c8a"
     },
     {
       "type": "header",
