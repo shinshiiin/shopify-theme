@@ -1,0 +1,150 @@
+<section class="pdp-section pdp-section-guarantee">
+  <div class="section is-width-standard">
+    <div class="guarantee-container">
+      <div class="four-sixths column medium-down--one-whole text-center is-flex is-flex-column is-justify-center">
+        <div class="logo">
+          {% if section.settings.logo %}
+            {{ section.settings.logo
+              | image_url: width: 114
+              | image_tag:
+                loading: 'lazy',
+                alt: section.settings.logo.alt
+            }}
+          {% endif %}
+        </div>
+        <div class="pdp-section-title-wrap">
+          <h2 class="pdp-section-title">{{ section.settings.title}}</h2>
+        </div>
+        <div>
+          <p>{{ section.settings.subtitle}}</p>
+          <div class="guarantee-action-wrap">
+            {% comment %} <button class="global-button global-button--primary scroll-btn">GET YOURS TODAY</button> {% endcomment %}
+             <button class="guarantee-btn">{{ section.settings.cta_text}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="two-sixths column medium-down--one-whole text-center is-flex is-flex-column is-justify-center">
+        {% if section.settings.image %}
+            {{ section.settings.image
+              | image_url: width: 430
+              | image_tag:
+                loading: 'lazy',
+                alt: section.settings.image.alt
+            }}
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+
+
+  /* Guarantee Section */
+  .guarantee-container {
+    display: flex;
+    justify-self: center;
+    /* padding: 0 120px; */
+    max-width: 1400px;
+  }
+
+  .guarantee-action-wrap button{
+    background-color: #FDFDFD !important;
+    color: #605471 !important;
+    border-color:  #FDFDFD !important;
+  }
+  .four-sixths {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 75px;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #B7A0D7 0%, #605471 100%);
+    border-radius: 24px 0 0 24px;
+  }
+
+  .four-sixths .pdp-section-title {
+    color: white;
+    font-family: 'Albert Sans'
+    , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .four-sixths p {
+    text-align: center;
+    font-size: 20px;
+    color: white;
+  }
+
+  .two-sixths img {
+    width: 430px;
+    height: 430px;
+    border-radius: 0 24px 24px 0;
+  }
+  .guarantee-btn{
+    height: 60px;
+    width: 231px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .guarantee-container {
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .four-sixths {
+      border-radius: 24px 24px 0 0;
+    }
+
+    .two-sixths img {
+      border-radius: 0 0 24px 24px;
+    }
+  }
+{% endstyle %}
+
+
+{% schema %}
+{
+  "name": "Custom Guarantee Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Section Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "30-Day Satisfaction Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Not thrilled? Contact us within 30 days and we'll make it right. No hassle. Just honest support, 24/7."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "GET YOURS TODAY"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Guarantee Section"
+    }
+  ]
+}
+{% endschema %} 
