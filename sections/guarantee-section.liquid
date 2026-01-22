@@ -1,97 +1,144 @@
 <div class="guarantee-section">
   <div class="guarantee-container">
+    {%- comment -%} Content Section {%- endcomment -%}
     <div class="content">
-      <div class="logo">
-        {% if section.settings.logo %}
+      {%- if section.settings.logo -%}
+        <div class="logo">
           {{ section.settings.logo
             | image_url: width: 114
             | image_tag:
               loading: 'lazy',
               alt: section.settings.logo.alt
           }}
-        {% endif %}
-      </div>
+        </div>
+      {%- endif -%}
+      
       <div class="pdp-section-title-wrap">
-        <h2 class="pdp-section-title">{{ section.settings.title}}</h2>
+        <h2 class="pdp-section-title">{{ section.settings.title }}</h2>
       </div>
-      <div>
-        <p>{{ section.settings.subtitle}}</p>
+      
+      <div class="guarantee-text">
+        <p>{{ section.settings.subtitle }}</p>
         <div class="guarantee-action-wrap">
-          {% comment %} <button class="global-button global-button--primary scroll-btn">GET YOURS TODAY</button> {% endcomment %}
-            <button class="guarantee-btn">{{ section.settings.cta_text}}</button>
+          <button class="guarantee-btn">{{ section.settings.cta_text }}</button>
         </div>
       </div>
     </div>
+
+    {%- comment -%} Image Section {%- endcomment -%}
     <div class="image">
-      {% if section.settings.image %}
-        <img
-          src="{{ section.settings.image | image_url: width: 1000 }}"
-          alt="{{ section.settings.image.alt }}"
-          loading="lazy"
-        >
-      {% else %}
-        <img
-          src="{{ 'placeholder.webp' | asset_url }}"
-          alt="{{ block.settings.customer_name | default: 'Customer' }}"
-          loading="lazy"
-        >
-      {% endif %}
+      {%- if section.settings.image -%}
+        {{ section.settings.image
+          | image_url: width: 1000
+          | image_tag:
+            loading: 'lazy',
+            alt: section.settings.image.alt
+        }}
+      {%- else -%}
+        {{ 'placeholder.webp'
+          | asset_url
+          | image_tag:
+            loading: 'lazy',
+            alt: 'Guarantee placeholder'
+        }}
+      {%- endif -%}
     </div>
   </div>
 </div>
 
 {% style %}
+  /* ============================================
+     Guarantee Section Styles
+     ============================================ */
 
-  /* Guarantee Section */
+  .guarantee-section {
+    width: 100%;
+  }
+
   .guarantee-container {
     display: flex;
-    justify-self: center;
+    justify-content: center;
     max-width: 1280px;
+    margin: 0 auto;
   }
 
-  .guarantee-action-wrap button{
-    background-color: #FDFDFD !important;
-    color: #605471 !important;
-    border-color:  #FDFDFD !important;
-  }
-
+  /* Content Area */
   .content {
     display: flex;
     flex-direction: column;
-    padding: 50px 75px;
     justify-content: center;
     align-items: center;
+    padding: 50px 75px;
     background: linear-gradient(180deg, #B7A0D7 0%, #605471 100%);
     border-radius: 24px 0 0 24px;
+    flex: 1;
+  }
+
+  .content .logo {
+    margin-bottom: 20px;
   }
 
   .content .pdp-section-title {
-    color: white;
-    font-family: 'Albert Sans'
-    , sans-serif;
+    color: #FDFDFD;
+    font-family: 'Albert Sans', sans-serif;
     font-size: 40px;
     font-weight: 600;
     text-align: center;
+    margin: 0 0 20px;
+  }
+
+  .content .guarantee-text {
+    width: 100%;
   }
 
   .content p {
-    text-align: center;
+    color: #FDFDFD;
     font-size: 20px;
-    color: white;
+    text-align: center;
+    margin: 0 0 30px;
+  }
+
+  /* Button Styles */
+  .guarantee-action-wrap {
+    text-align: center;
+  }
+
+  .guarantee-btn {
+    width: 231px;
+    height: 60px;
+    padding: 0 20px;
+    background-color: #FDFDFD;
+    color: #605471;
+    border: 2px solid #FDFDFD;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .guarantee-btn:hover {
+    background-color: transparent;
+    color: #FDFDFD;
+  }
+
+  /* Image Area */
+  .image {
+    flex: 1;
   }
 
   .image img {
-    width: 430px;
+    width: 100%;
+    max-width: 430px;
     height: 430px;
+    object-fit: cover;
     border-radius: 0 24px 24px 0;
+    display: block;
   }
-  .guarantee-btn{
-    height: 60px;
-    width: 231px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 16px;
-  }
+
+  /* ============================================
+     Responsive Styles
+     ============================================ */
 
   @media (max-width: 768px) {
     .guarantee-container {
@@ -100,15 +147,31 @@
     }
 
     .content {
+      padding: 40px 20px;
       border-radius: 24px 24px 0 0;
     }
 
+    .content .pdp-section-title {
+      font-size: 32px;
+    }
+
+    .content p {
+      font-size: 18px;
+    }
+
     .image img {
+      max-width: 100%;
+      height: auto;
+      min-height: 300px;
       border-radius: 0 0 24px 24px;
+    }
+
+    .guarantee-btn {
+      width: 100%;
+      max-width: 280px;
     }
   }
 {% endstyle %}
-
 
 {% schema %}
 {
@@ -131,7 +194,7 @@
       "default": "30-Day Satisfaction Guarantee"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "subtitle",
       "label": "Section Subtitle",
       "default": "Not thrilled? Contact us within 30 days and we'll make it right. No hassle. Just honest support, 24/7."
@@ -139,7 +202,7 @@
     {
       "type": "text",
       "id": "cta_text",
-      "label": "Button text",
+      "label": "Button Text",
       "default": "GET YOURS TODAY"
     }
   ],
@@ -149,4 +212,4 @@
     }
   ]
 }
-{% endschema %} 
+{% endschema %}
