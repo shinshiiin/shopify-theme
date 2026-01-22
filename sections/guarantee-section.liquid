@@ -1,6 +1,6 @@
 <div class="guarantee-section">
   <div class="guarantee-container">
-    <div class="four-sixths column">
+    <div class="four-sixths">
       <div class="logo">
         {% if section.settings.logo %}
           {{ section.settings.logo
@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="two-sixths column">
+    <div class="two-sixths">
       {% if section.settings.image %}
         {{ section.settings.image
           | image_url: width: 1000
