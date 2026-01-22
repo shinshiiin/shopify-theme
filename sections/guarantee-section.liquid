@@ -24,13 +24,19 @@
     </div>
     <div class="two-sixths column medium-down--one-whole text-center is-flex is-flex-column is-justify-center">
       {% if section.settings.image %}
-          {{ section.settings.image
-            | image_url: width: 430
-            | image_tag:
-              loading: 'lazy',
-              alt: section.settings.image.alt
-          }}
-        {% endif %}
+        {{ section.settings.image
+          | image_url: width: 430
+          | image_tag:
+            loading: 'lazy',
+            alt: section.settings.image.alt
+        }}
+      {% else %}
+        <img
+          src="{{ 'placeholder.webp' | asset_url }}"
+          alt="{{ block.settings.customer_name | default: 'Customer' }}"
+          loading="lazy"
+        >
+      {% endif %}
     </div>
   </div>
 </div>
