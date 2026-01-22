@@ -81,7 +81,7 @@
         </div>
 
         {%- comment -%} CENTER IMAGE {%- endcomment -%}
-        <div class="vwcm-center">
+        <div class="center-image">
           {% if section.settings.center_image %}
               <img
                 src="{{ section.settings.center_image | image_url: width: 1000 }}"
@@ -280,12 +280,12 @@
 /* ========================================
    CENTER IMAGE
    ======================================== */
-.product-ingredients-section .vwcm-center {
+.product-ingredients-section .center-image {
   position: relative;
   text-align: center;
 }
 
-.vwcm-center img {
+.center-image img {
     width: {{ section.settings.image_size }}px !important;
 }
 
@@ -369,7 +369,7 @@
   }
 
   /* Reorder Grid Items */
-  .product-ingredients-section .vwcm-center {
+  .product-ingredients-section .center-image {
     order: 1;
   }
 
