@@ -226,112 +226,113 @@
       "name": "Hero grid section",
       "settings": {}
     },
-    "product_ingredients_iCbEhF": {
+    "product_ingredients_FiBLyf": {
       "type": "product-ingredients",
       "blocks": {
-        "ingredient_4caJ4p": {
+        "ingredient_JiGFBw": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
+            "ingredient_title": "Vitamin C",
+            "ingredient_text": "Brightens and evens skin tone"
           }
         },
-        "ingredient_3ew98F": {
+        "ingredient_3PcUMd": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
+            "ingredient_title": "Hyaluronic Acid",
+            "ingredient_text": "Deep hydration and plumping"
           }
         },
-        "ingredient_DGGcFa": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
-        "ingredient_D4NmUg": {
+        "ingredient_bDzrX9": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
+            "ingredient_title": "Niacinamide",
+            "ingredient_text": "Minimizes pores and refines texture"
           }
         },
-        "ingredient_7G7wJW": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
-        "ingredient_TV6Tpt": {
+        "ingredient_JAVMEi": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
+            "ingredient_title": "Niacinamide",
+            "ingredient_text": "Minimizes pores and refines texture"
           }
         },
-        "ingredient_YQH3bx": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
-        "ingredient_tY3Pjz": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
-        "ingredient_hFq3Am": {
-          "type": "ingredient",
-          "settings": {
-            "column_position": "right",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
-          }
-        },
-        "ingredient_PQBWB4": {
+        "ingredient_MqdNGg": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
-            "ingredient_title": "Ingredient Name",
-            "ingredient_text": "Brief description of this ingredient and its benefits."
+            "ingredient_title": "Niacinamide",
+            "ingredient_text": "Minimizes pores and refines texture"
+          }
+        },
+        "ingredient_rgwDpg": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Retinol",
+            "ingredient_text": "Reduces fine lines and wrinkles"
+          }
+        },
+        "ingredient_zJzB8c": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Peptides",
+            "ingredient_text": "Boosts collagen production"
+          }
+        },
+        "ingredient_E9Vrp6": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Peptides",
+            "ingredient_text": "Boosts collagen production"
+          }
+        },
+        "ingredient_gnK8KT": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Peptides",
+            "ingredient_text": "Boosts collagen production"
+          }
+        },
+        "ingredient_KLt6p8": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Green Tea Extract",
+            "ingredient_text": "Antioxidant protection"
           }
         }
       },
       "block_order": [
-        "ingredient_4caJ4p",
-        "ingredient_3ew98F",
-        "ingredient_DGGcFa",
-        "ingredient_D4NmUg",
-        "ingredient_7G7wJW",
-        "ingredient_TV6Tpt",
-        "ingredient_YQH3bx",
-        "ingredient_tY3Pjz",
-        "ingredient_hFq3Am",
-        "ingredient_PQBWB4"
+        "ingredient_JiGFBw",
+        "ingredient_3PcUMd",
+        "ingredient_bDzrX9",
+        "ingredient_JAVMEi",
+        "ingredient_MqdNGg",
+        "ingredient_rgwDpg",
+        "ingredient_zJzB8c",
+        "ingredient_E9Vrp6",
+        "ingredient_gnK8KT",
+        "ingredient_KLt6p8"
       ],
       "name": "Product Ingredients",
       "settings": {
         "section_title": "Product Ingredients",
         "title_color": "#605471",
         "title_size": 40,
-        "section_subtitle": "Verified Customer Reviews",
+        "section_subtitle": "Formulated with thoughtfully chosen ingredients for optimal results.",
         "subtitle_color": "#656565",
-        "subtitle_size": 35,
+        "subtitle_size": 20,
         "section_background": "#f7f9fd",
-        "image_size": 200,
+        "center_image": "shopify://shop_images/Rectangle_158_1.png",
+        "image_size": 360,
         "all_ingredients": ""
       }
     }
@@ -340,6 +341,6 @@
     "slideshow_TGFeGq",
     "verified_review_carousel_CpTyWn",
     "hero_grid_section_9PcxTA",
-    "product_ingredients_iCbEhF"
+    "product_ingredients_FiBLyf"
   ]
 }
