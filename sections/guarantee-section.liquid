@@ -12,6 +12,12 @@
               alt: section.settings.logo.alt
           }}
         </div>
+      {%- else -%}
+        <img
+          src="{{ 'guarantee_logo.webp' | asset_url }}"
+          alt="{{ block.settings.customer_name | default: 'Customer' }}"
+          loading="lazy"
+        >
       {%- endif -%}
       
       <div class="pdp-section-title-wrap">
