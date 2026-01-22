@@ -78,7 +78,7 @@
         <div class="vwcm-center">
           {% if block.settings.image %}
               <img
-                src="{{ block.settings.image | image_url: width: 1000 }}"
+                src="{{ section.settings.center_image | image_url: width: 1000 }}"
                 alt="{{ block.settings.customer_name | default: 'Customer' }}"
                 loading="lazy"
                 style="object-position: {{ block.settings.position }};"
