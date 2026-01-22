@@ -1,6 +1,6 @@
 <div class="guarantee-section">
   <div class="guarantee-container">
-    <div class="four-sixths">
+    <div class="content">
       <div class="logo">
         {% if section.settings.logo %}
           {{ section.settings.logo
@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="two-sixths">
+    <div class="image">
       {% if section.settings.image %}
         <img
           src="{{ section.settings.image | image_url: width: 1000 }}"
@@ -55,7 +55,7 @@
     border-color:  #FDFDFD !important;
   }
 
-  .four-sixths {
+  .content {
     display: flex;
     flex-direction: column;
     padding: 50px 75px;
@@ -65,7 +65,7 @@
     border-radius: 24px 0 0 24px;
   }
 
-  .four-sixths .pdp-section-title {
+  .content .pdp-section-title {
     color: white;
     font-family: 'Albert Sans'
     , sans-serif;
@@ -74,13 +74,13 @@
     text-align: center;
   }
 
-  .four-sixths p {
+  .content p {
     text-align: center;
     font-size: 20px;
     color: white;
   }
 
-  .two-sixths img {
+  .image img {
     width: 430px;
     height: 430px;
     border-radius: 0 24px 24px 0;
@@ -99,11 +99,11 @@
       padding: 10px;
     }
 
-    .four-sixths {
+    .content {
       border-radius: 24px 24px 0 0;
     }
 
-    .two-sixths img {
+    .image img {
       border-radius: 0 0 24px 24px;
     }
   }
