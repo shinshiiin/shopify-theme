@@ -1,44 +1,41 @@
-<section class="pdp-section pdp-section-guarantee">
-  <div class="section is-width-standard">
-    <div class="guarantee-container">
-      <div class="four-sixths column medium-down--one-whole text-center is-flex is-flex-column is-justify-center">
-        <div class="logo">
-          {% if section.settings.logo %}
-            {{ section.settings.logo
-              | image_url: width: 114
-              | image_tag:
-                loading: 'lazy',
-                alt: section.settings.logo.alt
-            }}
-          {% endif %}
-        </div>
-        <div class="pdp-section-title-wrap">
-          <h2 class="pdp-section-title">{{ section.settings.title}}</h2>
-        </div>
-        <div>
-          <p>{{ section.settings.subtitle}}</p>
-          <div class="guarantee-action-wrap">
-            {% comment %} <button class="global-button global-button--primary scroll-btn">GET YOURS TODAY</button> {% endcomment %}
-             <button class="guarantee-btn">{{ section.settings.cta_text}}</button>
-          </div>
-        </div>
+<div class="guarantee-section">
+  <div class="guarantee-container">
+    <div class="four-sixths column">
+      <div class="logo">
+        {% if section.settings.logo %}
+          {{ section.settings.logo
+            | image_url: width: 114
+            | image_tag:
+              loading: 'lazy',
+              alt: section.settings.logo.alt
+          }}
+        {% endif %}
       </div>
-      <div class="two-sixths column medium-down--one-whole text-center is-flex is-flex-column is-justify-center">
-        {% if section.settings.image %}
-            {{ section.settings.image
-              | image_url: width: 430
-              | image_tag:
-                loading: 'lazy',
-                alt: section.settings.image.alt
-            }}
-          {% endif %}
+      <div class="pdp-section-title-wrap">
+        <h2 class="pdp-section-title">{{ section.settings.title}}</h2>
+      </div>
+      <div>
+        <p>{{ section.settings.subtitle}}</p>
+        <div class="guarantee-action-wrap">
+          {% comment %} <button class="global-button global-button--primary scroll-btn">GET YOURS TODAY</button> {% endcomment %}
+            <button class="guarantee-btn">{{ section.settings.cta_text}}</button>
+        </div>
       </div>
     </div>
+    <div class="two-sixths column medium-down--one-whole text-center is-flex is-flex-column is-justify-center">
+      {% if section.settings.image %}
+          {{ section.settings.image
+            | image_url: width: 430
+            | image_tag:
+              loading: 'lazy',
+              alt: section.settings.image.alt
+          }}
+        {% endif %}
+    </div>
   </div>
-</section>
+</div>
 
 {% style %}
-
 
   /* Guarantee Section */
   .guarantee-container {
@@ -53,6 +50,7 @@
     color: #605471 !important;
     border-color:  #FDFDFD !important;
   }
+
   .four-sixths {
     display: flex;
     flex-direction: column;
