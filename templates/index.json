@@ -331,6 +331,7 @@
         "subtitle_color": "#656565",
         "subtitle_size": 20,
         "section_background": "#f7f9fd",
+        "image_size": 200,
         "all_ingredients": ""
       }
     }
