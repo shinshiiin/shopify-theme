@@ -331,6 +331,10 @@
         "subtitle_color": "#656565",
         "subtitle_size": 20,
         "section_background": "#f7f9fd",
+        "ingredient_name_size": 24,
+        "ingredient_name_color": "#282828",
+        "description_size": 14,
+        "description_color": "#746c8a",
         "image_size": 360,
         "all_ingredients": "<p>Full ingredient list shown in dropdown<br/></p>"
       }
@@ -339,6 +343,7 @@
       "type": "guarantee-section",
       "name": "Guarantee Section",
       "settings": {
+        "image": "shopify://shop_images/Rectangle_158_1.png",
         "title": "30-Day Satisfaction Guarantee",
         "subtitle": "Not thrilled? Contact us within 30 days and we'll make it right. No hassle. Just honest support, 24/7.",
         "cta_text": "GET YOURS TODAY"
