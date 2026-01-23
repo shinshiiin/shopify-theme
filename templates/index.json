@@ -226,10 +226,19 @@
       "name": "Hero grid section",
       "settings": {}
     },
-    "product_ingredients_CBkiHQ": {
+    "guarantee_section_BjpgBW": {
+      "type": "guarantee-section",
+      "name": "Guarantee Section",
+      "settings": {
+        "title": "30-Day Satisfaction Guarantee",
+        "subtitle": "Not thrilled? Contact us within 30 days and we'll make it right. No hassle. Just honest support, 24/7.",
+        "cta_text": "GET YOURS TODAY"
+      }
+    },
+    "product_ingredients_A4WiYf": {
       "type": "product-ingredients",
       "blocks": {
-        "ingredient_UKq4tt": {
+        "ingredient_bmymqQ": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
@@ -237,7 +246,7 @@
             "ingredient_text": "Brightens skin and helps even out tone"
           }
         },
-        "ingredient_hUTxD9": {
+        "ingredient_w9pBNB": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
@@ -245,7 +254,7 @@
             "ingredient_text": "Provides deep hydration and plumps the skin"
           }
         },
-        "ingredient_MBg3cA": {
+        "ingredient_BgJTAz": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
@@ -253,7 +262,7 @@
             "ingredient_text": "Helps minimize pores and improve skin texture"
           }
         },
-        "ingredient_Jxcf4M": {
+        "ingredient_kGUFcx": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
@@ -261,7 +270,7 @@
             "ingredient_text": "Targets dark spots and promotes a more even complexion"
           }
         },
-        "ingredient_tHDLTh": {
+        "ingredient_EGnihY": {
           "type": "ingredient",
           "settings": {
             "column_position": "left",
@@ -269,7 +278,7 @@
             "ingredient_text": "Soothes skin and supports the moisture barrier"
           }
         },
-        "ingredient_cdrRPX": {
+        "ingredient_HUNJNE": {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
@@ -277,7 +286,7 @@
             "ingredient_text": "Reduces the appearance of fine lines and wrinkles"
           }
         },
-        "ingredient_e4Mfj7": {
+        "ingredient_fCM73T": {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
@@ -285,7 +294,7 @@
             "ingredient_text": "Supports collagen production for firmer-looking skin"
           }
         },
-        "ingredient_QHLYAA": {
+        "ingredient_7jjEXn": {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
@@ -293,7 +302,7 @@
             "ingredient_text": "Strengthens the skin barrier and locks in moisture"
           }
         },
-        "ingredient_QkEe8D": {
+        "ingredient_JQdy9n": {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
@@ -301,7 +310,7 @@
             "ingredient_text": "Provides antioxidant protection against environmental stress"
           }
         },
-        "ingredient_4PHxEy": {
+        "ingredient_PNjTbL": {
           "type": "ingredient",
           "settings": {
             "column_position": "right",
@@ -311,16 +320,16 @@
         }
       },
       "block_order": [
-        "ingredient_UKq4tt",
-        "ingredient_hUTxD9",
-        "ingredient_MBg3cA",
-        "ingredient_Jxcf4M",
-        "ingredient_tHDLTh",
-        "ingredient_cdrRPX",
-        "ingredient_e4Mfj7",
-        "ingredient_QHLYAA",
-        "ingredient_QkEe8D",
-        "ingredient_4PHxEy"
+        "ingredient_bmymqQ",
+        "ingredient_w9pBNB",
+        "ingredient_BgJTAz",
+        "ingredient_kGUFcx",
+        "ingredient_EGnihY",
+        "ingredient_HUNJNE",
+        "ingredient_fCM73T",
+        "ingredient_7jjEXn",
+        "ingredient_JQdy9n",
+        "ingredient_PNjTbL"
       ],
       "name": "Product Ingredients",
       "settings": {
@@ -330,22 +339,13 @@
         "section_subtitle": "Formulated with thoughtfully chosen ingredients for optimal results.",
         "subtitle_color": "#656565",
         "subtitle_size": 20,
-        "section_background": "#acbbd9",
+        "section_background": "#f7f9fd",
         "ingredient_name_size": 24,
         "ingredient_name_color": "#282828",
         "description_size": 14,
         "description_color": "#746c8a",
         "image_size": 360,
-        "all_ingredients": "<p>Full ingredient list shown in dropdown<br/></p>"
-      }
-    },
-    "guarantee_section_BjpgBW": {
-      "type": "guarantee-section",
-      "name": "Guarantee Section",
-      "settings": {
-        "title": "30-Day Satisfaction Guarantee",
-        "subtitle": "Not thrilled? Contact us within 30 days and we'll make it right. No hassle. Just honest support, 24/7.",
-        "cta_text": "GET YOURS TODAY"
+        "all_ingredients": ""
       }
     }
   },
@@ -353,7 +353,7 @@
     "slideshow_TGFeGq",
     "verified_review_carousel_CpTyWn",
     "hero_grid_section_9PcxTA",
-    "product_ingredients_CBkiHQ",
-    "guarantee_section_BjpgBW"
+    "guarantee_section_BjpgBW",
+    "product_ingredients_A4WiYf"
   ]
 }
