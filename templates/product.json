@@ -17,13 +17,13 @@
           "settings": {
             "star_color": "#ffa500",
             "product_rating_text": "4.9 (7,803 Reviews)",
-            "text_color": ""
+            "text_color": "rgba(0,0,0,0)"
           }
         },
         "title_FRwfVm": {
           "type": "title",
           "settings": {
-            "title_color": ""
+            "title_color": "rgba(0,0,0,0)"
           }
         },
         "text_P8KdjD": {
