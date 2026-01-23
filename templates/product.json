@@ -23,7 +23,7 @@
         "title_CbyUPf": {
           "type": "title",
           "settings": {
-            "title_color": "rgba(0,0,0,0)"
+            "title_color": "#a45050"
           }
         },
         "text_P8KdjD": {
@@ -80,7 +80,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_mode": "scheme",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
