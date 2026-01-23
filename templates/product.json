@@ -79,8 +79,7 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "color_mode": "scheme",
-        "color_scheme": "scheme-neon",
+        "color_scheme": "scheme-1",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
