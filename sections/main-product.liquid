@@ -98,26 +98,25 @@
                 >
                   {{- block.settings.text -}}
                 </p>
+
               {%- when 'title' -%}
                 <div class="product__title product__title--{{ block.id }}" {{ block.shopify_attributes }}>
                   <h1>{{ product.title | escape }}</h1>
                 </div>
-                
                 {% liquid
                   if block.settings.title_color != blank and block.settings.title_color != 'rgba(0,0,0,0)' and block.settings.title_color != 'transparent'
                     assign title_color = block.settings.title_color
                   else
                     assign scheme = settings.color_schemes[block.settings.color_scheme].settings
                     assign title_color = scheme.text
-                  endif
-                %}
-                
+                  endif %}
                 {% style %}
                   .product__title--{{ block.id }} h1 {
                     color: {{ title_color }};
                     margin: 0;
                   }
                 {% endstyle %}
+
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -778,8 +777,7 @@
         {
           "type": "color",
           "id": "text_color",
-          "label": "Text color",
-          "default": "#6B6969"
+          "label": "Text color"
         },
       ]
     },
