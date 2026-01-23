@@ -89,7 +89,7 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
-              {%- when 'product_rating' -%}
+              {%- when 'product_rate' -%}
                 {% render 'product-rating', block: block %}
               {%- when 'text' -%}
                 <p
@@ -747,7 +747,7 @@
   "class": "section",
   "blocks": [
     {
-      "type": "product_rating",
+      "type": "product_rate",
       "name": "Product Rating",
       "limit": 1,
       "settings": [
