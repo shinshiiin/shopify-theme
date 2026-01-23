@@ -11,12 +11,12 @@
 
 {% style %}
 
-  .product_rating--{{ block.id }} span{
+  .{{ block.id }} span{
     font-size: clamp(12px, 3vw, 16px); 
     color: {{ block.settings.text_color }}
     text-align: left;
   }
-  .product_rating--{{ block.id }} svg path {
+  .{{ block.id }} svg path {
     fill: {{ block.settings.star_color }};
   }
 
