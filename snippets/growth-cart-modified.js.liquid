@@ -1,0 +1,218 @@
+{%- comment %}
+  @param cart (cart, mandatory)
+  @param checkout_url (string, mandatory) the checkout url
+  @param checkout_button_selector (string) the query selector for the checkout button
+{% endcomment -%}
+
+
+
+{% unless checkout_url %}
+  {% assign checkout_url = 'https://ck.evolenne.com/checkout' %}
+{% endunless %}
+
+{% unless checkout_button_selector %}
+  {% assign checkout_button_selector = '[name="cc-checkout"]' %}
+{% endunless %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    var debug = true ? console.log.bind(console, '[DEBUG][RedirectCart]') : function () {};
+    
+    debug('Script loaded');
+
+    window.RedirectCart = function (options) {
+
+      var self = {};
+
+      function productIdsWithQuantities() {
+    {%- assign added_first = false -%}
+    return {
+      {%- for item in cart.items -%}
+        {%- assign property_size = item.properties | size -%}
+        {% if property_size > 0 %}
+          {%- capture prdctOptions -%}
+            {% for p in item.properties %}
+              {% unless p.last == blank %}{{ p.first }}~{% if p.last contains '/uploads/' %}{{ p.last | split: '/' | last }}{% else %}{{ p.last }}{% endif %}{% unless forloop.last %}|{% endunless -%}
+              {% endunless %}
+            {% endfor %}
+          {%- endcapture %}
+          {%- assign prdctOptionForUrl = prdctOptions | newline_to_br | split: '<br />' -%}
+          {%- capture stripedPrdctOptions -%}
+            {% for pOption in prdctOptionForUrl -%}
+                {{ pOption | strip | strip_newlines | url_encode  }}
+            {%- endfor %}
+          {%- endcapture %}
+        {% endif %} 
+        {%- if item.variant.metafields.productId.productId -%}
+      {%- if added_first %},{% endif -%}
+        {%- if item.selling_plan_allocation -%}
+          {% if property_size > 0 %}
+            "{{ item.variant.metafields.productId.productId}}{{"|"}}{{item.selling_plan_allocation.selling_plan.name | url_encode}}{{ "|" }}{{ stripedPrdctOptions | strip_newlines }}": {{ item.quantity | json }}
+          {% else %}
+            "{{ item.variant.metafields.productId.productId}}{{"|"}}{{item.selling_plan_allocation.selling_plan.name | url_encode}}": {{ item.quantity | json }}
+          {% endif %}
+      {%- else -%}
+          {% if property_size > 0 %}
+            "{{ item.variant.metafields.productId.productId }}{{ "|" }}{{ "|" }}{{ stripedPrdctOptions | strip_newlines }}": {{ item.quantity | json }}
+          {% else %}
+            "{{ item.variant.metafields.productId.productId }}": {{ item.quantity | json }}
+          {% endif %}
+      {% endif -%}
+          {%- assign added_first = true -%}
+        
+      {%- endif -%}
+      
+      {%- endfor -%}
+    };
+  }
+
+
+      function updateProductIdsWithQuantities(el) {
+        const result = productIdsWithQuantities();
+        
+        const ccBTN = el;
+        if (ccBTN && ccBTN.hasAttribute('data-cc-id')) {
+          const ccId = ccBTN.getAttribute('data-cc-id');
+          
+          if (result.hasOwnProperty(ccId)) {
+            result[`${ccId}`] = result[`${ccId}`] + 1;
+            console.log("existing");
+          } else {
+            result[`${ccId}`] = 1;
+            console.log("not existing");
+          }
+          
+        }
+
+        if (!result.hasOwnProperty('748')) {
+          result[`748`] = 1;
+        }
+
+        return result;
+        
+      }
+
+      function init() {
+        self.options = Object.assign({
+          products: productIdsWithQuantities(),
+          checkoutButtonSelector: '{{ checkout_button_selector }}',
+          checkoutUrl: '{{ checkout_url }}',
+        }, options);
+
+        self.$checkoutButton = $(self.options.checkoutButtonSelector);
+
+        debug('Initialized with options', self.options);
+        console.log(productIdsWithQuantities()); 
+
+        inject();
+      }
+
+      function inject() {
+        debug('Inject');
+        self.$checkoutButton.on('click', function (event) {
+          event.preventDefault();
+          var updatedID = updateProductIdsWithQuantities(this);
+          console.log(updatedID);
+          const varID = this.getAttribute('data-variant');
+          addVariantToCart(varID, updatedID);
+        });
+
+        
+      }
+
+     function addVariantToCart(varID, updatedID) {
+        const quantity = 1;  
+        $.ajax({
+          type: 'POST',
+          url: '/cart/add.js',
+          data: {
+            quantity: quantity,
+            id: varID,
+          },
+          dataType: 'json',
+          success: function () {
+            debug('Variant added to cart successfully');
+            
+            checkout(updatedID);
+          },
+          error: function () {
+            debug('Error adding variant to cart');
+          }
+        });
+      }
+
+      function checkout(updatedID) {
+      
+        var checkoutUrl = getCheckoutURL(updatedID);
+        console.log(self.options.products);
+        debug('Checkout ->', checkoutUrl);
+
+        init();
+
+        window.location.href = checkoutUrl;
+      }
+
+      function getCartCookie(name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        if (match) {
+          return match[2];
+        }
+      }
+
+      function getCheckoutURL(products) {
+        cookie = getCartCookie('cart');
+        var urlLineItems = Object.keys(products).reduce(function (output, productId) {
+          var quantity = products[productId];
+          return output.concat([productId + ':' + quantity]);
+        }, []).join(';');
+
+        return self.options.checkoutUrl + '?products=' + urlLineItems + '&cartId=' + cookie;
+      }
+
+      init();
+
+      return self;
+
+    };
+
+    var instance = new RedirectCart();
+
+     {% if template contains "product" %}
+          const swatch = document.querySelector(".swatch");
+          
+    if (swatch) {
+      
+        const variant_opt = swatch.querySelectorAll(".swatch-element");
+        const cc_button = document.querySelector(".cc-checkout-button");
+
+      setTimeout(function(){
+        const checkedRB = swatch.querySelector('input[type="radio"]:checked');
+        if (checkedRB) {
+          const el = checkedRB.nextElementSibling;
+          if (el && el.classList.contains('swatch-element')) {
+            const ccID = el.getAttribute("data-cc-id");
+            const varID = el.getAttribute("data-id");
+            cc_button.setAttribute("data-cc-id", ccID);
+            cc_button.setAttribute("data-variant", varID);
+            
+          }
+        }
+        },1000);
+      
+        for (let i = 0; i < variant_opt.length; i++){
+          variant_opt[i].addEventListener("click", function(e){
+            const ccID = this.getAttribute("data-cc-id");
+            const varID = this.getAttribute("data-id");
+            cc_button.setAttribute("data-cc-id", ccID);
+            cc_button.setAttribute("data-variant", varID);
+            console.log("CC id updated");
+          });
+        }
+        
+      }
+          
+      {% endif %}
+  });
+
+</script>
