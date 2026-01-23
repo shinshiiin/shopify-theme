@@ -10,7 +10,7 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "main-product-v1",
       "blocks": {
         "product_rating_dJk97t": {
           "type": "product_rating",
