@@ -89,7 +89,7 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
-              {%- when 'product_rate' -%}
+              {%- when 'product_rating' -%}
                 {% render 'product-rating', block: block %}
               {%- when 'text' -%}
                 <p
@@ -747,7 +747,7 @@
   "class": "section",
   "blocks": [
     {
-      "type": "product_rate",
+      "type": "product_rating",
       "name": "Product Rating",
       "limit": 1,
       "settings": [
@@ -759,7 +759,7 @@
         },
         {
           "type": "text",
-          "id": "product_rating",
+          "id": "product_rating_text",
           "label": "Rating",
           "default": "4.9 (7,803 Reviews)",
           "info": "Format: 50"
