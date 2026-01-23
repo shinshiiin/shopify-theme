@@ -18,7 +18,7 @@
   endif
 
   if block.settings.star_color != blank and block.settings.star_color != 'rgba(0,0,0,0)' and block.settings.star_color != 'transparent'
-    assign text_color = block.settings.star_color
+    assign star_color = block.settings.star_color
   else
     assign scheme = settings.color_schemes[block.settings.color_scheme].settings
     assign star_color = scheme.text
