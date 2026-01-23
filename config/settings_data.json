@@ -196,6 +196,17 @@
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }
+      },
+      "scheme-sunset": {
+        "settings": {
+          "background": "#FF6B6B",
+          "background_gradient": "linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%)",
+          "text": "#2C1810",
+          "button": "#FFE66D",
+          "button_label": "#2C1810",
+          "secondary_button_label": "#FF6B6B",
+          "shadow": "#D94A4A"
+        }
       }
     }
   },
