@@ -9,11 +9,19 @@
   <span>{{ block.settings.product_rating_text }}</span>
 </div>
 
+{% liquid
+  if block.settings.text_color != blank and block.settings.text_color != 'rgba(0,0,0,0)' and block.settings.text_color != 'transparent'
+    assign text_color = block.settings.text_color
+  else
+    assign scheme = settings.color_schemes[block.settings.color_scheme].settings
+    assign text_color = scheme.text
+  endif %}
+
 {% style %}
 
   .{{ block.id }} span{
     font-size: clamp(12px, 3vw, 16px); 
-    color: {{ block.settings.text_color }};
+    color: {{ text_color }};
     text-align: left;
   }
   .{{ block.id }} svg path {
