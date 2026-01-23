@@ -12,12 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "product_rating_bEc964": {
-          "type": "product_rating",
-          "settings": {
-            "product_rating": "aas"
-          }
-        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -63,7 +57,6 @@
         }
       },
       "block_order": [
-        "product_rating_bEc964",
         "vendor",
         "title",
         "price",
