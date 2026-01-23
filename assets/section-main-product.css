@@ -253,9 +253,9 @@ a.product__text {
   display: none;
 }
 
-/* .product__title + .product__text.caption-with-letter-spacing {
-  margin-top: -1.5rem;
-} */
+.product__title + .product__text.caption-with-letter-spacing {
+  margin-top: 0;
+}
 
 .product__text.caption-with-letter-spacing + .product__title {
   margin-top: 0;
