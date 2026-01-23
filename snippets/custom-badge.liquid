@@ -1,0 +1,20 @@
+ {% assign custom_badges = product.metafields.custom.custom_badges.value %}
+{% if custom_badges %}
+<div class="custom-badges {{ block.id }}">
+  {% for custom_badge in custom_badges %}
+    <div class="custom-badge-item ">
+      {{ custom_badge | image_url: height: 74 | image_tag }}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% style %}
+  .custom-badges {
+    display:flex;
+    margin-bottom:5px;
+  }
+  .custom-badges .custom-badge-item {
+    margin-right:15px;
+  }
+{% endstyle %}

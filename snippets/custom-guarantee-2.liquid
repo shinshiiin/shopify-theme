@@ -1,0 +1,63 @@
+{% assign image = block.settings.image %}
+{% assign text = block.settings.text %}
+{% assign description = block.settings.description %}
+
+<div class="custom-guarantee-2-wrap">
+  <div>
+    <div class="block-image">
+      {% if image != nil %}
+        <img src="{{ image | img_url: 'master' }}" />
+      {% endif %}
+    </div>
+    <div class="block-text">
+      {% if text != nil %}
+        {{ text }}
+      {% endif %}
+      <div class="block-sub-text">{{ description }}</div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+
+  .product-block--{{ block.type }} {
+    margin-top: 10px;
+  }
+
+  .product-block--{{ block.type }} .custom-guarantee-2-wrap > div {
+    padding: 7px 8px;
+    border: 1px solid #605471;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+    background-color: #E9E2F4;
+    color: #605471;
+  }
+
+  .product-block--{{ block.type }} .custom-guarantee-2-wrap > div p {
+    margin-bottom: 0px;
+    line-height: normal;
+  }
+
+  .product-block--{{ block.type }} .custom-guarantee-2-wrap .block-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-block--{{ block.type }} .custom-guarantee-2-wrap .block-text {
+    font-size: clamp(12px, 2vw, 14px);
+    font-family: VeraMono, sans-serif !important;
+    
+  }
+
+  .product-block--{{ block.type }} .custom-guarantee-2-wrap .block-sub-text {
+    font-size: clamp(11px, 2vw, 13px);
+    margin-top: 4px;
+    font-family: FinisGrotesk, sans-serif !important;
+  }
+
+{% endstyle %}

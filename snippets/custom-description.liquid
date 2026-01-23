@@ -1,0 +1,51 @@
+{% assign description_content = block.settings.content %}
+<div class="custom-description-wrap">
+  {% if template contains 'test' %}
+    {% assign custom_description = product.metafields.custom.custom_description_split_test %}
+  {% elsif split == true %}
+    {% assign custom_description = product.metafields.custom.custom_description_split_test %}
+  {% elsif description_content == 'split' %}
+    {% assign custom_description = product.metafields.custom.custom_description_split_test %}
+  {% else %}
+    {% assign custom_description = product.metafields.custom.custom_description %}
+  {% endif %}
+  {% if custom_description != blank %}
+    {{ custom_description | metafield_tag }}
+  {% else %}
+    {{ product.description }}
+  {% endif %}
+</div>
+
+<style>
+
+  .custom-description-wrap ul li, .custom-description-wrap .metafield-rich_text_field ul li{
+    font-size: 18px !important;
+    list-style: none;
+    position: relative;
+    display: flex;
+    gap: 15px;
+    text-align: left;
+
+  }
+  .custom-description-wrap ul li::before , .custom-description-wrap .metafield-rich_text_field ul li::before{
+    content: "";
+    flex-shrink: 0;
+    width: 19px;
+    height: 19px;
+    margin-top: 2px;
+    background-image: url(//dhaeplkdwscrud4r-74478518412.shopifypreview.com/cdn/shop/t/4/assets/Vector.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+
+  @media (max-width: 568px) {
+  .custom-description-wrap p strong {
+      font-size: 15px;
+      font-weight: 700;
+    }
+  }
+
+  
+
+</style>

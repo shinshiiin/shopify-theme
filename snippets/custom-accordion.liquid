@@ -1,0 +1,108 @@
+{% assign accordion_content = block.settings.content %}
+<div class="custom-accordion-wrap" >
+  {% if template contains 'test' %}
+    {% assign accordions = product.metafields.custom.custom_accordion_split_test.value %}
+  {% elsif split == true %}
+    {% assign accordions = product.metafields.custom.custom_accordion_split_test.value %}
+  {% elsif accordion_content == 'split' %}
+    {% assign accordions = product.metafields.custom.custom_accordion_split_test.value %}
+  {% else %}
+    {% assign accordions = product.metafields.custom.custom_accordion.value %}
+  {% endif %}
+  {% for accordion in accordions %}
+    {% if accordion.title != nil %}
+      <div class="accordion-header">
+          {{ accordion.title | metafield_tag }}
+          <svg class="icon" width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 1.72314L7.5 7.72314L13.5 1.72314" stroke="#1B365D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+      </div>
+      <div class="accordion-content">
+        {% if accordion.image != nil %}
+          <div class="accordion-image">
+            {{ accordion.image | image_url: width:800 | image_tag }}
+          </div>
+        {% endif %}
+        {% if accordion.content != nil %}
+          {{ accordion.content | metafield_tag }}
+        {% else %}
+          Add content in accordion metaobject
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% comment %}
+    Script is in custom.js.liquid    
+{% endcomment %}
+
+{% style %}
+
+  .product-block--{{ block.type }} {
+    margin-top: 10px;
+  }
+
+  .product-block--{{ block.type }} .custom-accordion-wrap {
+    border: 1px solid #E9E2F4;
+    border-radius: 10px;
+    padding: 7px 10px;
+    background-color: #FCFAFF;
+  }
+  
+  .product-block--{{ block.type }} .accordion-header {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #e2ecfb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-right: 10px;
+    font-size: clamp(14px, 3vw, 16px);
+    font-family: Finis Grotesk, sans-serif !important;
+    color: #605471;
+  }
+
+  .product-block--{{ block.type }} .accordion-header:last-child {
+    border-bottom: 1px solid #ededed;
+  }
+
+  .product-block--{{ block.type }} .accordion-image {
+    max-width: 500px;
+  }
+  
+  .product-block--{{ block.type }} .accordion-content {
+    display: none;
+    padding: 10px;
+    border-top: none;
+    font-size: clamp(14px, 2vw, 16px);
+    font-family: 'Chivo Mono';
+  }
+
+  .product-block--{{ block.type }} ul {
+    padding-left: 20px;
+  }
+  
+  .product-block--{{ block.type }} .icon {
+    width: 20px;
+    height: 21px;
+    transition: transform 0.3s;
+  }
+  
+  .product-block--{{ block.type }} .active .icon {
+    transform: rotate(180deg); 
+  }
+
+  @media only screen and (max-width: 768px) {
+    .product-block--{{ block.type }} .accordion-header {
+      padding: 10px 10px 10px 0px;
+    }
+
+    .product-block--{{ block.type }} .accordion-content {
+      text-align: left;
+    }
+  }
+  
+{% endstyle %}

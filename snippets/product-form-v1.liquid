@@ -1,0 +1,969 @@
+{% assign selected_variant_content = block.settings.content %}
+{% liquid
+  if show_payment_button == false or product.selling_plan_groups.size > 0
+    assign show_payment_button = false
+  else
+    assign show_payment_button = true
+  endif
+
+  assign variant = product.selected_or_first_available_variant
+
+  assign checkout_url = '/checkout'
+
+  for locale in shop.enabled_locales
+    if locale.primary == true
+      assign defaultLocale = locale.iso_code
+      if defaultLocale != request.locale.iso_code
+        assign checkout_url = request.locale.iso_code | append: '/checkout'
+      endif
+    endif
+  endfor
+
+  assign show_recipient_form_placeholders = true
+  assign recipient_form_textarea_rows = 5
+%}
+
+<div
+  class="
+    product_form
+    init
+    smart-payment-button--{{ show_payment_button }}
+    recipient-form-{{ show_recipient_form }}
+    quantity-box-{{ settings.display_product_quantity }}
+    {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}
+  "
+  id="product-form-{{ product.id }}"
+  data-product-form
+  data-money-format="{{ shop.money_format | strip_html }}"
+  data-shop-currency="{{ shop.currency }}"
+  data-options-size="{{ product.options.size }}"
+  data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+  data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
+  data-product="{{ product | json | escape }}"
+  data-product-title="{{ product.title | escape }}"
+  {% if settings.limit_quantity or settings.display_inventory_left %}
+    data-variant-inventory='[{%- for v in product.variants -%}{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
+  {% endif %}
+  data-product-id="{{ product.id }}"
+  data-tests="{{ selected_variant_content }}"
+>
+  {% form 'product', product %}
+
+  <div
+    class="
+      select
+      {% if product.has_only_default_variant %}default_select{% endif %}
+    "
+  >
+
+    {% if product.options.size == 1 and settings.product_form_style == 'select' %}
+      <label>{{ product.options[0] }}</label>
+    {% endif %}
+
+    <select
+      id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+      name="id"
+      class="{% if product.options.size > 1 %}multi_select{% endif %}"
+      data-variants
+    >
+      {% for v in product.variants %}
+        <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-featured-image="{{ v.featured_media }}" data-image="{{ v.featured_media | product_img_url: '600x' }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  {% if settings.product_form_style == "radio" and product.variants.size > 1 or settings.product_form_style == "radio" and product.options[0] != "Title" %}
+    <div class="swatch_options">
+      {% for option in product.options %}
+          {%
+            render 'product-swatch-v1',
+            option: option,
+            product: product
+          %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="order_process">
+    <p> <i>Orders are typically processed within <strong>1-2</strong> business days </i></p>
+  </div>
+
+  {% if product.available %}
+    {% if settings.display_inventory_left %}
+      <div class="items_left">
+        {% if variant.inventory_management != blank and variant.inventory_quantity > 0 %}
+          {% capture items_left_text %}
+            {% if variant.inventory_quantity == 1 %}
+              {{ 'products.product.items_left_count.one' | t }}
+            {% else %}
+              {{ 'products.product.items_left_count.other' | t }}
+            {% endif %}
+          {% endcapture %}
+          {% if variant.inventory_quantity <= settings.inventory_threshold %}
+            {{ variant.inventory_quantity }} {{ items_left_text }}
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+
+  <div class="purchase-details">
+    {% unless show_payment_button %}
+      {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form begin{% endcomment %}
+      {% comment %}
+        @param form {Object}
+          The form object
+      
+        @param section {Object}
+          The section object
+      
+        @param show_recipient_form {Boolean}
+          If true, show the gift card recipient form
+      
+        @param show_recipient_form_placeholders {Boolean}
+          If true, show recipient form placeholder attributes
+      
+        @param show_recipient_form_labels {Boolean}
+          If true, show recipient form input labels
+      
+        @param show_recipient_form_max_characters_message {Boolean}
+          If true, show the recipient form max characters message
+      
+        @param recipient_form_textarea_rows {Number}
+          A numerical value to specify the number of textarea rows
+      
+        @param recipient_form_textarea_classes {String}
+          A space separated list of class names added to recipient form textarea
+      
+        @param recipient_form_input_classes {String}
+          A space separated list of class names added to recipient form inputs
+      
+        @param recipient_form_label_classes {String}
+          A space separated list of class names added to recipient form labels
+      
+        @param recipient_form_label_position {String}
+          The recipient form input label position, either 'top', or 'bottom'
+      {% endcomment %}
+      
+      {% liquid
+        assign show_recipient_form_placeholders = show_recipient_form_placeholders | default: false
+        assign show_recipient_form_labels = show_recipient_form_labels | default: true, allow_false: true
+        assign show_recipient_form_max_characters_message = show_recipient_form_max_characters_message | default: true, allow_false: true
+        assign recipient_form_textarea_rows = recipient_form_textarea_rows | default: 5
+        assign recipient_form_label_position = recipient_form_label_position | default: 'top'
+      %}
+      
+      {%- if show_recipient_form and product.gift_card? -%}
+        <details class="recipient-disclosure" data-recipient-disclosure>
+          <summary class="recipient-disclosure__summary">
+            <label
+              class="recipient-disclosure__checkbox-label"
+              for="recipient-disclosure__checkbox-{{ section.id }}"
+            >
+              <input
+                class="recipient-disclosure__checkbox"
+                id="recipient-disclosure__checkbox-{{ section.id }}"
+                type="checkbox"
+                name="properties[__shopify_send_gift_card_to_recipient]"
+                tabindex="-1"
+                data-recipient-disclosure-checkbox
+              >
+      
+              {%- render 'recipient-form-disclosure-icon' -%}
+      
+              <span class="recipient-disclosure__checkbox-label-text">
+                {{- 'recipient.form.checkbox_label' | t -}}
+              </span>
+            </label>
+          </summary>
+      
+          {% comment %} Recipient email {% endcomment %}
+          <div class="recipient-form" data-recipient-form>
+            <div class="recipient-form__field">
+              {%- if show_recipient_form_labels -%}
+                {%- capture recipient_email_label -%}
+                  <label
+                    class="
+                      recipient-form__label
+                      {{ recipient_form_label_classes }}
+                    "
+                    for="recipient-email-{{ section.id }}"
+                  >
+                    {{- 'recipient.form.email_label' | t -}}
+                    <span class="recipient-form__required"> *</span>
+                  </label>
+                {%- endcapture -%}
+              {%- endif -%}
+      
+              {%- capture recipient_email -%}
+                <input
+                  class="
+                    recipient-form__input
+                    recipient-form__input--email
+                    {{ recipient_form_input_classes }}
+                  "
+                  id="recipient-email-{{ section.id }}"
+                  type="email"
+                  {%- if show_recipient_form_placeholders -%}
+                    placeholder="{{- 'recipient.form.email_placeholder' | t -}}"
+                  {%- endif -%}
+                  {%- unless show_recipient_form_labels -%}
+                    aria-label="{{- 'recipient.form.email_placeholder' | t -}}"
+                  {%- endunless -%}
+                  name="properties[Recipient email]"
+                  value="{{ form.email }}"
+                  data-recipient-form-input
+                  data-recipient-form-email-input
+                >
+              {%- endcapture -%}
+      
+              {%- capture recipient_error_message -%}
+                <span class="recipient-form__error-message" data-recipient-form-error-message>
+                  {{- 'recipient.form.error_message' | t -}}
+                </span>
+              {%- endcapture -%}
+      
+              {%- if recipient_form_label_position == 'top' -%}
+                <div class="recipient-form__input-wrapper">
+                  {{- recipient_email_label -}}
+                  {{- recipient_email -}}
+                </div>
+                {{- recipient_error_message -}}
+              {%- else -%}
+                <div class="recipient-form__input-wrapper">
+                  {{- recipient_email -}}
+                  {{- recipient_email_label -}}
+                </div>
+                {{- recipient_error_message -}}
+              {%- endif -%}
+            </div>
+      
+            {% comment %} Recipient name {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_name_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-name-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.name_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+      
+                {%- capture recipient_name -%}
+                  <input
+                    class="
+                      recipient-form__input
+                      recipient-form__input--name
+                      {{ recipient_form_input_classes }}
+                    "
+                    id="recipient-name-{{ section.id }}"
+                    type="text"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.name_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.name_placeholder' | t -}}"
+                    {%- endunless -%}
+                    name="properties[Recipient name]"
+                    value="{{ form.name }}"
+                    data-recipient-form-input
+                  >
+                {%- endcapture -%}
+      
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_name_label }}
+                  {{ recipient_name }}
+                {%- else -%}
+                  {{ recipient_name }}
+                  {{ recipient_name_label }}
+                {%- endif -%}
+              </div>
+            </div>
+      
+            {% comment %} Recipient message {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- liquid
+                  assign max_characters_length = 200
+      
+                  if show_recipient_form_max_characters_message
+                    assign max_characters_message = 'recipient.form.max_characters' | t: max_characters: max_characters_length
+                  endif
+                -%}
+      
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_message_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-message-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.message_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+      
+                {%- capture recipient_message -%}
+                  <textarea
+                    class="
+                      recipient-form__input
+                      recipient-form__input--message
+                      {{ recipient_form_input_classes }}
+                      {{ recipient_form_textarea_classes }}
+                    "
+                    id="recipient-message-{{ section.id }}"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.message_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.message_placeholder' | t -}}"
+                    {%- endunless -%}
+                    name="properties[Message]"
+                    {%- if recipient_form_textarea_rows != 0 -%}
+                      rows="{{ recipient_form_textarea_rows }}"
+                    {%- endif -%}
+                    maxlength="{{ max_characters_length }}"
+                    data-recipient-form-input
+                  >
+                    {{- form.message -}}
+                  </textarea>
+                {%- endcapture -%}
+      
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_message_label }}
+                  {{ recipient_message }}
+                {%- else -%}
+                  {{ recipient_message }}
+                  {{ recipient_message_label }}
+                {%- endif -%}
+              </div>
+      
+              {%- if show_recipient_form_max_characters_message -%}
+                <span class="recipient-form__max-characters-message">
+                  <small>
+                    {{- max_characters_message -}}
+                  </small>
+                </span>
+              {%- endif -%}
+            </div>
+      
+            {% comment %} Recipient send on date {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_date_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-date-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.send_on_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+      
+                {%- capture recipient_date -%}
+                  <input
+                    class="
+                      recipient-form__input
+                      recipient-form__input--date
+                      {{ recipient_form_input_classes }}
+                    "
+                    id="recipient-date-{{ section.id }}"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.send_on_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.send_on_placeholder' | t -}}"
+                    {%- endunless -%}
+                    type="date"
+                    name="properties[Send on]"
+                    autocomplete="send_on"
+                    pattern="\d{4}-\d{2}-\d{2}"
+                    value="{{ form.send_on }}"
+                    data-recipient-form-input
+                  >
+                {%- endcapture -%}
+      
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_date_label }}
+                  {{ recipient_date }}
+                {%- else -%}
+                  {{ recipient_date }}
+                  {{ recipient_date_label }}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </details>
+      {%- endif -%}
+      {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form end{% endcomment %}
+
+    {% endunless %}
+
+    {% if settings.display_product_quantity %}
+      <div class="purchase-details__quantity product-quantity-box">
+        <label for="quantity">{{ 'products.product.quantity' | t }}</label>
+        <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+        <input type="number" min="1" size="2" class="quantity" name="quantity" id="quantity" value="1" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %} />
+        <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+      </div>
+    {% endif %}
+
+    {% if show_payment_button %}
+      {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form begin{% endcomment %}
+      {% comment %}
+        @param form {Object}
+          The form object
+      
+        @param section {Object}
+          The section object
+      
+        @param show_recipient_form {Boolean}
+          If true, show the gift card recipient form
+      
+        @param show_recipient_form_placeholders {Boolean}
+          If true, show recipient form placeholder attributes
+      
+        @param show_recipient_form_labels {Boolean}
+          If true, show recipient form input labels
+      
+        @param show_recipient_form_max_characters_message {Boolean}
+          If true, show the recipient form max characters message
+      
+        @param recipient_form_textarea_rows {Number}
+          A numerical value to specify the number of textarea rows
+      
+        @param recipient_form_textarea_classes {String}
+          A space separated list of class names added to recipient form textarea
+      
+        @param recipient_form_input_classes {String}
+          A space separated list of class names added to recipient form inputs
+      
+        @param recipient_form_label_classes {String}
+          A space separated list of class names added to recipient form labels
+      
+        @param recipient_form_label_position {String}
+          The recipient form input label position, either 'top', or 'bottom'
+      {% endcomment %}
+      
+      {% liquid
+        assign show_recipient_form_placeholders = show_recipient_form_placeholders | default: false
+        assign show_recipient_form_labels = show_recipient_form_labels | default: true, allow_false: true
+        assign show_recipient_form_max_characters_message = show_recipient_form_max_characters_message | default: true, allow_false: true
+        assign recipient_form_textarea_rows = recipient_form_textarea_rows | default: 5
+        assign recipient_form_label_position = recipient_form_label_position | default: 'top'
+      %}
+      
+      {%- if show_recipient_form and product.gift_card? -%}
+        <details class="recipient-disclosure" data-recipient-disclosure>
+          <summary class="recipient-disclosure__summary">
+            <label
+              class="recipient-disclosure__checkbox-label"
+              for="recipient-disclosure__checkbox-{{ section.id }}"
+            >
+              <input
+                class="recipient-disclosure__checkbox"
+                id="recipient-disclosure__checkbox-{{ section.id }}"
+                type="checkbox"
+                name="properties[__shopify_send_gift_card_to_recipient]"
+                tabindex="-1"
+                data-recipient-disclosure-checkbox
+              >
+      
+              {%- render 'recipient-form-disclosure-icon' -%}
+      
+              <span class="recipient-disclosure__checkbox-label-text">
+                {{- 'recipient.form.checkbox_label' | t -}}
+              </span>
+            </label>
+          </summary>
+      
+          {% comment %} Recipient email {% endcomment %}
+          <div class="recipient-form" data-recipient-form>
+            <div class="recipient-form__field">
+              {%- if show_recipient_form_labels -%}
+                {%- capture recipient_email_label -%}
+                  <label
+                    class="
+                      recipient-form__label
+                      {{ recipient_form_label_classes }}
+                    "
+                    for="recipient-email-{{ section.id }}"
+                  >
+                    {{- 'recipient.form.email_label' | t -}}
+                    <span class="recipient-form__required"> *</span>
+                  </label>
+                {%- endcapture -%}
+              {%- endif -%}
+      
+              {%- capture recipient_email -%}
+                <input
+                  class="
+                    recipient-form__input
+                    recipient-form__input--email
+                    {{ recipient_form_input_classes }}
+                  "
+                  id="recipient-email-{{ section.id }}"
+                  type="email"
+                  {%- if show_recipient_form_placeholders -%}
+                    placeholder="{{- 'recipient.form.email_placeholder' | t -}}"
+                  {%- endif -%}
+                  {%- unless show_recipient_form_labels -%}
+                    aria-label="{{- 'recipient.form.email_placeholder' | t -}}"
+                  {%- endunless -%}
+                  name="properties[Recipient email]"
+                  value="{{ form.email }}"
+                  data-recipient-form-input
+                  data-recipient-form-email-input
+                >
+              {%- endcapture -%}
+      
+              {%- capture recipient_error_message -%}
+                <span class="recipient-form__error-message" data-recipient-form-error-message>
+                  {{- 'recipient.form.error_message' | t -}}
+                </span>
+              {%- endcapture -%}
+      
+              {%- if recipient_form_label_position == 'top' -%}
+                <div class="recipient-form__input-wrapper">
+                  {{- recipient_email_label -}}
+                  {{- recipient_email -}}
+                </div>
+                {{- recipient_error_message -}}
+              {%- else -%}
+                <div class="recipient-form__input-wrapper">
+                  {{- recipient_email -}}
+                  {{- recipient_email_label -}}
+                </div>
+                {{- recipient_error_message -}}
+              {%- endif -%}
+            </div>
+      
+            {% comment %} Recipient name {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_name_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-name-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.name_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+      
+                {%- capture recipient_name -%}
+                  <input
+                    class="
+                      recipient-form__input
+                      recipient-form__input--name
+                      {{ recipient_form_input_classes }}
+                    "
+                    id="recipient-name-{{ section.id }}"
+                    type="text"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.name_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.name_placeholder' | t -}}"
+                    {%- endunless -%}
+                    name="properties[Recipient name]"
+                    value="{{ form.name }}"
+                    data-recipient-form-input
+                  >
+                {%- endcapture -%}
+      
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_name_label }}
+                  {{ recipient_name }}
+                {%- else -%}
+                  {{ recipient_name }}
+                  {{ recipient_name_label }}
+                {%- endif -%}
+              </div>
+            </div>
+      
+            {% comment %} Recipient message {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- liquid
+                  assign max_characters_length = 200
+      
+                  if show_recipient_form_max_characters_message
+                    assign max_characters_message = 'recipient.form.max_characters' | t: max_characters: max_characters_length
+                  endif
+                -%}
+      
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_message_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-message-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.message_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+      
+                {%- capture recipient_message -%}
+                  <textarea
+                    class="
+                      recipient-form__input
+                      recipient-form__input--message
+                      {{ recipient_form_input_classes }}
+                      {{ recipient_form_textarea_classes }}
+                    "
+                    id="recipient-message-{{ section.id }}"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.message_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.message_placeholder' | t -}}"
+                    {%- endunless -%}
+                    name="properties[Message]"
+                    {%- if recipient_form_textarea_rows != 0 -%}
+                      rows="{{ recipient_form_textarea_rows }}"
+                    {%- endif -%}
+                    maxlength="{{ max_characters_length }}"
+                    data-recipient-form-input
+                  >
+                    {{- form.message -}}
+                  </textarea>
+                {%- endcapture -%}
+      
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_message_label }}
+                  {{ recipient_message }}
+                {%- else -%}
+                  {{ recipient_message }}
+                  {{ recipient_message_label }}
+                {%- endif -%}
+              </div>
+      
+              {%- if show_recipient_form_max_characters_message -%}
+                <span class="recipient-form__max-characters-message">
+                  <small>
+                    {{- max_characters_message -}}
+                  </small>
+                </span>
+              {%- endif -%}
+            </div>
+      
+            {% comment %} Recipient send on date {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_date_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-date-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.send_on_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+      
+                {%- capture recipient_date -%}
+                  <input
+                    class="
+                      recipient-form__input
+                      recipient-form__input--date
+                      {{ recipient_form_input_classes }}
+                    "
+                    id="recipient-date-{{ section.id }}"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.send_on_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.send_on_placeholder' | t -}}"
+                    {%- endunless -%}
+                    type="date"
+                    name="properties[Send on]"
+                    autocomplete="send_on"
+                    pattern="\d{4}-\d{2}-\d{2}"
+                    value="{{ form.send_on }}"
+                    data-recipient-form-input
+                  >
+                {%- endcapture -%}
+      
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_date_label }}
+                  {{ recipient_date }}
+                {%- else -%}
+                  {{ recipient_date }}
+                  {{ recipient_date_label }}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </details>
+      {%- endif -%}
+      {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form end{% endcomment %}
+
+    {% endif %}
+
+    <div class="custom-delivery-note" style="font-size: clamp(12px,2vw,14px); color: #585858; text-align: center; margin:0 auto; padding:2px 5px 5px;"><i>Orders are typically processed within 1-2 business days.</i></div>
+
+    <div class="purchase-details__buttons purchase-details__spb--{{ show_payment_button }} {% if product.available == false %}product-is-unavailable{% endif %}">
+      {% if settings.cart_action == 'reload_page' %}
+        <input type="hidden" name="return_to" value="back" />
+      {% elsif settings.cart_action == 'redirect_checkout' %}
+        <input type="hidden" name="return_to" value="{{ checkout_url }}" />
+      {% endif %}
+
+      {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
+      <button
+        type="submit"
+        name="add"
+        class="
+          add-to-cart
+          global-button
+          global-button--primary
+          {% if settings.cart_action == 'ajax' %}
+            ajax-submit
+          {% endif %}
+          {% if product.available == false %}
+            disabled
+          {% endif %}
+        "
+        data-label={{ add_to_cart_label | json }}
+        data-ajax-addtocart
+      >
+        <span class="text">
+          {% if product.available %}{{ add_to_cart_label }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}
+        </span>
+        <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
+          <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+        </svg>
+      </button>
+      <script>
+        document.addEventListener('click', function (e) {
+          const btn = e.target.closest('[data-ajax-addtocart]');
+          if (!btn) return;
+
+          e.preventDefault();
+
+          const form = btn.closest('form');
+
+          fetch('/cart/add.js', {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          })
+          .then(() => {
+            window.location.href = '/checkout';
+          });
+        });
+      </script>
+
+      
+        {% if show_payment_button %}
+          {{ form | payment_button }}
+        {% endif %}
+      
+
+      {% comment %}
+        {% render 'cc-checkout-button' , product:product, show_more_payment:false %}
+      {% endcomment %}
+
+      <div data-payment-terms-reference style="display: none;">
+        {{ form | payment_terms }}
+      </div>
+    </div>
+  </div>
+{% endform %}
+
+  <div class="surface-pick-up surface-pick-up--loading" data-surface-pick-up></div>
+  <div class="surface-pick-up__modal" data-surface-pick-up-modal data-test="{{ selected_variant_content }}"></div>
+</div>
+
+{% unless product.metafields.custom.custom_preselected_variant_split_test == nil and product.metafields.custom.custom_preselected_variant == nil %}
+  {% if selected_variant_content == 'split' %}
+    {% assign preselected_variant = product.metafields.custom.custom_preselected_variant_split_test %}
+  {% else %}
+    {% assign preselected_variant = product.metafields.custom.custom_preselected_variant %}
+  {% endif %}
+
+  {% assign preselected_variant_id_s = preselected_variant | split: '/' | last %}
+  {% assign preselected_variant_id = preselected_variant_id_s | plus: 0 %}
+
+  {% for variant in product.variants %}
+    {% if variant.id == preselected_variant_id %}
+      {% assign preselected_variant_title = variant.title %}
+    {% endif %}
+  {% endfor %}
+
+  <script>
+    window.addEventListener('load', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      if (urlParams.has('variant')) {
+        const variantFromUrl = urlParams.get('variant');
+        const activeSwatch = document.querySelector(`.swatch-element[data-id="${variantFromUrl}"]`);
+        if (activeSwatch) {
+          activeSwatch.classList.add('active');
+          console.log('Variant from URL detected — skipping preselection and setting active swatch.');
+
+          // ✅ Price update logic when variant is from URL
+          const price = parseFloat(activeSwatch.getAttribute('data-price').slice(1));
+          const compare_price = parseFloat(activeSwatch.getAttribute('data-compare').slice(1));
+          const count = activeSwatch.getAttribute('data-value').charAt(0);
+          const currency = activeSwatch.getAttribute('data-price').charAt(0);
+          const discountPercent = Math.round(((compare_price - price) / compare_price) * 100);
+
+          const price_wrap = document.querySelector('.product-block--custom_price');
+          const price_el = price_wrap.querySelector('.current_price .money');
+          const compare_el = price_wrap.querySelector('.was_price .money');
+          const savings_el = price_wrap.querySelector('.savings-off');
+
+          price_el.innerHTML = currency + (Math.floor(price / count * 100) / 100).toFixed(2);
+          let sub_text = document.createElement('span');
+          sub_text.classList.add('sub-text');
+          sub_text.innerText = ' each';
+          price_el.appendChild(sub_text);
+
+          if (price < compare_price) {
+            compare_el.innerText = currency + (Math.floor(compare_price / count * 100) / 100).toFixed(2);
+            savings_el.innerText = 'Save ' + discountPercent + '%';
+            compare_el.style.display = 'block';
+            savings_el.style.display = 'block';
+          } else {
+            compare_el.style.display = 'none';
+            savings_el.style.display = 'none';
+          }
+        }
+
+      const mainSlider = Flickity.data('.product_gallery.js-product-gallery');
+      if (mainSlider) {
+        mainSlider.select(0);
+      }
+
+        return; // ✅ Stop preselection if variant param exists
+      }
+
+      // ✅ Preselection logic (fallback)
+      const preselectedVariantTitle = "{{ preselected_variant_title | escape }}";
+      const preselectedVariantID = "{{ preselected_variant_id }}";
+
+      $('.selector-wrapper .single-option-selector').each(function () {
+        $(this).find('option').filter(function () {
+          return $(this).text().trim() === preselectedVariantTitle;
+        }).first().prop('selected', true).trigger('change');
+        console.log('Preselected variant applied.');
+      });
+
+      const activeSwatch = document.querySelector(`.swatch-element[data-id="${preselectedVariantID}"]`);
+      if (activeSwatch) {
+        activeSwatch.classList.add('active');
+      }
+
+      const mainSlider = Flickity.data('.product_gallery.js-product-gallery');
+      if (mainSlider) {
+        mainSlider.select(0);
+      }
+    });
+
+    // ✅ Swatch click price update
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.swatch-element').forEach(swatch => {
+        swatch.addEventListener('click', function () {
+          document.querySelectorAll('.swatch-element').forEach(el => el.classList.remove('active'));
+          this.classList.add('active');
+
+          const price = parseFloat(this.getAttribute('data-price').slice(1));
+          const compare_price = parseFloat(this.getAttribute('data-compare').slice(1));
+          const count = this.getAttribute('data-value').charAt(0);
+          const currency = this.getAttribute('data-price').charAt(0);
+          const discountPercent = Math.round(((compare_price - price) / compare_price) * 100);
+
+          const price_wrap = document.querySelector('.product-block--custom_price');
+          const price_el = price_wrap.querySelector('.current_price .money');
+          const compare_el = price_wrap.querySelector('.was_price .money');
+          const savings_el = price_wrap.querySelector('.savings-off');
+
+          price_el.innerHTML = currency + (Math.floor(price / count * 100) / 100).toFixed(2);
+          let sub_text = document.createElement('span');
+          sub_text.classList.add('sub-text');
+          sub_text.innerText = ' each';
+          price_el.appendChild(sub_text);
+
+          if (price < compare_price) {
+            compare_el.innerText = currency + (Math.floor(compare_price / count * 100) / 100).toFixed(2);
+            savings_el.innerText = 'Save ' + discountPercent + '%';
+            compare_el.style.display = 'block';
+            savings_el.style.display = 'block';
+          } else {
+            compare_el.style.display = 'none';
+            savings_el.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+{% else %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const variantId = {{ product.selected_or_first_available_variant.id }};
+      const activeSwatch = document.querySelector(`.swatch-element[data-id="${variantId}"]`);
+      if (activeSwatch) {
+        activeSwatch.classList.add('active');
+      }
+
+      document.querySelectorAll('.swatch-element').forEach(swatch => {
+        swatch.addEventListener('click', function () {
+          document.querySelectorAll('.swatch-element').forEach(el => el.classList.remove('active'));
+          this.classList.add('active');
+
+          const price = parseFloat(this.getAttribute('data-price').slice(1));
+          const compare_price = parseFloat(this.getAttribute('data-compare').slice(1));
+          const count = this.getAttribute('data-value').charAt(0);
+          const currency = this.getAttribute('data-price').charAt(0);
+          const discountPercent = Math.round(((compare_price - price) / compare_price) * 100);
+
+          const price_wrap = document.querySelector('.product-block--custom_price');
+          const price_el = price_wrap.querySelector('.current_price .money');
+          const compare_el = price_wrap.querySelector('.was_price .money');
+          const savings_el = price_wrap.querySelector('.savings-off');
+
+          price_el.innerHTML = currency + (Math.floor(price / count * 100) / 100).toFixed(2);
+          let sub_text = document.createElement('span');
+          sub_text.classList.add('sub-text');
+          {% comment %} sub_text.innerText = ' each'; {% endcomment %}// If ever need the "each" if active the variant
+          sub_text.innerText = '/each';
+          price_el.appendChild(sub_text);
+
+          {% comment %} compare_el.innerText = currency + (Math.floor(compare_price / count * 100) / 100).toFixed(2); {% endcomment %}
+          compare_el.innerText = '$' + compare_price;
+          {% comment %} savings_el.innerText = 'Save ' + discountPercent + '%'; {% endcomment %}
+          savings_el.innerText = 'IN STOCK';
+        });
+      });
+    });
+  </script>
+
+{% endunless %}
+
+

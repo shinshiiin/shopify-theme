@@ -1,0 +1,181 @@
+{% assign selected_variant_content = block.settings.content %}
+{% unless product.metafields.custom.custom_preselected_variant_split_test == nil and product.metafields.custom.custom_preselected_variant == nil %}
+  {% if selected_variant_content == 'split' %}
+    {% assign variant_target = product.metafields.custom.custom_preselected_variant_split_test.value %}
+  {% else %} 
+    {% assign variant_target = product.metafields.custom.custom_preselected_variant.value %}
+  {% endif %}
+{% else %}
+  {% assign variant_target = product.selected_or_first_available_variant %}
+{% endunless %}
+
+{% if variant_target.metafields.custom.selector_name != nil %}
+  {% assign variant_count = variant_target.metafields.custom.selector_name | slice: 0, 1 %}
+{% else %}
+  {% assign variant_count = variant_target.title | slice: 0, 1 %}
+{% endif %}
+{% capture discount %}{{ variant_target.compare_at_price | minus:variant_target.price | times:100 | divided_by:variant_target.compare_at_price }}%{% endcapture %}
+
+{% comment %}For 1 variant product - make sure count of bottles/pack is indicated in title . E.g (2 Bottles){% endcomment %}
+{% unless product.variants.size > 1 %}
+  {% assign number_part = product.title | remove: ')' | split: '(' %}
+  {% assign variant_count_string = number_part.last | strip | split: ' ' %}
+  {% assign variant_count = variant_count_string.first %}
+{% endunless %}
+
+<div class="price-wrap">
+
+
+  {% if product.tags contains 'bundle' %}
+    <div class="price-block">
+      <span class="current_price">
+        <span class="money">{{ product.price  | money }}</span>
+      </span>
+      <span class="was_price" {% if variant_target.compare_at_price == product.price %}style="display: none;"{% endif %}>
+        <span class="money">{{ product.compare_at_price | money }}</span>
+      </span>
+      <span class="savings-off" {% if variant_target.compare_at_price == variant_target.price %}style="display: none;"{% endif %}>
+        Saves {{ discount }}
+      </span>
+    </div>
+  
+  {% else %}
+
+    <div class="price-block">
+      <span class="current_price">
+        {% comment %} Original {% endcomment %}
+        <span class="money">{{ variant_target.price | divided_by: variant_count | money }}<span class="sub-text">/each</span></span>
+         {% comment %} <span class="money">{{ variant_target.price | divided_by: variant_count | money }}</span> {% endcomment %}
+      </span>
+      <span class="was_price" {% if variant_target.compare_at_price == product.price %}style="display: none;"{% endif %}>
+        <span class="money">{{ variant_target.compare_at_price | divided_by: variant_count | money }}</span>
+      </span>
+      <span class="savings-off" {% if variant_target.compare_at_price == variant_target.price %}style="display: none;"{% endif %}>
+        {% comment %} Original {% endcomment %}
+        {% comment %} Saves {{ discount }} {% endcomment %}
+        IN STOCK
+      </span>
+    </div>
+  
+  {% endif %}
+
+
+
+  {% comment %} <div class="custom-rating-wrap">
+    <img src="https://cdn.shopify.com/s/files/1/0598/3367/9943/files/stars-rating.svg?v=1740569973" alt="stars-icon" />
+    <span>{{ product.metafields.custom.custom_rating | remove: ' Reviews' }}</span>
+  </div> {% endcomment %}
+
+
+</div>
+
+{% if product.tags contains 'bundle' %}
+
+  <hr class="bundle-hr" />
+
+  {% style %}
+  .bundle-hr {
+    margin: 10px 0px;
+    border: none;
+    border-top: 1px solid #ededed;
+  }
+
+   @media only screen and (max-width:480px) {
+    .title-stock-wrap h1 {
+      font-size: 18px !important;
+      margin-bottom: 4px !important;
+    }
+    .custom-tagline {
+      font-size: 11px !important;
+      line-height: 1.3;
+    }
+   }
+  {% endstyle %}
+{% endif %}
+
+
+{% style %}
+
+.product-block--custom_price {
+  margin-top: clamp(0px, 1vw, 10px);
+  margin-bottom: clamp(5px, 1vw, 10px);
+}
+
+.product-block--custom_price .price-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Poppins';
+}
+
+
+.product-block--custom_price .price-block {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+}
+
+.product-block--custom_price .custom-rating-wrap {
+  font-size: clamp(11px, 3vw, 14px);
+  display: flex;
+  gap:3px;
+  align-items: center;
+}
+
+.product-block--custom_price .price-block .current_price {
+  font-size: clamp(16px, 3vw, 20px);
+  color: #605471;
+  font-weight: 700;
+}
+
+.product-block--custom_price .price-block .current_price .sub-text {
+  font-size: clamp(9px, 2vw, 12px);
+}
+{% comment %} {% unless product.tags contains 'bundle' %}
+  .was_price {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+  }
+{% endunless %} {% endcomment %}
+.product-block--custom_price .price-block .was_price {
+  font-size: clamp(12px, 3vw, 16px);
+  color: #C4C4C4;
+  margin:0px;
+  font-weight: 400;
+}
+
+.product-block--custom_price .price-block .unit-pricing {
+  display: none;
+}
+
+.product-block--custom_price .price-block .savings-off {
+  display: inline-block;
+  width: auto;
+  padding: 0px 6px;
+  /* border-radius: 4px; */
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-size: clamp(11px, 3vw, 13px);
+  font-weight: 400;
+  background: #FBD9C1;
+  color: #605471;
+}
+
+.product-block--custom_price .price-block .savings-off .money {
+  color: #fff;
+}
+
+@media only screen and (max-width:768px) {
+  .product-block--custom_price .custom-rating-wrap img {
+    max-height: 12px; 
+  }
+
+  /* .product-block--custom_price .price-block {
+    justify-content: center;
+  } */
+}
+{% endstyle %}

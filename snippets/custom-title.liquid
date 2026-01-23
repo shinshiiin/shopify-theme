@@ -1,0 +1,112 @@
+<div class="title-stock-wrap">
+  <div>
+    <h1 class="product_name">{{ product.title }}</h1>
+
+    {% if product.tags contains 'opt_v1' %}
+      <div class="">
+        {{  product.metafields.custom.custom_tagline_split_test }}
+      </div>
+    {% endif %}
+   
+    {% if template contains 'product' and template contains 'test' %}
+      {% assign custom_tagline = product.metafields.custom.custom_tagline_split_test %}
+      <div class="custom-tagline">
+        {{ custom_tagline }}
+      </div>
+    {% elsif split == true %}
+      {% assign custom_tagline = product.metafields.custom.custom_tagline_split_test %}
+      <div class="custom-tagline">
+        {{ custom_tagline }}
+      </div>
+    {% else %}
+      {% assign custom_tagline = product.metafields.custom.custom_tagline %}
+     
+      {% if custom_tagline %}
+        <div class="custom-tagline">
+          {{ custom_tagline }}
+        </div>
+      {% endif %}
+    {% endif %}
+   </div>    
+  
+  {% if product.selected_or_first_available_variant.available %}
+    <div class="stock-data">
+      {% if custom_label != nil %}
+        {% if custom_icon != nil %}
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.91562 1.04224C7.81298 0.836999 7.62722 0.685711 7.40546 0.626815C7.18362 0.567911 6.94722 0.607087 6.75634 0.734367C6.47962 0.918871 6.26514 1.18087 6.09834 1.43833C5.92686 1.70284 5.77591 2.00919 5.64243 2.33093C5.37554 2.97419 5.15131 3.74557 4.97102 4.51823C4.74204 5.49959 4.57257 6.5335 4.48006 7.38209C4.0927 7.12097 3.86795 6.82822 3.72387 6.52884C3.46186 5.98438 3.40591 5.30177 3.40591 4.40592C3.40591 4.08234 3.211 3.79064 2.91206 3.66681C2.61312 3.54298 2.26902 3.61143 2.04022 3.84023C0.946912 4.93354 0.400024 6.36811 0.400024 7.80001C0.400024 9.23193 0.946912 10.6665 2.04022 11.7598C4.22716 13.9467 7.7729 13.9467 9.95978 11.7598C11.0531 10.6665 11.6 9.23193 11.6 7.80001C11.6 6.36811 11.0531 4.93354 9.95978 3.84023C9.48674 3.36712 9.1757 3.05163 8.88171 2.66625C8.59122 2.28551 8.3025 1.81593 7.91562 1.04224ZM7.69706 11.097C6.75978 12.0343 5.24022 12.0343 4.30297 11.097C3.83434 10.6284 3.60002 10.0142 3.60002 9.40001C3.60002 9.40001 4.30297 9.80001 5.60006 9.80001C5.60006 9.00001 6.00002 6.60001 6.60002 6.20001C7.00002 7.00001 7.22842 7.23433 7.69706 7.70297C8.1657 8.17161 8.40002 8.78577 8.40002 9.40001C8.40002 10.0142 8.1657 10.6284 7.69706 11.097Z" fill="#605471"/>
+          </svg>
+        {% endif %}
+      <div>
+        <span>{{ custom_label }}</span>
+        <span>Limited Stock</span>
+      </div>
+      {% else %}
+        In Stock
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% style %}
+  .product-block--{{ block.type }} .title-stock-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+  }
+
+
+  .product-block--{{ block.type }} .title-stock-wrap div:first-child {
+    max-width: 500px;
+    margin-right: 10px;
+  }
+  
+  .product-block--{{ block.type }} .product_name {
+    font-size: clamp(24px, 2vw, 32px);
+    letter-spacing: 0px;
+    font-weight: 600;
+    margin: 0px;
+    line-height: normal;
+    padding: 0px;
+    text-transform: initial;
+    color: #605471;
+  }
+
+  .product-block--{{ block.type }} .custom-tagline-test {
+    font-size: clamp(10px, 2vw, 15px);
+    font-weight: 700;
+    color: #605471;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .product-block--{{ block.type }} .custom-bag-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width:30px;
+  }
+  
+  .product-block--{{ block.type }} .stock-data {
+    text-transform: uppercase;
+    color: #605471;
+    border: 1px solid #605471;
+    padding: 2px 8px !important;
+    display: flex;
+    font-size: clamp(11px, 2vw, 13px); 
+    font-weight: 500;
+    white-space: nowrap;
+    margin-top: 3px;
+    line-height: normal;
+    display: none;
+  }
+
+  .product-block--{{ block.type }} .stock-data div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+{% endstyle %}
