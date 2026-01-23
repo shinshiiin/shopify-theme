@@ -12,12 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "product_rating_8zcxcP": {
-          "type": "product_rating",
+        "product_rate_MqmxyK": {
+          "type": "product_rate",
           "settings": {
             "star_color": "#ffa500",
             "product_rating": "4.9 (7,803 Reviews)",
-            "text_color": "#8f7239"
+            "text_color": "#ffa500"
           }
         },
         "title": {
@@ -58,7 +58,7 @@
         }
       },
       "block_order": [
-        "product_rating_8zcxcP",
+        "product_rate_MqmxyK",
         "title",
         "price",
         "variant_picker",
