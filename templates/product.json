@@ -20,10 +20,10 @@
             "text_color": ""
           }
         },
-        "title_CbyUPf": {
+        "title_FRwfVm": {
           "type": "title",
           "settings": {
-            "title_color": "#a45050"
+            "title_color": ""
           }
         },
         "text_P8KdjD": {
@@ -68,7 +68,7 @@
       },
       "block_order": [
         "product_rating_636AyM",
-        "title_CbyUPf",
+        "title_FRwfVm",
         "text_P8KdjD",
         "price",
         "variant_picker",
