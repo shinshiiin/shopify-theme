@@ -22,7 +22,9 @@
         },
         "title": {
           "type": "title",
-          "settings": {}
+          "settings": {
+            "title_color": "#580000"
+          }
         },
         "price": {
           "type": "price",
