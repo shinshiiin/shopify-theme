@@ -739,6 +739,11 @@
       {{ product | structured_data }}
     </script>
   </div>
+  {% style %}
+    .product__title h1 {
+      color: {{ block.settings.title_color }};
+    }                  
+  {% endstyle %}
 </product-info>
 
 {% schema %}
@@ -2304,8 +2309,4 @@
 {% endschema %}
 
 
-{% style %}
-  .product__title h1 {
-    color: {{ block.settings.title_color }};
-  }                  
-{% endstyle %}
+
