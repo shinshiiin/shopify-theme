@@ -30,7 +30,7 @@
           "type": "text",
           "settings": {
             "text": "Text block",
-            "text_style": "uppercase"
+            "text_style": "subtitle"
           }
         },
         "price": {
