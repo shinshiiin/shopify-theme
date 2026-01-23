@@ -12,6 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "custom_rating_kLXRdL": {
+          "type": "custom_rating",
+          "settings": {
+            "product_rating": "sd"
+          }
+        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -57,6 +63,7 @@
         }
       },
       "block_order": [
+        "custom_rating_kLXRdL",
         "vendor",
         "title",
         "price",
