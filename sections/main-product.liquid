@@ -100,13 +100,19 @@
                 </p>
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
-                  <h1 style="color: {{ block.settings.title_color }};">{{ product.title | escape }}</h1>
+                  <h1>{{ product.title | escape }}</h1>
                   <a href="{{ product.url }}" class="product__title">
                     <h2 class="h1">
                       {{ product.title | escape }}
                     </h2>
                   </a>
                 </div>
+                  .product__title h1 {
+                    color: {{ block.settings.title_color }};
+                  }
+                <styles>
+                  .                  
+                </styles>
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
