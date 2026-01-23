@@ -89,8 +89,8 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
-              {%- when 'product_rating', block.settings.product_rating -%}
-                {% render 'product-rating' %}
+              {%- when 'product_rating' -%}
+                {% render 'product-rating', block: block %}
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
