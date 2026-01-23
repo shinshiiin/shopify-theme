@@ -107,11 +107,7 @@
                     </h2>
                   </a>
                 </div>  
-                {% style %}
-                  .product__title h1 {
-                    color: {{ block.settings.title_color }};
-                  }                  
-                {% endstyle %}
+                
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -2306,3 +2302,10 @@
   ]
 }
 {% endschema %}
+
+
+{% style %}
+  .product__title h1 {
+    color: {{ block.settings.title_color }};
+  }                  
+{% endstyle %}
