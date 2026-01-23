@@ -21,7 +21,7 @@
     assign text_color = block.settings.star_color
   else
     assign scheme = settings.color_schemes[block.settings.color_scheme].settings
-    assign text_color = scheme.text
+    assign star_color = scheme.text
   endif %}
 
 {% style %}
@@ -32,7 +32,7 @@
     text-align: left;
   }
   .{{ block.id }} svg path {
-    fill: {{ block.settings.star_color }};
+    fill: {{ star_color }};
   }
 
 {% endstyle %}
