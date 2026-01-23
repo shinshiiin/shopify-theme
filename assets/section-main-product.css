@@ -228,7 +228,7 @@ product-info {
 }
 
 .product__text {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 a.product__text {
