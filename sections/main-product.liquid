@@ -89,7 +89,7 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
-              {%- when 'product_rating' -%}
+              {%- when 'product_rating', block: block -%}
                 {% render 'product-rating' %}
               {%- when 'text' -%}
                 <p
