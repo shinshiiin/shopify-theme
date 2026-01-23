@@ -15,7 +15,9 @@
         "product_rating_8zcxcP": {
           "type": "product_rating",
           "settings": {
-            "product_rating": "4.9 (7,803 Reviews)"
+            "star_color": "#ffa500",
+            "product_rating": "4.9 (7,803 Reviews)",
+            "text_color": "#8f7239"
           }
         },
         "title": {
