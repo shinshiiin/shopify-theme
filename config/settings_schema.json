@@ -131,7 +131,7 @@
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "default": "assistant_n4",
+        "default": "alegreya_n4",
         "label": "t:settings_schema.typography.settings.type_body_font.label"
       },
       {
