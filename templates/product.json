@@ -20,10 +20,10 @@
             "text_color": "#6b6969"
           }
         },
-        "title": {
+        "title_CbyUPf": {
           "type": "title",
           "settings": {
-            "title_color": "#580000"
+            "title_color": ""
           }
         },
         "price": {
@@ -61,7 +61,7 @@
       },
       "block_order": [
         "product_rating_dJk97t",
-        "title",
+        "title_CbyUPf",
         "price",
         "variant_picker",
         "quantity_selector",
