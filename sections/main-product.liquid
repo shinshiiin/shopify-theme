@@ -104,11 +104,11 @@
                     <h1>{{ product.title | escape }}</h1>
                   </a>
                 </div>  
-                <styles>
+                {% style %}
                   .product__title h1 {
                     color: {{ block.settings.title_color }};
                   }                  
-                </styles>
+                {% endstyle %}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
