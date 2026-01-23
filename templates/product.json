@@ -12,12 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "product_rating_dJk97t": {
+        "product_rating_636AyM": {
           "type": "product_rating",
           "settings": {
             "star_color": "#ffa500",
             "product_rating_text": "4.9 (7,803 Reviews)",
-            "text_color": "#6b6969"
+            "text_color": ""
           }
         },
         "title_CbyUPf": {
@@ -67,7 +67,7 @@
         }
       },
       "block_order": [
-        "product_rating_dJk97t",
+        "product_rating_636AyM",
         "title_CbyUPf",
         "text_P8KdjD",
         "price",
@@ -80,7 +80,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_mode": "scheme",
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-neon",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
