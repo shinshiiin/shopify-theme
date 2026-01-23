@@ -1,0 +1,14 @@
+<div class="custom-rating-wrap">
+  <img src="https://cdn.shopify.com/s/files/1/0598/3367/9943/files/stars-rating.svg?v=1740569973" alt="stars-icon" />
+  <span>{{ product.metafields.custom.custom_rating }}</span>
+</div>
+
+{% style %}
+  .product-block--{{ block.type }}  span { 
+    font-size: clamp(12px, 3vw, 16px); 
+  }
+  .custom-rating-wrap{
+    text-align: left;
+
+  }
+{% endstyle %}
