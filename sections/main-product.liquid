@@ -2136,10 +2136,26 @@
       "label": "t:sections.main-product.settings.enable_sticky_info.label"
     },
     {
+      "type": "select",
+      "id": "color_mode",
+      "label": "Color Mode",
+      "options": [
+        {
+          "value": "scheme",
+          "label": "Use Color Scheme"
+        },
+        {
+          "value": "custom",
+          "label": "Use Custom Colors"
+        }
+      ],
+      "default": "scheme"
+    },
+    {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
-      "default": "none"
+      "default": "scheme-1"
     },
     {
       "type": "header",
