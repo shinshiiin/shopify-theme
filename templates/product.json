@@ -12,6 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "product_rating_8zcxcP": {
+          "type": "product_rating",
+          "settings": {
+            "product_rating": "4.9 (7,803 Reviews)"
+          }
+        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -57,6 +63,7 @@
         }
       },
       "block_order": [
+        "product_rating_8zcxcP",
         "vendor",
         "title",
         "price",
