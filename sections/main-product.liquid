@@ -114,7 +114,7 @@
                 {% endstyle %}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-                  {%- render 'custom-price',
+                  {%- render 'price',
                     product: product,
                     use_variant: true,
                     show_badges: true,
