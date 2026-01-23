@@ -26,6 +26,13 @@
             "title_color": ""
           }
         },
+        "text_eMQdLy": {
+          "type": "text",
+          "settings": {
+            "text": "Text block",
+            "text_style": "body"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -62,6 +69,7 @@
       "block_order": [
         "product_rating_dJk97t",
         "title_CbyUPf",
+        "text_eMQdLy",
         "price",
         "variant_picker",
         "quantity_selector",
