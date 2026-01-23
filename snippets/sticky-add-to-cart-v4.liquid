@@ -1,0 +1,560 @@
+{% comment %}
+  Sticky Add to Cart Component - Version 4
+  Shows when user scrolls past the main product section
+  Includes product image, variant selection, pricing, and add to cart functionality
+{% endcomment %}
+
+<!-- Sticky Add to Cart -->
+<div id="sticky-add-to-cart" class="sticky-add-to-cart" style="display: none;">
+  <div class="sticky-cart-container">
+    <div class="sticky-cart-content">
+      <div class="sticky-cart-image">
+        {% if product.featured_image %}
+          <img
+            src="{{ product.featured_image | image_url: width: 80 }}"
+            alt="{{ product.title }}"
+            width="80"
+            height="80"
+          >
+        {% else %}
+          <div class="sticky-cart-placeholder">
+            <div class="placeholder-box"></div>
+            <div class="placeholder-box"></div>
+            <div class="placeholder-box"></div>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="sticky-cart-details">
+        <div class="sticky-cart-offer">
+          <span class="offer-text">Offer: </span>
+          <select class="sticky-cart-variant-select" data-product-id="{{ product.id }}">
+            {% for variant in product.variants %}
+              {% assign variant_count = variant.title | slice: 0, 1 %}
+              <option
+                value="{{ variant.id }}"
+                data-price="{{ variant.price }}"
+                data-compare-price="{{ variant.compare_at_price | default: 0 }}"
+                {% if variant_count == '3' %}
+                  selected
+                {% endif %}
+              >
+                {{ variant.title }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="sticky-cart-pricing">
+          <span class="sticky-cart-current-price"></span>
+          <span class="sticky-cart-compare-price" style="display: none;"></span>
+        </div>
+      </div>
+
+      <div class="sticky-cart-actions">
+        {% comment %} <div class="sticky-cart-savings" type="button">Save <span class="savings-amount"></span></div> {% endcomment %}
+        <button class="sticky-cart-add-to-cart" type="button" data-add-to-cart>ORDER NOW</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  /* Sticky Add to Cart Styles */
+  .sticky-add-to-cart {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* background: #fff;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1); */
+    z-index: 1000;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    padding: 15px;
+  }
+
+  .sticky-add-to-cart.show {
+    transform: translateY(0);
+  }
+
+  .sticky-cart-container {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .sticky-cart-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 5px 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .sticky-cart-image {
+    flex-shrink: 0;
+  }
+
+  .sticky-cart-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .sticky-cart-placeholder {
+    width: 60px;
+    height: 60px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    position: relative;
+  }
+
+  .placeholder-box {
+    width: 12px;
+    height: 12px;
+    background: #605471;
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+
+  .placeholder-box:nth-child(2) {
+    margin-top: -4px;
+    margin-left: 6px;
+  }
+
+  .placeholder-box:nth-child(3) {
+    margin-top: -4px;
+    margin-left: -6px;
+  }
+
+  .sticky-cart-details {
+    flex: 1;
+    display: flex;
+    /* flex-direction: column; */
+    gap: 8px;
+    align-items: center;
+  }
+
+  .sticky-cart-offer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .offer-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .sticky-cart-variant-select {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    min-width: 240px;
+    margin-bottom: 0;
+  }
+
+  .sticky-cart-variant-select:focus {
+    outline: none;
+    border-color: #605471;
+  }
+
+  .sticky-cart-pricing {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sticky-cart-compare-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  .sticky-cart-current-price {
+    /* font-size: 24px; */
+    font-weight: 700;
+    color: #605471;
+  }
+
+  .sticky-cart-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .sticky-cart-savings {
+    background: #e4e7b0;
+    color: #605471;
+    border: none;
+    border-radius: 100px;
+    padding: 8px 30px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+  }
+
+  .sticky-cart-add-to-cart {
+    background: #605471;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 100px;
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+
+  .sticky-cart-add-to-cart:hover {
+    background: #0f2442;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .sticky-cart-content {
+      padding: 12px;
+      gap: 12px;
+    }
+
+    .sticky-cart-image img,
+    .sticky-cart-placeholder {
+      width: 50px;
+      height: 50px;
+    }
+
+    .sticky-cart-details {
+      gap: 6px;
+    }
+
+    .offer-text {
+      font-size: 12px;
+    }
+
+    .sticky-cart-variant-select {
+      font-size: 12px;
+      padding: 4px 8px;
+      min-width: 100px;
+    }
+
+    .sticky-cart-compare-price {
+      font-size: 12px;
+    }
+
+    .sticky-cart-current-price {
+      font-size: 14px;
+    }
+
+    .sticky-cart-actions {
+      gap: 8px;
+    }
+
+    .sticky-cart-savings {
+      padding: 6px 10px;
+      font-size: 10px;
+    }
+
+    .sticky-cart-add-to-cart {
+      padding: 14px 12px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .sticky-cart-content {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .sticky-cart-image {
+      align-self: center;
+      display: none;
+    }
+
+    .sticky-cart-actions {
+      justify-content: center;
+    }
+
+    .sticky-cart-savings {
+      display: none;
+    }
+
+    .sticky-cart-savings,
+    .sticky-cart-add-to-cart {
+      flex: 1;
+    }
+
+    .sticky-cart-variant-select {
+      min-height: 0 !important;
+      height: 24px;
+    }
+  }
+{% endstyle %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const stickyCart = document.getElementById('sticky-add-to-cart');
+    const productSection = document.querySelector('.product-container');
+    const variantSelect = document.querySelector('.sticky-cart-variant-select');
+    const currentPriceEl = document.querySelector('.sticky-cart-current-price');
+    const comparePriceEl = document.querySelector('.sticky-cart-compare-price');
+    const savingsAmountEl = document.querySelector('.savings-amount');
+    const addToCartBtn = document.querySelector('.sticky-cart-add-to-cart');
+    const savingsBtn = document.querySelector('.sticky-cart-savings');
+
+    if (!stickyCart || !productSection) return;
+
+    // Get product data
+    const productId = variantSelect.dataset.productId;
+    const variants = {{ product.variants | json }};
+
+    // Initialize sticky cart with 3-month supply variant (most popular)
+    function initializeStickyCart() {
+      // Find the 3-month supply variant (most popular)
+      const threeMonthVariant = variants.find(v => {
+        const variantCount = v.title.charAt(0);
+        return variantCount === '3';
+      });
+
+      // Fallback to first variant if 3-month not found
+      const selectedVariant = threeMonthVariant || variants[0];
+      updateStickyCartPricing(selectedVariant);
+      
+      // Sync with dynamic price selector on initialization
+      const priceSelector = document.querySelector('.{{ product_version }}-price-selector__container');
+      if (priceSelector && selectedVariant) {
+        const options = priceSelector.querySelectorAll('.{{ product_version }}-price-selector__option');
+        options.forEach(option => {
+          option.classList.remove('selected');
+          const radio = option.querySelector('input[type="radio"]');
+          if (radio) radio.checked = false;
+        });
+        
+        const selectedOption = priceSelector.querySelector(`[data-variant-id="${selectedVariant.id}"]`);
+        if (selectedOption) {
+          selectedOption.classList.add('selected');
+          const radio = selectedOption.querySelector('input[type="radio"]');
+          if (radio) radio.checked = true;
+        }
+      }
+    }
+
+    // Update pricing in sticky cart
+    function updateStickyCartPricing(variant) {
+      if (!currentPriceEl) return;
+
+      const price = formatMoney(variant.price);
+      {% comment %} original {% endcomment %}
+      {% comment %} currentPriceEl.textContent = price; {% endcomment %}
+       currentPriceEl.textContent = `${price} / each`;
+
+      if (comparePriceEl && variant.compare_at_price && variant.compare_at_price > variant.price) {
+        const comparePrice = formatMoney(variant.compare_at_price);
+        comparePriceEl.textContent = comparePrice;
+        comparePriceEl.style.display = 'inline';
+
+        const savings = variant.compare_at_price - variant.price;
+        const savingsFormatted = formatMoney(savings);
+        if (savingsAmountEl) {
+          savingsAmountEl.textContent = savingsFormatted;
+        }
+      } else {
+        if (comparePriceEl) {
+          comparePriceEl.style.display = 'none';
+        }
+        if (savingsAmountEl) {
+          savingsAmountEl.textContent = '';
+        }
+      }
+    }
+
+    // Format money helper
+    function formatMoney(cents) {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      }).format(cents / 100);
+    }
+
+    // Handle variant selection change
+    if (variantSelect) {
+      variantSelect.addEventListener('change', function() {
+        const selectedVariantId = this.value;
+        const selectedVariant = variants.find(v => v.id == selectedVariantId);
+        if (selectedVariant) {
+          updateStickyCartPricing(selectedVariant);
+          
+          // Update dynamic price selector if it exists
+          const priceSelector = document.querySelector('.{{ product_version }}-price-selector__container');
+          if (priceSelector) {
+            const options = priceSelector.querySelectorAll('.{{ product_version }}-price-selector__option');
+            options.forEach(option => {
+              option.classList.remove('selected');
+              const radio = option.querySelector('input[type="radio"]');
+              if (radio) radio.checked = false;
+            });
+            
+            const selectedOption = priceSelector.querySelector(`[data-variant-id="${selectedVariantId}"]`);
+            if (selectedOption) {
+              selectedOption.classList.add('selected');
+              const radio = selectedOption.querySelector('input[type="radio"]');
+              if (radio) radio.checked = true;
+              
+              // Update order button pricing
+              const orderButton = priceSelector.querySelector('.{{ product_version }}-price-selector__order-button');
+              const currentPriceEl = orderButton.querySelector('[data-current-price]');
+              const comparePriceEl = orderButton.querySelector('[data-compare-price]');
+              
+              if (currentPriceEl) {
+                currentPriceEl.textContent = formatMoney(selectedVariant.price);
+              }
+              
+              if (comparePriceEl) {
+                if (selectedVariant.compare_at_price && selectedVariant.compare_at_price > selectedVariant.price) {
+                  comparePriceEl.textContent = formatMoney(selectedVariant.compare_at_price);
+                  comparePriceEl.style.display = 'inline';
+                } else {
+                  comparePriceEl.style.display = 'none';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Handle add to cart
+    if (addToCartBtn) {
+      {% comment %} OLD VERSION {% endcomment %}
+      {% comment %} addToCartBtn.addEventListener('click', function() {
+        const selectedVariantId = variantSelect.value;
+
+        // Try to find existing product form
+        const productForm = document.querySelector('#product-form-' + productId);
+        if (productForm) {
+          const variantSelectInForm = productForm.querySelector('select[name="id"]');
+          if (variantSelectInForm) {
+            variantSelectInForm.value = selectedVariantId;
+            variantSelectInForm.dispatchEvent(new Event('change'));
+          }
+          productForm.submit();
+          // Add a small delay to ensure form submission completes
+          setTimeout(() => {
+            window.location.href = '/cart';
+          }, 100);
+        } else {
+          // Fallback: direct add to cart
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id: selectedVariantId,
+              quantity: 1
+            })
+          }).then(response => response.json())
+            .then(data => {
+              if (data.status === 422) {
+                alert('This item is sold out.');
+              } else {
+                // Redirect to cart
+                window.location.href = '/cart';
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('There was an error adding the item to cart.');
+            });
+        }
+      }); {% endcomment %}
+      {% comment %} END OLD VERSION {% endcomment %}
+
+      addToCartBtn.addEventListener('click', function () {
+        const selectedVariantId = variantSelect.value;
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: selectedVariantId,
+            quantity: 1
+          })
+        })
+        .then(res => {
+          if (!res.ok) throw new Error('Add to cart failed');
+          window.location.href = '/checkout';
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Could not add item to cart');
+        });
+      });
+
+
+    }
+
+    // Handle savings button click (scroll to main pricing)
+    if (savingsBtn) {
+      savingsBtn.addEventListener('click', function() {
+        const mainPricing = document.querySelector('.{{ product_version }}-price-selector');
+        if (mainPricing) {
+          mainPricing.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    // Scroll detection
+    let ticking = false;
+    function updateStickyCartVisibility() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          const productSectionRect = productSection.getBoundingClientRect();
+          const shouldShow = productSectionRect.bottom < 0; // When product section is above viewport
+
+          if (shouldShow) {
+            stickyCart.style.display = 'block';
+            setTimeout(() => stickyCart.classList.add('show'), 10);
+          } else {
+            stickyCart.classList.remove('show');
+            setTimeout(() => {
+              if (!stickyCart.classList.contains('show')) {
+                stickyCart.style.display = 'none';
+              }
+            }, 300);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    // Listen for scroll events
+    window.addEventListener('scroll', updateStickyCartVisibility);
+
+    // Initialize on load
+    initializeStickyCart();
+    updateStickyCartVisibility();
+  });
+</script>

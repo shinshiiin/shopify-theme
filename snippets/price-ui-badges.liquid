@@ -1,0 +1,76 @@
+{% if settings.sale_banner_enabled %}
+  <div class="price-ui-badges price-ui-badges--{{ settings.sticker_style }}">
+    {% if product.compare_at_price_min > product.price_min and product.available != false %}
+      {% if settings.sale_badge_format == 'percent' %}
+        {% assign display_percent = true %}
+      {% else %}
+        {% assign display_percent = false %}
+      {% endif %}
+
+      <div
+        class="price-ui-badge"
+        data-price-ui-badge
+        data-display-percent="{{ display_percent }}"
+      >
+        {% if page_type == 'collection' %}
+          <div class="price-ui-badge__sticker">
+            <span
+              class="price-ui-badge__sticker-text"
+            >
+              {% if display_percent == false %}
+                {{ 'collections.general.sale' | t }}
+              {% else %}
+                {% if product.price_varies == true %}
+                  {{- 'products.product.up_to' | t -}}
+                {% endif %}
+                {{
+                  product.compare_at_price_min
+                  | minus: product.price_min
+                  | times: 100
+                  | divided_by: product.compare_at_price_min
+                -}}
+                {{- 'products.product.percent_off' | t -}}
+              {% endif %}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if product.available == false and page_type == 'collection' %}
+      <div
+        class="price-ui-badge"
+        data-price-ui-badge
+      >
+        <div class="price-ui-badge__sticker price-ui-badge__sticker--sold-out">
+          <span
+            class="price-ui-badge__sticker-text"
+            data-badge
+          >
+            {{- 'products.product.sold_out' | t -}}
+          </span>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if collection_handles contains 'new' %}
+      <div class="price-ui-badge price-ui-badge--new">
+        <div class="price-ui-badge__sticker price-ui-badge__sticker--new">
+          <span class="price-ui-badge__sticker-text price-ui-badge__sticker-text--new">
+            {{- 'collections.general.new' | t -}}
+          </span>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if collection_handles contains 'pre-order' %}
+      <div class="price-ui-badge price-ui-badge--pre-order">
+        <div class="price-ui-badge__sticker price-ui-badge__sticker--pre-order">
+          <span class="price-ui-badge__sticker-text price-ui-badge__sticker-text--pre-order">
+            {{- 'collections.general.pre_order' | t -}}
+          </span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
