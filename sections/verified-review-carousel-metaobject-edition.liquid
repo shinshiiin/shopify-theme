@@ -18,7 +18,8 @@
         {% for review in reviews %}
           <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
 
-            {% if block.settings.image %}
+            {% if review.image %}
+              {% assign image = review.image | image_url: width: 1000 %}
               <img
                 src="{{ block.settings.image | image_url: width: 1000 }}"
                 alt="{{ block.settings.customer_name | default: 'Customer' }}"
@@ -35,7 +36,7 @@
             
             <div class="author-stars">
               {% assign max = 5 %}
-              {% assign filled = block.settings.customer_rating | default: 5 %}
+              {% assign filled = review.customer_rating | default: 5 %}
               {% assign empty = max | minus: filled %}
 
               {% for i in (1..filled) %}★{% endfor %}
@@ -45,9 +46,9 @@
             <div class="testimonial-author">
               <div class="author-info">
                 <div class="author-name">
-                  {{ block.settings.customer_name }}
-                  {% if block.settings.customer_age %}
-                  , {{ block.settings.customer_age }}
+                  {{ review.customer_name }}
+                  {% if review.customer_age %}
+                    , {{ review.customer_age }}
                   {% endif %}
                 </div>
                 <div class="author-verified">
@@ -72,15 +73,15 @@
               </div>
             </div>
 
-            {% if block.settings.customer_heading %}
+            {% if review.customer_heading %}
               <h3 class="testimonial-title">
-                {{ block.settings.customer_heading | strip_html }}
+                {{ review.customer_heading | strip_html }}
               </h3>
             {% endif %}
 
-            {% if block.settings.customer_review %}
+            {% if review.customer_review %}
               <p class="testimonial-content">
-                {{ block.settings.customer_review | truncate: 340 }}
+                {{ review.customer_review }}
               </p>
             {% endif %}
 
