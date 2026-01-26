@@ -12,8 +12,10 @@
 
     <div class="testimonials-carousel">
       <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
+
+        {% assign reviews = section.settings.review_metaobject %}
         
-        {% for block in section.blocks %}
+        {% for review in reviews %}
           <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
 
             {% if block.settings.image %}
@@ -579,8 +581,8 @@
   "name": "Reviews Carousel (Meta)",
   "settings": [
     {
-      "type": "metaobject",
-      "id": "featured_item",
+      "type": "metaobject_list",
+      "id": "review_metaobject",
       "label": "Select Metaobject",
       "metaobject_type": "testimonials"
     }
