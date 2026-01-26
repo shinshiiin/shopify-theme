@@ -14,79 +14,62 @@
       <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
 
         {% assign reviews = section.settings.review_metaobject %}
-        
-        {% for review in reviews %}
-          <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
 
-            {% if review.image %}
-              {% assign image = review.image | image_url: width: 1000 %}
-              <img
-                src="{{ block.settings.image | image_url: width: 1000 }}"
-                alt="{{ block.settings.customer_name | default: 'Customer' }}"
-                loading="lazy"
-                style="object-position: {{ block.settings.position }};"
-              >
-            {% else %}
-              <img
-                src="{{ 'placeholder.webp' | asset_url }}"
-                alt="{{ block.settings.customer_name | default: 'Customer' }}"
-                loading="lazy"
-              >
-            {% endif %}
-            
-            <div class="author-stars">
-              {% assign max = 5 %}
-              {% assign filled = review.customer_rating | default: 5 %}
-              {% assign empty = max | minus: filled %}
+        {% if reviews %}
+          {% for review in reviews %}
+            <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
 
-              {% for i in (1..filled) %}★{% endfor %}
-              {% for i in (1..empty) %}☆{% endfor %}
-            </div>
+              {% if review.image %}
+                <img
+                  src="{{ review.image | image_url: width: 1000 }}"
+                  alt="{{ review.customer_name | escape }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <img
+                  src="{{ 'placeholder.webp' | asset_url }}"
+                  alt="Customer"
+                  loading="lazy"
+                >
+              {% endif %}
 
-            <div class="testimonial-author">
-              <div class="author-info">
-                <div class="author-name">
-                  {{ review.customer_name }}
-                  {% if review.customer_age %}
-                    , {{ review.customer_age }}
-                  {% endif %}
-                </div>
-                <div class="author-verified">
-                   <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="margin-right:4px;"
-                  >
-                    <!-- Circle background -->
-                    <circle cx="12" cy="12" r="12" />
+              <div class="author-stars">
+                {% assign max = 5 %}
+                {% assign filled = review.customer_rating.value | default: 5 %}
+                {% assign empty = max | minus: filled %}
+                {% for i in (1..filled) %}★{% endfor %}
+                {% for i in (1..empty) %}☆{% endfor %}
+              </div>
 
-                    <!-- Check icon -->
-                    <path
-                      d="M9.5 13.8L6.7 11L5.3 12.4L9.5 16.6L18.7 7.4L17.3 6L9.5 13.8Z"
-                      fill="#ffffff"
-                    />
-                  </svg>
-                  Verified Customer
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <div class="author-name">
+                    {{ review.customer_name }}
+                    {% if review.customer_age %}
+                      , {{ review.customer_age }}
+                    {% endif %}
+                  </div>
+                  <div class="author-verified">
+                    ✔ Verified Customer
+                  </div>
                 </div>
               </div>
+
+              {% if review.customer_heading %}
+                <h3 class="testimonial-title">
+                  {{ review.customer_heading | strip_html }}
+                </h3>
+              {% endif %}
+
+              {% if review.customer_review %}
+                <p class="testimonial-content">
+                  {{ review.customer_review }}
+                </p>
+              {% endif %}
+
             </div>
-
-            {% if review.customer_heading %}
-              <h3 class="testimonial-title">
-                {{ review.customer_heading | strip_html }}
-              </h3>
-            {% endif %}
-
-            {% if review.customer_review %}
-              <p class="testimonial-content">
-                {{ review.customer_review }}
-              </p>
-            {% endif %}
-
-          </div>
-        {% endfor %}
+          {% endfor %}
+        {% endif %}
 
       </div>
     </div>  
