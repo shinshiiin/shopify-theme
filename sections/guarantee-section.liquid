@@ -1,10 +1,9 @@
 <section class="guarantee-section">
   <div class="guarantee-container">
-
     {%- comment -%} Content Section {%- endcomment -%}
-    <div class="content">
+    <div class="guarantee-content">
       {%- if section.settings.logo -%}
-        <div class="logo">
+        <div class="guarantee-logo">
           {{ section.settings.logo
             | image_url: width: 114
             | image_tag:
@@ -13,7 +12,7 @@
           }}
         </div>
       {%- else -%}
-        <div class="logo">
+        <div class="guarantee-logo">
           <img
             src="{{ 'guarantee_logo.webp' | asset_url }}"
             alt="Guarantee logo"
@@ -24,20 +23,17 @@
         </div>
       {%- endif -%}
       
-      <div class="pdp-section-title-wrap">
-        <h2 class="pdp-section-title">{{ section.settings.title }}</h2>
-      </div>
+      <h2 class="guarantee-title">{{ section.settings.title }}</h2>
       
-      <div class="guarantee-text">
-        <p>{{ section.settings.subtitle }}</p>
-        <div class="guarantee-action-wrap">
-          <button type="button" class="guarantee-btn">{{ section.settings.cta_text }}</button>
-        </div>
+      <p class="guarantee-subtitle">{{ section.settings.subtitle }}</p>
+      
+      <div class="guarantee-action">
+        <button type="button" class="guarantee-btn">{{ section.settings.cta_text }}</button>
       </div>
     </div>
 
     {%- comment -%} Image Section {%- endcomment -%}
-    <div class="image">
+    <div class="guarantee-image">
       {%- if section.settings.image -%}
         {{ section.settings.image
           | image_url: width: 1000
@@ -65,66 +61,65 @@
 
   .guarantee-section {
     width: 100%;
+    padding: 0 20px;
   }
 
   .guarantee-container {
     display: flex;
-    justify-content: center;
     max-width: 1280px;
     margin: 0 auto;
+    overflow: hidden;
+    border-radius: 24px;
   }
 
-  /* Content Area */
-  .content {
+  /* ============================================
+     Content Area
+     ============================================ */
+
+  .guarantee-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1 1 65%;
     padding: 50px 75px;
     background: linear-gradient(180deg, #B7A0D7 0%, #605471 100%);
-    border-radius: 24px 0 0 24px;
-    min-width: 65%;
+    text-align: center;
   }
 
-  /* .content .logo {
-    display: flex;    
-    justify-content: center;
-  } */
-
-  /* .content .logo img {
+  .guarantee-logo {
     margin-bottom: 20px;
-    max-height: 30%;
-  } */
+  }
 
-  .content .pdp-section-title {
+  .guarantee-logo img {
+    max-width: 114px;
+    height: auto;
+  }
+
+  .guarantee-title {
     color: #FDFDFD;
     font-family: 'Albert Sans', sans-serif;
     font-size: 40px;
     font-weight: 600;
-    text-align: center;
+    line-height: 1.2;
     margin: 0 0 20px;
   }
 
-  .content .guarantee-text {
-    width: 100%;
-  }
-
-  .content p {
+  .guarantee-subtitle {
     color: #FDFDFD;
     font-size: 20px;
-    text-align: center;
+    line-height: 1.5;
     margin: 0 0 30px;
   }
 
-  /* Button Styles */
-  .guarantee-action-wrap {
-    text-align: center;
+  .guarantee-action {
+    width: 100%;
   }
 
   .guarantee-btn {
-    width: 231px;
+    min-width: 231px;
     height: 60px;
-    padding: 0 20px;
+    padding: 0 32px;
     background-color: #FDFDFD;
     color: #605471;
     border: 2px solid #FDFDFD;
@@ -133,22 +128,33 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-transform: uppercase;
   }
 
   .guarantee-btn:hover {
     background-color: transparent;
     color: #FDFDFD;
+    transform: translateY(-2px);
   }
 
-  /* Image Area */
-  .image {
-    height: auto;
+  .guarantee-btn:active {
+    transform: translateY(0);
   }
 
-  .image img {
+  /* ============================================
+     Image Area
+     ============================================ */
+
+  .guarantee-image {
+    flex: 1 1 35%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .guarantee-image img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 0 24px 24px 0;
     display: block;
   }
 
@@ -156,35 +162,77 @@
      Responsive Styles
      ============================================ */
 
-  @media (max-width: 768px) {
-    .guarantee-container {
-      flex-direction: column;
-      padding: 10px;
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .guarantee-content {
+      padding: 40px 50px;
     }
 
-    .content {
-      padding: 40px 20px;
-      border-radius: 24px 24px 0 0;
+    .guarantee-title {
+      font-size: 36px;
     }
 
-    .content .pdp-section-title {
-      font-size: 32px;
-    }
-
-    .content p {
+    .guarantee-subtitle {
       font-size: 18px;
     }
+  }
 
-    .image img {
-      max-width: 100%;
-      height: auto;
+  /* Mobile */
+  @media (max-width: 768px) {
+    .guarantee-section {
+      padding: 0 15px;
+    }
+
+    .guarantee-container {
+      flex-direction: column;
+      border-radius: 24px;
+    }
+
+    .guarantee-content {
+      flex: 1 1 auto;
+      padding: 40px 30px;
+    }
+
+    .guarantee-title {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .guarantee-subtitle {
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    .guarantee-image {
+      flex: 1 1 auto;
       min-height: 300px;
-      border-radius: 0 0 24px 24px;
     }
 
     .guarantee-btn {
       width: 100%;
       max-width: 280px;
+    }
+  }
+
+  /* Small Mobile */
+  @media (max-width: 480px) {
+    .guarantee-content {
+      padding: 30px 20px;
+    }
+
+    .guarantee-title {
+      font-size: 28px;
+    }
+
+    .guarantee-subtitle {
+      font-size: 15px;
+    }
+
+    .guarantee-btn {
+      min-width: auto;
+      max-width: 100%;
+      padding: 0 24px;
+      font-size: 14px;
     }
   }
 {% endstyle %}
