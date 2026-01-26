@@ -11,9 +11,13 @@
     </div>
 
     <div class="testimonials-carousel">
-      <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
+  <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
 
-        {% assign reviews = section_item.customers_reviews_data.value %}
+    {% assign testimonials = section.settings.review_metaobject %}
+
+    {% if testimonials %}
+      {% for testimonial in testimonials %}
+        {% assign reviews = testimonial.customers_reviews_data %}
 
         {% if reviews %}
           {% for review in reviews %}
@@ -70,9 +74,12 @@
             </div>
           {% endfor %}
         {% endif %}
+      {% endfor %}
+    {% endif %}
 
-      </div>
-    </div>  
+  </div>
+</div>
+  
 
     <div class="carousel-controls">
       <button class="carousel-button" id="prev-btn-{{ section.id }}" type="button" aria-label="Previous testimonial">
