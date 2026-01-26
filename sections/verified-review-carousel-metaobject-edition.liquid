@@ -13,7 +13,7 @@
     <div class="testimonials-carousel">
       <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
 
-        {% assign reviews = section.settings.review_metaobject %}
+        {% assign reviews = section_item.customers_reviews_data.value %}
 
         {% if reviews %}
           {% for review in reviews %}
