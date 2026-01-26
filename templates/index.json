@@ -352,25 +352,9 @@
       "type": "verified-review-carousel-metaobject-edition",
       "name": "Reviews Carousel (Meta)",
       "settings": {
-        "section_title": "What Our Customers Say",
-        "title_color": "#605471",
-        "title_size": 40,
-        "section_subtitle": "Verified Customer Reviews",
-        "subtitle_color": "#656565",
-        "subtitle_size": 20,
-        "section_background": "#f7f9fd",
-        "card_color": "#FCFAFF",
-        "button_color": "#605471",
-        "card_zoom": true,
-        "card_active_color": "#e6e1ec",
-        "testimonial_star_color": "#ffa500",
-        "testimonial_author_color": "#000000",
-        "testimonial_author_size": 22,
-        "badge_color": "#605471",
-        "testimonial_title_color": "#000000",
-        "testimonial_title_size": 18,
-        "testimonial_content_color": "#656565",
-        "testimonial_content_size": 16
+        "review_metaobject": [
+          "testimonials-6xrbos5k"
+        ]
       }
     }
   },
