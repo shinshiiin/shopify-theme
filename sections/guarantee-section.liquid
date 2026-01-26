@@ -1,4 +1,4 @@
-<div class="guarantee-section">
+<section class="guarantee-section">
   <div class="guarantee-container">
 
     {%- comment -%} Content Section {%- endcomment -%}
@@ -16,8 +16,10 @@
         <div class="logo">
           <img
             src="{{ 'guarantee_logo.webp' | asset_url }}"
-            alt="{{ block.settings.customer_name | default: 'Customer' }}"
+            alt="Guarantee logo"
             loading="lazy"
+            width="114"
+            height="auto"
           >
         </div>
       {%- endif -%}
@@ -29,7 +31,7 @@
       <div class="guarantee-text">
         <p>{{ section.settings.subtitle }}</p>
         <div class="guarantee-action-wrap">
-          <button class="guarantee-btn">{{ section.settings.cta_text }}</button>
+          <button type="button" class="guarantee-btn">{{ section.settings.cta_text }}</button>
         </div>
       </div>
     </div>
@@ -41,18 +43,20 @@
           | image_url: width: 1000
           | image_tag:
             loading: 'lazy',
-            alt: section.settings.image.alt
+            alt: section.settings.image.alt | default: 'Guarantee'
         }}
       {%- else -%}
         <img
           src="{{ 'placeholder.webp' | asset_url }}"
-          alt="{{ block.settings.customer_name | default: 'Customer' }}"
+          alt="Placeholder image"
           loading="lazy"
+          width="1000"
+          height="auto"
         >
       {%- endif -%}
     </div>
   </div>
-</div>
+</section>
 
 {% style %}
   /* ============================================
