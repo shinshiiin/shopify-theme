@@ -16,7 +16,7 @@
         {% assign reviews = section.settings.review_metaobject %}
         
         {% for review in reviews %}
-          <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
 
             {% if review.image %}
               {% assign image = review.image | image_url: width: 1000 %}
