@@ -17,7 +17,7 @@
           <div class="swiper-pagination"></div>
           <div class="swiper-wrapper">
             {% assign videos = section.settings.video_metaobject  %}
-            {% for video in videos %}
+            {% for video in videos.value %}
               {% assign url  = video.video | file_url %}
               <div class="swiper-slide">
                 <div>
