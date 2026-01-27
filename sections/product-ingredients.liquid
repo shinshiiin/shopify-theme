@@ -12,8 +12,8 @@
 %}
 
 <div class="section">
-  <div class="container">
-    <div class="product-ingredients-section {{ section.id }}">
+  <div class="container {{ section.id }}">
+    <div class="product-ingredients-section">
 
       {%- comment -%} Editor Warning {%- endcomment -%}
       {%- if request.design_mode -%}
@@ -161,7 +161,7 @@
 /* ========================================
    CONTAINER & LAYOUT
    ======================================== */
-.container {
+.{{ section.id }} {
   background: {{ section.settings.section_background }};
 }
 .product-ingredients-section {
