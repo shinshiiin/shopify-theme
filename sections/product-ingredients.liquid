@@ -188,7 +188,7 @@
     font-size: {{ section.settings.subtitle_size }}px;
 }
 
-.{{ section.id }} .product-ingredients-section .grid-container {
+.product-ingredients-section .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
@@ -200,7 +200,7 @@
 /* ========================================
    INGREDIENT COLUMNS
    ======================================== */
-.{{ section.id }} .product-ingredients-section .columns {
+.product-ingredients-section .columns {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -208,78 +208,78 @@
   justify-content: space-between;
 }
 
-.{{ section.id }} .product-ingredients-section .ingredient {
+.product-ingredients-section .ingredient {
   position: relative;
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
-.{{ section.id }} .product-ingredients-section .columns .ingredient .ingredient-icon-image img{
+.product-ingredients-section .columns .ingredient .ingredient-icon-image img{
   width: 36px;
   margin-bottom: 12px;
 }
 
-.{{ section.id }} .product-ingredients-section .ingredient-icon {
+.product-ingredients-section .ingredient-icon {
   display: block;
   width: 100%;
   height: auto;
 }
 
 /* Left Column Alignment */
-.{{ section.id }} .product-ingredients-section .columns.left .ingredient {
+.product-ingredients-section .columns.left .ingredient {
   align-items: end;
   text-align: end;
 }
 
 /* Dynamic Middle Item Padding - Left Column */
 /* 3 items: middle item (2nd) gets padding */
-.{{ section.id }} .product-ingredients-section .columns.left .ingredient:nth-child(2):nth-last-child(2) {
+.product-ingredients-section .columns.left .ingredient:nth-child(2):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* 4 items: 2nd and 3rd items get padding */
-.{{ section.id }} .product-ingredients-section .columns.left .ingredient:nth-child(2):nth-last-child(3),
-.{{ section.id }} .product-ingredients-section .columns.left .ingredient:nth-child(3):nth-last-child(2) {
+.product-ingredients-section .columns.left .ingredient:nth-child(2):nth-last-child(3),
+.product-ingredients-section .columns.left .ingredient:nth-child(3):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* 5 items: 2nd, 3rd, and 4th items get padding */
-.{{ section.id }} .product-ingredients-section .columns.left .ingredient:nth-child(2):nth-last-child(4),
-.{{ section.id }} .product-ingredients-section .columns.left .ingredient:nth-child(3):nth-last-child(3),
-.{{ section.id }} .product-ingredients-section .columns.left .ingredient:nth-child(4):nth-last-child(2) {
+.product-ingredients-section .columns.left .ingredient:nth-child(2):nth-last-child(4),
+.product-ingredients-section .columns.left .ingredient:nth-child(3):nth-last-child(3),
+.product-ingredients-section .columns.left .ingredient:nth-child(4):nth-last-child(2) {
   padding-right: 40px;
 }
 
 /* Right Column Alignment */
 /* Dynamic Middle Item Padding - Right Column */
 /* 3 items: middle item (2nd) gets padding */
-.{{ section.id }} .product-ingredients-section .columns.right .ingredient:nth-child(2):nth-last-child(2) {
+.product-ingredients-section .columns.right .ingredient:nth-child(2):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 4 items: 2nd and 3rd items get padding */
-.{{ section.id }} .product-ingredients-section .columns.right .ingredient:nth-child(2):nth-last-child(3),
-.{{ section.id }} .product-ingredients-section .columns.right .ingredient:nth-child(3):nth-last-child(2) {
+.product-ingredients-section .columns.right .ingredient:nth-child(2):nth-last-child(3),
+.product-ingredients-section .columns.right .ingredient:nth-child(3):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* 5 items: 2nd, 3rd, and 4th items get padding */
-.{{ section.id }} .product-ingredients-section .columns.right .ingredient:nth-child(2):nth-last-child(4),
-.{{ section.id }} .product-ingredients-section .columns.right .ingredient:nth-child(3):nth-last-child(3),
-.{{ section.id }} .product-ingredients-section .columns.right .ingredient:nth-child(4):nth-last-child(2) {
+.product-ingredients-section .columns.right .ingredient:nth-child(2):nth-last-child(4),
+.product-ingredients-section .columns.right .ingredient:nth-child(3):nth-last-child(3),
+.product-ingredients-section .columns.right .ingredient:nth-child(4):nth-last-child(2) {
   padding-left: 40px;
 }
 
 /* Typography */
-.{{ section.id }} .product-ingredients-section .ingredient h3 {
+.product-ingredients-section .ingredient h3 {
   color: {{ section.settings.ingredient_name_color }};
   font-size: {{ section.settings.ingredient_name_size }}px;
   margin-bottom: 8px;
   margin-top: 0;
 }
 
-.{{ section.id }} .product-ingredients-section .ingredient p {
+.product-ingredients-section .ingredient p {
   font-size: {{ section.settings.description_size }}px;
   line-height: 1.5;
   color:{{ section.settings.description_color }};
@@ -289,16 +289,16 @@
 /* ========================================
    CENTER IMAGE
    ======================================== */
-.{{ section.id }} .product-ingredients-section .center-image {
+.product-ingredients-section .center-image {
   position: relative;
   text-align: center;
 }
 
-.{{ section.id }} .center-image img {
+.center-image img {
     width: {{ section.settings.image_size }}px !important;
 }
 
-.{{ section.id }} .product-ingredients-section .mask-img {
+.product-ingredients-section .mask-img {
   position: relative;
   width: 100%;
   max-width: 400px;
@@ -309,7 +309,7 @@
 /* ========================================
    INGREDIENTS DROPDOWN
    ======================================== */
-.{{ section.id }} .product-ingredients-section .all-ingredients {
+.product-ingredients-section .all-ingredients {
   width: 100%;
   padding: 0;
   background: #FDFDFD;
@@ -318,7 +318,7 @@
   text-align: left;
 }
 
-.{{ section.id }} .product-ingredients-section .drop-header {
+.product-ingredients-section .drop-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -330,22 +330,22 @@
   user-select: none;
 }
 
-.{{ section.id }} .product-ingredients-section .chevron {
+.product-ingredients-section .chevron {
   display: inline-flex;
   align-items: center;
 }
 
-.{{ section.id }} .product-ingredients-section .chevron-icon {
+.product-ingredients-section .chevron-icon {
   width: 14px;
   height: auto;
   transition: transform 0.3s ease;
 }
 
-.{{ section.id }} .product-ingredients-section .all-ingredients.open .chevron-icon {
+.product-ingredients-section .all-ingredients.open .chevron-icon {
   transform: rotate(180deg);
 }
 
-.{{ section.id }} .product-ingredients-section .drop-content {
+.product-ingredients-section .drop-content {
   display: none;
   padding: 0 24px 20px;
   font-size: 14px;
@@ -354,7 +354,7 @@
   text-align: center;
 }
 
-.{{ section.id }} .product-ingredients-section .all-ingredients.open .drop-content {
+.product-ingredients-section .all-ingredients.open .drop-content {
   display: block;
   font-family: 'Chivo Mono', monospace;
 }
@@ -363,45 +363,45 @@
    MOBILE RESPONSIVENESS
    ======================================== */
 @media (max-width: 768px) {
-  .{{ section.id }} .product-ingredients-section .container {
+  .product-ingredients-section .container {
     padding: 40px 20px;
   }
 
-  .{{ section.id }} .product-ingredients-section .title-section {
+  .product-ingredients-section .title-section {
     font-size: 26px;
     margin-bottom: 40px;
     text-align: center;
   }
 
-  .{{ section.id }} .product-ingredients-section .grid-container {
+  .product-ingredients-section .grid-container {
     grid-template-columns: 1fr;
     gap: 16px;
     margin-bottom: 0;
   }
 
   /* Reorder Grid Items */
-  .{{ section.id }} .product-ingredients-section .center-image {
+  .product-ingredients-section .center-image {
     order: 1;
   }
 
-  .{{ section.id }} .product-ingredients-section .columns.left {
+  .product-ingredients-section .columns.left {
     order: 2;
   }
 
-  .{{ section.id }} .product-ingredients-section .columns.right {
+  .product-ingredients-section .columns.right {
     order: 3;
   }
 
   /* Reset Column Styling */
-  .{{ section.id }} .product-ingredients-section .columns.left,
-  .{{ section.id }} .product-ingredients-section .columns.right {
+  .product-ingredients-section .columns.left,
+  .product-ingredients-section .columns.right {
     align-items: flex-start;
     text-align: left;
     gap: 16px;
   }
 
   /* Mobile Ingredient Cards */
-  .{{ section.id }} .product-ingredients-section .ingredient {
+  .product-ingredients-section .ingredient {
     flex-direction: column;
     gap: 8px;
     align-items: center !important;
@@ -413,47 +413,47 @@
   }
 
   /* Reset all dynamic padding on mobile */
-  .{{ section.id }} .product-ingredients-section .columns.left .ingredient,
-  .{{ section.id }} .product-ingredients-section .columns.right .ingredient {
+  .product-ingredients-section .columns.left .ingredient,
+  .product-ingredients-section .columns.right .ingredient {
     padding: 12px 32px !important;
     width: 100%;
   }
 
 
 
-  .{{ section.id }} .product-ingredients-section .ingredient h3 {
+  .product-ingredients-section .ingredient h3 {
     margin: 0;
     text-align: center;
   }
 
-  .{{ section.id }} .product-ingredients-section .ingredient p {
+  .product-ingredients-section .ingredient p {
     margin-top: 2px;
     text-align: center;
   }
 
   /* Center Image Resize */
-  .{{ section.id }} .product-ingredients-section .center-image img{
+  .product-ingredients-section .center-image img{
     width: 389px !important;
     height: auto;
   }
 
-  .{{ section.id }} .product-ingredients-section .mask-img {
+  .product-ingredients-section .mask-img {
     max-width: 210px;
   }
 
   /* Dropdown Spacing */
-  .{{ section.id }} .product-ingredients-section .all-ingredients {
+  .product-ingredients-section .all-ingredients {
     margin-top: 40px;
   }
 }
 
 /* Extra Small Screens */
 @media (max-width: 480px) {
-  .{{ section.id }} .product-ingredients-section .vwcm-title {
+  .product-ingredients-section .vwcm-title {
     font-size: 22px;
   }
 
-  .{{ section.id }} .product-ingredients-section .center-image img {
+  .product-ingredients-section .center-image img {
     width: 290px !important;
     height: auto;
   }
