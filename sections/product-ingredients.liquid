@@ -11,9 +11,9 @@
   endfor
 %}
 
-<div class="product-ingredients-section">
+<div class="section">
   <div class="container">
-
+    <div class="product-ingredients-section {{ section.id }}">
       {%- comment -%} Editor Warning {%- endcomment -%}
       {%- if request.design_mode -%}
         {%- if left_column_count > 5 or right_column_count > 5 -%}
