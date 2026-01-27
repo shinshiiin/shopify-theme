@@ -1,23 +1,4 @@
-{% comment %}
 
-  Metaobject: PDP Section - Review
-  /settings/custom_data/metaobjects/pdp_section_review
-
-  Fields:
-  section_item.name (format: product name #number)
-  section_item.section_type
-  section_item.section_title
-  section_item.sub_title
-  section_item.videos
-
-  Metaobject: Data - Video
-  /content/metaobjects/entries/data_product
-
-  Fields:
-  .name (format: product name #number)
-  .video
-  
-{% endcomment %}
 
 {% capture section_id %}pdp-section-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
 {% capture content_wrap %}wrap-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
