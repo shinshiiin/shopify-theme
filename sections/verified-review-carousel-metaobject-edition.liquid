@@ -1,3 +1,12 @@
+{% comment %} 
+Create Metaobjects for Testimonial Data
+
+Name: Testimonials
+Fields: Product Name - [One] Single Line Text
+        Reviews Data - 
+{% endcomment %}
+
+
 <div class="verified-review-section">
   <div class="container">
     <div class="section-title">
@@ -15,7 +24,7 @@
 
       {% assign testimonials = section.settings.review_metaobject %}
 
-          {% assign reviews = testimonials.customers_reviews_data.value %}
+          {% assign reviews = testimonials.reviews_data.value %}
 
             {% for review in reviews %}
               <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
