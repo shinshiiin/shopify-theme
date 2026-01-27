@@ -34,63 +34,64 @@ Fields: Image - [One] Image
     <div class="testimonials-carousel">
       <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
 
-      {% assign testimonials = section.settings.review_metaobject %}
+      {% assign testimonial = section.settings.review_metaobject %}
 
-          {% assign reviews = testimonials.review_data.value %}
+      {% if testimonial and testimonial.review_data.value %}
+        {% for review in testimonial.review_data.value %}
+          <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
 
-            {% for review in reviews %}
-              <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
+            {% if review.image %}
+              <img
+                src="{{ review.image | image_url: width: 1000 }}"
+                alt="{{ review.customer_name.value | escape }}"
+                loading="lazy"
+              >
+            {% else %}
+              <img
+                src="{{ 'placeholder.webp' | asset_url }}"
+                alt="Customer"
+                loading="lazy"
+              >
+            {% endif %}
 
-                {% if review.image %}
-                  <img
-                    src="{{ review.image | image_url: width: 1000 }}"
-                    alt="{{ review.customer_name | escape }}"
-                    loading="lazy"
-                  >
-                {% else %}
-                  <img
-                    src="{{ 'placeholder.webp' | asset_url }}"
-                    alt="Customer"
-                    loading="lazy"
-                  >
-                {% endif %}
+            <div class="author-stars">
+              {% assign max = 5 %}
+              {% assign filled = review.rating.value | default: 5 %}
+              {% assign empty = max | minus: filled %}
+              {% for i in (1..filled) %}★{% endfor %}
+              {% for i in (1..empty) %}☆{% endfor %}
+            </div>
 
-                <div class="author-stars">
-                  {% assign max = 5 %}
-                  {% assign filled = review.rating.value | default: 5 %}
-                  {% assign empty = max | minus: filled %}
-                  {% for i in (1..filled) %}★{% endfor %}
-                  {% for i in (1..empty) %}☆{% endfor %}
+            <div class="testimonial-author">
+              <div class="author-info">
+                <div class="author-name">
+                  {{ review.customer_name.value }}
+                  {% if review.customer_age.value %}
+                    , {{ review.customer_age.value }}
+                  {% endif %}
                 </div>
-
-                <div class="testimonial-author">
-                  <div class="author-info">
-                    <div class="author-name">
-                      {{ review.customer_name.value }}
-                      {% if review.customer_age %}
-                        , {{ review.customer_age }}
-                      {% endif %}
-                    </div>
-                    <div class="author-verified">
-                      ✔ Verified Customer
-                    </div>
-                  </div>
+                <div class="author-verified">
+                  ✔ Verified Customer
                 </div>
-
-                {% if review.review_heading %}
-                  <h3 class="testimonial-title">
-                    {{ review.review_heading.value | strip_html }}
-                  </h3>
-                {% endif %}
-
-                {% if review.review_content %}
-                  <p class="testimonial-content">
-                    {{ review.review_content }}
-                  </p>
-                {% endif %}
-
               </div>
-            {% endfor %}
+            </div>
+
+            {% if review.review_heading.value %}
+              <h3 class="testimonial-title">
+                {{ review.review_heading.value | strip_html }}
+              </h3>
+            {% endif %}
+
+            {% if review.review_content.value %}
+              <p class="testimonial-content">
+                {{ review.review_content.value }}
+              </p>
+            {% endif %}
+
+          </div>
+        {% endfor %}
+      {% endif %}
+
 
 
     </div>
