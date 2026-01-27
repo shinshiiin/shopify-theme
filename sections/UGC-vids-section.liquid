@@ -19,7 +19,7 @@
 
             {% assign video_data = section.settings.video_metaobject  %}
 
-            {% for video in video_data.videos.value %}
+            {% for video in video_data.videos %}
               {% assign url  = video.video | file_url %}
               <div class="swiper-slide">
                 <div>
