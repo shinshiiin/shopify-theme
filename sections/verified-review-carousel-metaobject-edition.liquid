@@ -58,9 +58,9 @@
                 </div>
               </div>
 
-              {% if review.customer_heading.value %}
+              {% if review.customer_heading %}
                 <h3 class="testimonial-title">
-                  {{ review.customer_heading | strip_html }}
+                  {{ review.customer_heading.value | strip_html }}
                 </h3>
               {% endif %}
 
