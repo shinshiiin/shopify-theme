@@ -2,37 +2,39 @@
   <div class="container">
     <div class="left-column">
       <div class="section-title-wrap">
-        <h2 class="section-title">{{ section_item.section_title | metafield_tag }}</h2>
-        {% if section_item.section_sub_title != nil %}
+        <h2 class="section-title">{{ section.settings.section_title }}</h2>
+        {% if section.settings.section_sub_title != blank %}
           <div class="section-subtitle">
             <svg width="59" height="11" viewBox="0 0 59 11" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5.27166 7.75846L2.05007 10.0851L3.31995 6.30108L0.0898438 3.96585H4.04438L5.27166 0.181763L6.49893 3.96585H10.4534L7.22336 6.30108L8.49325 10.0851L5.27166 7.75846Z" fill="#ffb700"></path> <path d="M17.1818 7.75846L13.9602 10.0851L15.2301 6.30108L12 3.96585H15.9545L17.1818 0.181763L18.4091 3.96585H22.3636L19.1335 6.30108L20.4034 10.0851L17.1818 7.75846Z" fill="#ffb700"></path> <path d="M29.092 7.75846L25.8704 10.0851L27.1403 6.30108L23.9102 3.96585H27.8647L29.092 0.181763L30.3192 3.96585H34.2737L31.0437 6.30108L32.3136 10.0851L29.092 7.75846Z" fill="#ffb700"></path> <path d="M41.0021 7.75846L37.7805 10.0851L39.0504 6.30108L35.8203 3.96585H39.7749L41.0021 0.181763L42.2294 3.96585H46.1839L42.9538 6.30108L44.2237 10.0851L41.0021 7.75846Z" fill="#ffb700"></path> <path d="M52.9123 7.75846L49.6907 10.0851L50.9606 6.30108L47.7305 3.96585H51.685L52.9123 0.181763L54.1396 3.96585H58.0941L54.864 6.30108L56.1339 10.0851L52.9123 7.75846Z" fill="#ffb700"></path></svg> 
-            {{ section_item.section_sub_title | metafield_tag }}
+            {{ section.settings.section_sub_title }}
           </div>
         {% endif %}
-        <button class="global-button global-button--primary scroll-btn" >{{ section_item.button_text }}</button>
+        <button class="global-button global-button--primary scroll-btn" >{{ section.settings.button_text }}</button>
       </div>
     </div>
     <div class="video-column">
         <div class="swiper swiper-{{ section.id }} video-marquee">
           <div class="swiper-pagination"></div>
           <div class="swiper-wrapper">
-            {% assign videos = section_item.videos.value  %}
-            {% for video in videos %}
-              {% assign url  = video.video | file_url %}
-              <div class="swiper-slide">
-                <div>
-                  <video preload="metadata" autoplay playsinline muted loop muted="true">
-                      <source src="{{ url }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                  </video>
-                  {% if video.label != nil %}
-                    <div class="overlay-label">
-                      {{ video.label | metafield_tag }}
-                    </div>
-                  {% endif %}
+            {% assign video_metaobject = section.settings.videos_metaobject %}
+            {% if video_metaobject %}
+              {% for video_item in video_metaobject.videos.value %}
+                {% assign url = video_item.video | file_url %}
+                <div class="swiper-slide">
+                  <div>
+                    <video preload="metadata" autoplay playsinline muted loop muted="true">
+                        <source src="{{ url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    {% if video_item.label != blank %}
+                      <div class="overlay-label">
+                        {{ video_item.label }}
+                      </div>
+                    {% endif %}
+                  </div>
                 </div>
-              </div>
-            {% endfor %}
+              {% endfor %}
+            {% endif %}
         </div>
       </div>
     </div>
@@ -167,12 +169,34 @@
 {% schema %}
   {
     "name": "UGC Vids",
-    "settings": [],
-    "presets": [
-    {
-      "name": "UGC Vids"
-    }
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "section_title",
+        "label": "Section Title"
+      },
+      {
+        "type": "richtext",
+        "id": "section_sub_title",
+        "label": "Section Subtitle"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Learn More"
+      },
+      {
+        "type": "metaobject",
+        "id": "videos_metaobject",
+        "label": "Videos Metaobject",
+        "metaobject_type": "product_ugc_video"
+      }
     ],
+    "presets": [
+      {
+        "name": "UGC Vids"
+      }
+    ]
   }
 {% endschema %}
-
