@@ -19,11 +19,11 @@
             {% assign video_metaobject = section.settings.videos_metaobject %}
             {% if video_metaobject %}
               {% for video_item in video_metaobject.videos.value %}
-                {% assign url = video_item | file_url %}
+                {% assign url = video_item %}
                 <div class="swiper-slide">
                   <div>
                     <video preload="metadata" autoplay playsinline muted loop muted="true">
-                        <source src="https://cdn.shopify.com/videos/c/o/v/4f7eba07c55f458dbaaba7bdc3a88850.mp4" type="video/mp4">
+                        <source src="{{ url }}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     {% if video_item.label != blank %}
