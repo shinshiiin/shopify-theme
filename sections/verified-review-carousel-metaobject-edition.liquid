@@ -11,68 +11,68 @@
     </div>
 
     <div class="testimonials-carousel">
-  <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
+      <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
 
-    {% assign testimonials = section.settings.review_metaobject %}
+      {% assign testimonials = section.settings.review_metaobject %}
 
-        {% assign reviews = testimonials.customers_reviews_data %}
+          {% assign reviews = testimonials.customers_reviews_data %}
 
-          {% for review in reviews %}
-            <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
+            {% for review in reviews %}
+              <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
 
-              {% if review.image %}
-                <img
-                  src="{{ review.image | image_url: width: 1000 }}"
-                  alt="{{ review.customer_name | escape }}"
-                  loading="lazy"
-                >
-              {% else %}
-                <img
-                  src="{{ 'placeholder.webp' | asset_url }}"
-                  alt="Customer"
-                  loading="lazy"
-                >
-              {% endif %}
+                {% if review.image %}
+                  <img
+                    src="{{ review.image | image_url: width: 1000 }}"
+                    alt="{{ review.customer_name | escape }}"
+                    loading="lazy"
+                  >
+                {% else %}
+                  <img
+                    src="{{ 'placeholder.webp' | asset_url }}"
+                    alt="Customer"
+                    loading="lazy"
+                  >
+                {% endif %}
 
-              <div class="author-stars">
-                {% assign max = 5 %}
-                {% assign filled = review.customer_rating.value | default: 5 %}
-                {% assign empty = max | minus: filled %}
-                {% for i in (1..filled) %}★{% endfor %}
-                {% for i in (1..empty) %}☆{% endfor %}
-              </div>
+                <div class="author-stars">
+                  {% assign max = 5 %}
+                  {% assign filled = review.customer_rating.value | default: 5 %}
+                  {% assign empty = max | minus: filled %}
+                  {% for i in (1..filled) %}★{% endfor %}
+                  {% for i in (1..empty) %}☆{% endfor %}
+                </div>
 
-              <div class="testimonial-author">
-                <div class="author-info">
-                  <div class="author-name">
-                    {{ review.customer_name.value }}
-                    {% if review.customer_age %}
-                      , {{ review.customer_age }}
-                    {% endif %}
-                  </div>
-                  <div class="author-verified">
-                    ✔ Verified Customer
+                <div class="testimonial-author">
+                  <div class="author-info">
+                    <div class="author-name">
+                      {{ review.customer_name.value }}
+                      {% if review.customer_age %}
+                        , {{ review.customer_age }}
+                      {% endif %}
+                    </div>
+                    <div class="author-verified">
+                      ✔ Verified Customer
+                    </div>
                   </div>
                 </div>
+
+                {% if review.customer_heading %}
+                  <h3 class="testimonial-title">
+                    {{ review.customer_heading.value | strip_html }}
+                  </h3>
+                {% endif %}
+
+                {% if review.customer_review %}
+                  <p class="testimonial-content">
+                    {{ review.customer_review }}
+                  </p>
+                {% endif %}
+
               </div>
-
-              {% if review.customer_heading %}
-                <h3 class="testimonial-title">
-                  {{ review.customer_heading.value | strip_html }}
-                </h3>
-              {% endif %}
-
-              {% if review.customer_review %}
-                <p class="testimonial-content">
-                  {{ review.customer_review }}
-                </p>
-              {% endif %}
-
-            </div>
-          {% endfor %}
+            {% endfor %}
 
 
-  </div>
+    </div>
 </div>
   
 
@@ -567,7 +567,7 @@
   "name": "Reviews Carousel (Meta)",
   "settings": [
     {
-      "type": "metaobject_list",
+      "type": "metaobject",
       "id": "review_metaobject",
       "label": "Select Metaobject",
       "metaobject_type": "testimonials"
