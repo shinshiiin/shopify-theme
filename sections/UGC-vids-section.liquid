@@ -1,7 +1,7 @@
-<div class="{{ section.id }}">
+<div class="section">
   <div class="container">
     <div class="ugc-vids-section">
-      <div class="three-sevenths column is-flex is-align-center is-justify-center medium-down--one-whole">
+      <div class="left-column">
         <div class="pdp-section-title-wrap">
           <h2 class="pdp-section-title">{{ section_item.section_title | metafield_tag }}</h2>
           {% if section_item.section_sub_title != nil %}
@@ -13,27 +13,27 @@
           <button class="global-button global-button--primary scroll-btn" >{{ section_item.button_text }}</button>
         </div>
       </div>
-      <div class="four-sevenths column is-align-center medium-down--one-whole video-column">
-          <div class="swiper swiper-{{ section_id }} video-marquee">
-            <div class="swiper-pagination"></div>
-            <div class="swiper-wrapper">
-              {% assign videos = section_item.videos.value  %}
-              {% for video in videos %}
-                {% assign url  = video.video | file_url %}
-                <div class="swiper-slide">
-                  <div>
-                    <video preload="metadata" autoplay playsinline muted loop muted="true">
-                        <source src="{{ url }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    {% if video.label != nil %}
-                      <div class="overlay-label">
-                        {{ video.label | metafield_tag }}
-                      </div>
-                    {% endif %}
-                  </div>
+      <div class="right-column">
+        <div class="swiper swiper-{{ section_id }} video-marquee">
+          <div class="swiper-pagination"></div>
+          <div class="swiper-wrapper">
+            {% assign videos = section_item.videos.value  %}
+            {% for video in videos %}
+              {% assign url  = video.video | file_url %}
+              <div class="swiper-slide">
+                <div>
+                  <video preload="metadata" autoplay playsinline muted loop muted="true">
+                      <source src="{{ url }}" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+                  {% if video.label != nil %}
+                    <div class="overlay-label">
+                      {{ video.label | metafield_tag }}
+                    </div>
+                  {% endif %}
                 </div>
-              {% endfor %}
+              </div>
+            {% endfor %}
           </div>
         </div>
       </div>
