@@ -42,7 +42,7 @@
 
 {% style %}
   
-.section-title {
+{{ section.id }} .section-title {
   max-width: 400px;
   text-align: left;
   font-weight: 500;
@@ -50,16 +50,16 @@
   letter-spacing: -0.02em;
 }
 
-.section-title  .metafield-rich_text_field p strong {
+.{{ section.id }} .section-title  .metafield-rich_text_field p strong {
   font-weight: 500 !important;
 }
 
-.section-subtitle {
+.{{ section.id }} .section-subtitle {
   max-width: 400px;
   margin-bottom: 20px;
 }
 
-.section-sub  title .metafield-rich_text_field  {
+.{{ section.id }} .section-sub  title .metafield-rich_text_field  {
   font-size: clamp(14px, 2vw, 16px);
 }
 
