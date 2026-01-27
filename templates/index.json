@@ -354,6 +354,7 @@
     },
     "verified_review_carousel_metaobject_edition_dgew6B": {
       "type": "verified-review-carousel-metaobject-edition",
+      "disabled": true,
       "name": "Reviews Carousel (Meta)",
       "settings": {
         "review_metaobject": "velvet",
