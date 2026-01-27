@@ -19,7 +19,7 @@
             {% assign video_metaobject = section.settings.videos_metaobject %}
             {% if video_metaobject %}
               {% for video_item in video_metaobject.videos.value %}
-                {% assign url = video_item.video | file_url %}
+                {% assign url = video_item | file_url %}
                 <div class="swiper-slide">
                   <div>
                     <video preload="metadata" autoplay playsinline muted loop muted="true">
