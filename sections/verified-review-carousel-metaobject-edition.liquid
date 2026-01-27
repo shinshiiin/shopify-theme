@@ -15,7 +15,7 @@
 
       {% assign testimonials = section.settings.review_metaobject %}
 
-          {% assign reviews = testimonials.customers_reviews_data %}
+          {% assign reviews = testimonials.customers_reviews_data.value %}
 
             {% for review in reviews %}
               <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
