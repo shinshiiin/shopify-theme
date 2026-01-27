@@ -1,9 +1,21 @@
 {% comment %} 
+ 
 Create Metaobjects for Testimonial Data
 
+{Main Metaobject}
 Name: Testimonials
 Fields: Product Name - [One] Single Line Text
-        Reviews Data - 
+        Reviews Data - [List] Metaobject (Select the Review Data Metaobject)
+
+{Metaobject Review Data}
+Name: Testimonial Data
+Fields: Image - [One] Image
+        Customer Name - [One] Single Line Text
+        Customer Age - [One] Integer
+        Review Heading - [One] Multi-line text
+        Review Content - [One] Multi-line text
+        Rating - [One] Integer
+
 {% endcomment %}
 
 
@@ -65,9 +77,9 @@ Fields: Product Name - [One] Single Line Text
                   </div>
                 </div>
 
-                {% if review.customer_heading %}
+                {% if review.review_heading %}
                   <h3 class="testimonial-title">
-                    {{ review.customer_heading.value | strip_html }}
+                    {{ review.review_heading.value | strip_html }}
                   </h3>
                 {% endif %}
 
