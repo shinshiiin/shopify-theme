@@ -125,11 +125,125 @@
         "section_background": "#f7f9fd",
         "button_text": "See Real Results"
       }
+    },
+    "product_ingredients_T8FCjc": {
+      "type": "product-ingredients",
+      "blocks": {
+        "ingredient_RtiTPb": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Vitamin C",
+            "ingredient_text": "Brightens skin and helps even out tone"
+          }
+        },
+        "ingredient_8CfjPd": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Hyaluronic Acid",
+            "ingredient_text": "Provides deep hydration and plumps the skin"
+          }
+        },
+        "ingredient_MpexJe": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Niacinamide",
+            "ingredient_text": "Helps minimize pores and improve skin texture"
+          }
+        },
+        "ingredient_cqWriJ": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Alpha Arbutin",
+            "ingredient_text": "Targets dark spots and promotes a more even complexion"
+          }
+        },
+        "ingredient_fM98QL": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Panthenol (Vitamin B5)",
+            "ingredient_text": "Soothes skin and supports the moisture barrier"
+          }
+        },
+        "ingredient_yfy3CK": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Retinol",
+            "ingredient_text": "Reduces the appearance of fine lines and wrinkles"
+          }
+        },
+        "ingredient_E7ineV": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Peptides",
+            "ingredient_text": "Supports collagen production for firmer-looking skin"
+          }
+        },
+        "ingredient_c7c9CC": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Ceramides",
+            "ingredient_text": "Strengthens the skin barrier and locks in moisture"
+          }
+        },
+        "ingredient_thcTHi": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Green Tea Extract",
+            "ingredient_text": "Provides antioxidant protection against environmental stress"
+          }
+        },
+        "ingredient_GzUk9B": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Licorice Root Extract",
+            "ingredient_text": "Calms irritation and helps brighten uneven skin tone"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_RtiTPb",
+        "ingredient_8CfjPd",
+        "ingredient_MpexJe",
+        "ingredient_cqWriJ",
+        "ingredient_fM98QL",
+        "ingredient_yfy3CK",
+        "ingredient_E7ineV",
+        "ingredient_c7c9CC",
+        "ingredient_thcTHi",
+        "ingredient_GzUk9B"
+      ],
+      "name": "Product Ingredients",
+      "settings": {
+        "section_title": "Product Ingredients",
+        "title_color": "#605471",
+        "title_size": 40,
+        "section_subtitle": "Formulated with thoughtfully chosen ingredients for optimal results.",
+        "subtitle_color": "#656565",
+        "subtitle_size": 20,
+        "section_background": "#f7f9fd",
+        "ingredient_name_size": 24,
+        "ingredient_name_color": "#282828",
+        "description_size": 14,
+        "description_color": "#746c8a",
+        "image_size": 360,
+        "all_ingredients": "<p>Water, Butylene Glycol, Niacinamide, Ubiquinol, 1,2-Hexanediol, Hydroxyacetophenone, Ectoin, Glycerin, Caffeine, Cyclodextrin, Glycyrrhiza Uralensis Extract, Camellia Sinensis Leaf Extract, Citrus Paradisi (Grapefruit) Fruit Extract, Phosphatidylcholine, Ceramide NP, Phenoxyethanol, Lactobacillus Ferment Lysate, Sodium Stearoyl Glutamate, Melatonin, Ethylhexylglycerin, Copper Tripeptide-1.<br/><br/></p>"
+      }
     }
   },
   "order": [
     "main",
     "related-products",
-    "ugc_vids_section_DVcz4J"
+    "ugc_vids_section_DVcz4J",
+    "product_ingredients_T8FCjc"
   ]
 }
