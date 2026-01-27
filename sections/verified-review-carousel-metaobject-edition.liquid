@@ -133,22 +133,22 @@ Fields: Image - [One] Image
 </div>
 
 {% style %}
-  .verified-review-section {
+  .{{ section.id }} {
     background: {{ section.settings.section_background }};
   }
-  .container {
+  .{{ section.id }} .container {
     display: flex;
     flex-direction: column;
     justify-self: center;
     padding: 40px;
   }
 
-  .section-title {
+  .{{ section.id }} .section-title {
     text-align: center;
     margin-bottom: 40px;
   }
 
-  .section-title h2 {
+  .{{ section.id }} .section-title h2 {
     font-family: 'Albert Sans', sans-serif; 
     font-weight: medium;
     text-transform: none;
@@ -158,22 +158,22 @@ Fields: Image - [One] Image
     font-size: {{ section.settings.title_size }}px !important;
   }
 
-  .section-title .section-subtitle{
+  .{{ section.id }} .section-title .section-subtitle{
     color: {{ section.settings.subtitle_color }}; 
     font-size: {{ section.settings.subtitle_size }}px;
   }
 
-  .stars {
+  .{{ section.id }} .stars {
     color: #ffa500;
     font-size: 18px;
   }
 
-  .rating-text {
+  .{{ section.id }} .rating-text {
     font-size: 18px;
     color: white;
   }
 
-  .testimonials-carousel {
+  .{{ section.id }} .testimonials-carousel {
     position: relative;
     overflow: hidden;
     margin-bottom: 40px;
@@ -185,13 +185,13 @@ Fields: Image - [One] Image
     align-content: center;
   }
 
-  .testimonials-track {
+  .{{ section.id }} .testimonials-track {
     display: flex;
     transition: transform 0.5s ease;
     gap: 20px;
   }
 
-  .testimonial-card {
+  .{{ section.id }} .testimonial-card {
     flex: 0 0 calc((100% - 50px) / 3);
     min-width: 280px;
     height: auto;
@@ -206,22 +206,22 @@ Fields: Image - [One] Image
     background-color: {{ section.settings.card_color }};
   }
   
-  .testimonial-card img{
+  .{{ section.id }} .testimonial-card img{
     border-radius: 12px;
     width: 335px;
     height: 350px;
     object-fit: cover;
   }
 
-  .testimonial-card.active {
+  .{{ section.id }} .testimonial-card.active {
     background-color:{{ section.settings.card_active_color }};
   }
 
-  .testimonial-card.zoom-enabled.active {
+  .{{ section.id }} .testimonial-card.zoom-enabled.active {
     transform: scale(1.05);
   }
 
-  .testimonial-title {
+  .{{ section.id }} .testimonial-title {
     color: {{ section.settings.testimonial_title_color }};
     font-size: {{ section.settings.testimonial_title_size }}px;
     font-weight: 600;
@@ -230,7 +230,7 @@ Fields: Image - [One] Image
     line-height: 1.2;
   }
 
-  .testimonial-content {
+  .{{ section.id }} .testimonial-content {
     line-height: 1.5;
     margin: 0 0 auto 0;
     flex-grow: 1;
@@ -239,7 +239,7 @@ Fields: Image - [One] Image
     font-size: {{ section.settings.testimonial_content_size }}px;
   }
 
-  .testimonial-author {
+  .{{ section.id }} .testimonial-author {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -248,7 +248,7 @@ Fields: Image - [One] Image
     min-height: 40px;
   }
 
-  .author-avatar {
+  .{{ section.id }} .author-avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -257,13 +257,13 @@ Fields: Image - [One] Image
     flex-shrink: 0;
   }
 
-  .author-avatar img {
+  .{{ section.id }} .author-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .author-info {
+  .{{ section.id }} .author-info {
     flex: 1;
     min-width: 0;
     overflow: hidden;
@@ -271,7 +271,7 @@ Fields: Image - [One] Image
     justify-content: space-between;
   }
 
-  .author-name {
+  .{{ section.id }} .author-name {
     color: {{ section.settings.testimonial_author_color }};
     white-space: nowrap;
     overflow: hidden;
@@ -279,7 +279,7 @@ Fields: Image - [One] Image
     font-size: {{ section.settings.testimonial_author_size }}px;
   }
 
-  .author-verified {
+  .{{ section.id }} .author-verified {
     font-size: 14px;
     color: {{ section.settings.badge_color }};
     display: flex;
@@ -288,11 +288,11 @@ Fields: Image - [One] Image
     white-space: nowrap;
   }
 
-  .author-verified circle {
+  .{{ section.id }} .author-verified circle {
     fill: {{ section.settings.badge_color }};
   }
 
-  .author-stars {
+  .{{ section.id }} .author-stars {
     padding-top: 16px;
     color: {{ section.settings.testimonial_star_color }};
     font-size: 24px;
@@ -300,14 +300,14 @@ Fields: Image - [One] Image
     margin-left: 4px;
   }
 
-  .carousel-controls {
+  .{{ section.id }} .carousel-controls {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
   }
 
-  .carousel-button {
+  .{{ section.id }} .carousel-button {
     background-color:{{ section.settings.button_color }};
     border: none;
     width: 40px;
@@ -322,16 +322,16 @@ Fields: Image - [One] Image
     flex-shrink: 0;
   }
 
-  .carousel-button:hover {
+  .{{ section.id }} .carousel-button:hover {
     background-color: #5a7b8c;
   }
 
-  .carousel-dots {
+  .{{ section.id }} .carousel-dots {
     display: flex;
     gap: 10px;
   }
 
-  .carousel-dot {
+  .{{ section.id }} .carousel-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -342,16 +342,16 @@ Fields: Image - [One] Image
     transition: background-color 0.3s;
   }
 
-  .carousel-dot.active {
+  .{{ section.id }} .carousel-dot.active {
     background-color: {{ section.settings.button_color }};
   }
 
   @media (max-width: 968px) {
-    .testimonial-card {
+    .{{ section.id }} .testimonial-card {
       flex: 0 0 calc((100% - 20px) / 2);
     }
 
-    .testimonial-card img {
+    .{{ section.id }} .testimonial-card img {
       width: 257px !important;
       height: 286px !important;
       object-fit: cover;
@@ -359,60 +359,60 @@ Fields: Image - [One] Image
   }
 
   @media (max-width: 640px) {
-    .section-title h2 {
+    .{{ section.id }} .section-title h2 {
       font-size: 28px;
     }
     
-    .testimonials-carousel {
+    .{{ section.id }} .testimonials-carousel {
       width: 430px;
       margin-bottom: 30px;
       padding: 20px 10px;
     }
     
-    .testimonials-track {
+    .{{ section.id }} .testimonials-track {
       gap: 15px;
     }
     
-    .testimonial-card {
+    .{{ section.id }} .testimonial-card {
       flex: 0 0 auto;
       width: calc(100vw - 60px);
       min-width: unset;
       padding: 16px 20px;
     }
     
-    .testimonial-title {
+    .{{ section.id }} .testimonial-title {
       font-size: 16px;
       margin-bottom: 10px;
     }
     
-    .testimonial-content {
+    .{{ section.id }} .testimonial-content {
       font-size: 14px;
       line-height: 1.4;
     }
     
-    .carousel-controls {
+    .{{ section.id }} .carousel-controls {
       gap: 12px;
     }
     
-    .carousel-button {
+    .{{ section.id }} .carousel-button {
       width: 36px;
       height: 36px;
     }
     
-    .carousel-button svg {
+    .{{ section.id }} .carousel-button svg {
       width: 16px;
       height: 16px;
     }
   }
 
   @media (max-width: 480px) {
-    .verified-review-section .container {
+    .{{ section.id }} .verified-review-section .container {
       max-width: 470px;
     }
-    .testimonial-card {
+    .{{ section.id }} .testimonial-card {
       max-width: 300px;
     }
-    .section-title h2 {
+    .{{ section.id }} .section-title h2 {
       font-size: 28px;
       max-width: 300px !important;
       justify-self: center !important;
