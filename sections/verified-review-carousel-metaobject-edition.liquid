@@ -15,7 +15,6 @@
 
     {% assign testimonials = section.settings.review_metaobject %}
 
-    {% if testimonials %}
       {% for testimonial in testimonials %}
         {% assign reviews = testimonial.customers_reviews_data %}
 
@@ -73,7 +72,7 @@
             </div>
           {% endfor %}
       {% endfor %}
-    {% endif %}
+
 
   </div>
 </div>
