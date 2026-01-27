@@ -5,7 +5,7 @@ Create 2 Metaobjects for Testimonial Data
 {Main Metaobject}
 Name: Testimonials
 Fields: Product Name - [One] Single Line Text
-        Reviews Data - [List] Metaobject (Select the Review Data Metaobject)
+        Review Data - [List] Metaobject (Select the Review Data Metaobject)
 
 {Metaobject Review Data}
 Name: Testimonial Data
@@ -36,7 +36,7 @@ Fields: Image - [One] Image
 
       {% assign testimonials = section.settings.review_metaobject %}
 
-          {% assign reviews = testimonials.reviews_data.value %}
+          {% assign reviews = testimonials.review_data.value %}
 
             {% for review in reviews %}
               <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
