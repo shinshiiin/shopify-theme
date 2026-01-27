@@ -356,7 +356,7 @@
       "type": "verified-review-carousel-metaobject-edition",
       "name": "Reviews Carousel (Meta)",
       "settings": {
-        "review_metaobject": "velvet",
+        "review_metaobject": "",
         "section_title": "What Our Customers Say",
         "title_color": "#605471",
         "title_size": 40,
