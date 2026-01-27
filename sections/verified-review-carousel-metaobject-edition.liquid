@@ -19,7 +19,6 @@
       {% for testimonial in testimonials %}
         {% assign reviews = testimonial.customers_reviews_data %}
 
-        {% if reviews %}
           {% for review in reviews %}
             <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
 
@@ -73,7 +72,6 @@
 
             </div>
           {% endfor %}
-        {% endif %}
       {% endfor %}
     {% endif %}
 
