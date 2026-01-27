@@ -376,6 +376,11 @@
         "testimonial_content_color": "#656565",
         "testimonial_content_size": 16
       }
+    },
+    "ugc_vids_section_YJicwV": {
+      "type": "UGC-vids-section",
+      "name": "UGC Vids",
+      "settings": {}
     }
   },
   "order": [
@@ -384,6 +389,7 @@
     "hero_grid_section_9PcxTA",
     "guarantee_section_BjpgBW",
     "product_ingredients_A4WiYf",
-    "verified_review_carousel_metaobject_edition_dgew6B"
+    "verified_review_carousel_metaobject_edition_dgew6B",
+    "ugc_vids_section_YJicwV"
   ]
 }
