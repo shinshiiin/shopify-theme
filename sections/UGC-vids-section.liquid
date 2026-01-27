@@ -16,8 +16,8 @@
         <div class="swiper swiper-{{ section.id }} video-marquee">
           <div class="swiper-pagination"></div>
           <div class="swiper-wrapper">
-            {% assign videos = section.settings.video_metaobject  %}
-            {% for video in videos.value %}
+            {% assign videos = section_item.videos.value  %}
+            {% for video in videos %}
               {% assign url  = video.video | file_url %}
               <div class="swiper-slide">
                 <div>
@@ -167,8 +167,7 @@
 {% schema %}
   {
     "name": "UGC Vids",
-    "settings": [
-    ],
+    "settings": [],
     "presets": [
     {
       "name": "UGC Vids"
