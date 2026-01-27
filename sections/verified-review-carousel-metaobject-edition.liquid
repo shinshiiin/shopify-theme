@@ -19,112 +19,115 @@ Fields: Image - [One] Image
 {% endcomment %}
 
 
-<div class="section verified-review-section {{ section.id }}">
+<div class="section">
   <div class="container">
-    <div class="section-title">
-      <h2>
-        {{ section.settings.section_title }}
-      </h2>
 
-      <div class="section-subtitle">
-        {{ section.settings.section_subtitle }}
+    <div class="verified-review-section {{ section.id }}">
+      <div class="section-title">
+        <h2>
+          {{ section.settings.section_title }}
+        </h2>
+
+        <div class="section-subtitle">
+          {{ section.settings.section_subtitle }}
+        </div>
       </div>
-    </div>
 
-    <div class="testimonials-carousel">
-      <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
+      <div class="testimonials-carousel">
+        <div class="testimonials-track" id="testimonials-track-{{ section.id }}">
 
-      {% assign testimonial = section.settings.review_metaobject %}
+        {% assign testimonial = section.settings.review_metaobject %}
 
-      {% if testimonial and testimonial.review_data.value %}
-        {% for review in testimonial.review_data.value %}
-          <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
+        {% if testimonial and testimonial.review_data.value %}
+          {% for review in testimonial.review_data.value %}
+            <div class="testimonial-card {% if section.settings.card_zoom %}zoom-enabled{% endif %}" data-index="{{ forloop.index0 }}">
 
-            {% if review.image %}
-              <img
-                src="{{ review.image | image_url: width: 1000 }}"
-                alt="{{ review.customer_name.value | escape }}"
-                loading="lazy"
-              >
-            {% else %}
-              <img
-                src="{{ 'placeholder.webp' | asset_url }}"
-                alt="Customer"
-                loading="lazy"
-              >
-            {% endif %}
+              {% if review.image %}
+                <img
+                  src="{{ review.image | image_url: width: 1000 }}"
+                  alt="{{ review.customer_name.value | escape }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <img
+                  src="{{ 'placeholder.webp' | asset_url }}"
+                  alt="Customer"
+                  loading="lazy"
+                >
+              {% endif %}
 
-            <div class="author-stars">
-              {% assign max = 5 %}
-              {% assign filled = review.rating.value | default: 5 %}
-              {% assign empty = max | minus: filled %}
-              {% for i in (1..filled) %}★{% endfor %}
-              {% for i in (1..empty) %}☆{% endfor %}
-            </div>
+              <div class="author-stars">
+                {% assign max = 5 %}
+                {% assign filled = review.rating.value | default: 5 %}
+                {% assign empty = max | minus: filled %}
+                {% for i in (1..filled) %}★{% endfor %}
+                {% for i in (1..empty) %}☆{% endfor %}
+              </div>
 
-            <div class="testimonial-author">
-              <div class="author-info">
-                <div class="author-name">
-                  {{ review.customer_name.value }}
-                  {% if review.customer_age.value %}
-                    , {{ review.customer_age.value }}
-                  {% endif %}
-                </div>
-                <div class="author-verified">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="margin-right:4px;"
-                  >
-                    <!-- Circle background -->
-                    <circle cx="12" cy="12" r="12" />
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <div class="author-name">
+                    {{ review.customer_name.value }}
+                    {% if review.customer_age.value %}
+                      , {{ review.customer_age.value }}
+                    {% endif %}
+                  </div>
+                  <div class="author-verified">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style="margin-right:4px;"
+                    >
+                      <!-- Circle background -->
+                      <circle cx="12" cy="12" r="12" />
 
-                    <!-- Check icon -->
-                    <path
-                      d="M9.5 13.8L6.7 11L5.3 12.4L9.5 16.6L18.7 7.4L17.3 6L9.5 13.8Z"
-                      fill="#ffffff"
-                    />
-                  </svg>
-                  Verified Customer
+                      <!-- Check icon -->
+                      <path
+                        d="M9.5 13.8L6.7 11L5.3 12.4L9.5 16.6L18.7 7.4L17.3 6L9.5 13.8Z"
+                        fill="#ffffff"
+                      />
+                    </svg>
+                    Verified Customer
+                  </div>
                 </div>
               </div>
+
+              {% if review.review_heading.value %}
+                <h3 class="testimonial-title">
+                  {{ review.review_heading.value | strip_html }}
+                </h3>
+              {% endif %}
+
+              {% if review.review_content.value %}
+                <p class="testimonial-content">
+                  {{ review.review_content.value }}
+                </p>
+              {% endif %}
+
             </div>
-
-            {% if review.review_heading.value %}
-              <h3 class="testimonial-title">
-                {{ review.review_heading.value | strip_html }}
-              </h3>
-            {% endif %}
-
-            {% if review.review_content.value %}
-              <p class="testimonial-content">
-                {{ review.review_content.value }}
-              </p>
-            {% endif %}
-
-          </div>
-        {% endfor %}
-      {% endif %}
-    </div>
+          {% endfor %}
+        {% endif %}
+      </div>
 
 
-    <div class="carousel-controls">
-      <button class="carousel-button" id="prev-btn-{{ section.id }}" type="button" aria-label="Previous testimonial">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-      
-      <div class="carousel-dots" id="carousel-dots-{{ section.id }}"></div>
-      
-      <button class="carousel-button" id="next-btn-{{ section.id }}" type="button" aria-label="Next testimonial" >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
-    </div>
+      <div class="carousel-controls">
+        <button class="carousel-button" id="prev-btn-{{ section.id }}" type="button" aria-label="Previous testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        
+        <div class="carousel-dots" id="carousel-dots-{{ section.id }}"></div>
+        
+        <button class="carousel-button" id="next-btn-{{ section.id }}" type="button" aria-label="Next testimonial" >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>  
 
   </div>
 </div>
