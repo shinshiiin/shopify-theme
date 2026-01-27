@@ -382,7 +382,7 @@
       "type": "UGC-vids-section",
       "name": "UGC Vids",
       "settings": {
-        "review_metaobject": "",
+        "video_metaobject": "velvet",
         "section_title": "What Our Customers Say",
         "title_color": "#605471",
         "title_size": 40,
