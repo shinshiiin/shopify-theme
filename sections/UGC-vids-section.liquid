@@ -1,0 +1,189 @@
+{% comment %}
+
+  Metaobject: PDP Section - Review
+  /settings/custom_data/metaobjects/pdp_section_review
+
+  Fields:
+  section_item.name (format: product name #number)
+  section_item.section_type
+  section_item.section_title
+  section_item.sub_title
+  section_item.videos
+
+  Metaobject: Data - Video
+  /content/metaobjects/entries/data_product
+
+  Fields:
+  .name (format: product name #number)
+  .video
+  
+{% endcomment %}
+
+{% capture section_id %}pdp-section-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
+{% capture content_wrap %}wrap-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
+
+<div class="section is-width-standard {{ section_id }}">
+  <div class="{{ content_wrap }} container is-flex-row ">
+    <div class="three-sevenths column is-flex is-align-center is-justify-center medium-down--one-whole">
+      <div class="pdp-section-title-wrap">
+        <h2 class="pdp-section-title">{{ section_item.section_title | metafield_tag }}</h2>
+        {% if section_item.section_sub_title != nil %}
+          <div class="pdp-section-sub-title">
+            <svg width="59" height="11" viewBox="0 0 59 11" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5.27166 7.75846L2.05007 10.0851L3.31995 6.30108L0.0898438 3.96585H4.04438L5.27166 0.181763L6.49893 3.96585H10.4534L7.22336 6.30108L8.49325 10.0851L5.27166 7.75846Z" fill="#ffb700"></path> <path d="M17.1818 7.75846L13.9602 10.0851L15.2301 6.30108L12 3.96585H15.9545L17.1818 0.181763L18.4091 3.96585H22.3636L19.1335 6.30108L20.4034 10.0851L17.1818 7.75846Z" fill="#ffb700"></path> <path d="M29.092 7.75846L25.8704 10.0851L27.1403 6.30108L23.9102 3.96585H27.8647L29.092 0.181763L30.3192 3.96585H34.2737L31.0437 6.30108L32.3136 10.0851L29.092 7.75846Z" fill="#ffb700"></path> <path d="M41.0021 7.75846L37.7805 10.0851L39.0504 6.30108L35.8203 3.96585H39.7749L41.0021 0.181763L42.2294 3.96585H46.1839L42.9538 6.30108L44.2237 10.0851L41.0021 7.75846Z" fill="#ffb700"></path> <path d="M52.9123 7.75846L49.6907 10.0851L50.9606 6.30108L47.7305 3.96585H51.685L52.9123 0.181763L54.1396 3.96585H58.0941L54.864 6.30108L56.1339 10.0851L52.9123 7.75846Z" fill="#ffb700"></path></svg> 
+            {{ section_item.section_sub_title | metafield_tag }}
+          </div>
+        {% endif %}
+        <button class="global-button global-button--primary scroll-btn" >{{ section_item.button_text }}</button>
+      </div>
+    </div>
+    <div class="four-sevenths column is-align-center medium-down--one-whole video-column">
+        <div class="swiper swiper-{{ section_id }} video-marquee">
+          <div class="swiper-pagination"></div>
+          <div class="swiper-wrapper">
+            {% assign videos = section_item.videos.value  %}
+            {% for video in videos %}
+              {% assign url  = video.video | file_url %}
+              <div class="swiper-slide">
+                <div>
+                  <video preload="metadata" autoplay playsinline muted loop muted="true">
+                      <source src="{{ url }}" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+                  {% if video.label != nil %}
+                    <div class="overlay-label">
+                      {{ video.label | metafield_tag }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  
+.{{ section_id }} .pdp-section-title {
+  max-width: 400px;
+  text-align: left;
+  font-weight: 500;
+  color: #605471 !important;
+  letter-spacing: -0.02em;
+}
+
+.{{ section_id }} .pdp-section-title  .metafield-rich_text_field p strong {
+  font-weight: 500 !important;
+}
+
+.{{ section_id }} .pdp-section-sub-title {
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.{{ section_id }} .pdp-section-sub-title .metafield-rich_text_field  {
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+.{{ section_id }} .{{ content_wrap }} {
+  margin-top: clamp(0px,3vw,15px);
+}
+
+.{{ content_wrap }} .video-column {
+  overflow: hidden;
+}
+
+.{{ content_wrap }} .video-marquee {
+  width: 100%;
+  overflow: visible;
+  z-index: 0;
+}
+
+.{{ content_wrap }} .video-marquee .swiper-wrapper {
+  -webkit-transition-timing-function: linear !important;
+  -o-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+}
+
+.{{ content_wrap }} .swiper-slide {
+  height: 100%;
+  margin: 0px 10px;
+}
+
+.{{ content_wrap }} .swiper-slide > div {
+  padding: 0px 5px;
+  width: fit-content;
+}
+
+.{{ content_wrap }} .swiper-slide video {
+  max-width: 340px;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+    
+.{{ content_wrap }} button {
+  font-size: clamp(15px, 3vw, 18px);
+  background: linear-gradient(90deg, #605471 0%, #B7A0D7 100%);
+  border-color: #BACBE7;
+  color: #FFFFFF;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.{{ content_wrap }} .overlay-label {
+  width: calc(100% - 10px);
+  margin:0 auto;
+  left:0;
+  right:0;
+  position: absolute;
+  bottom: 5px;
+  background: linear-gradient(180deg, rgba(254,246,171,0) 0%, rgba(0,0,0,0.8939950980392157) 100%);
+  color: #fff;
+  padding:60px 15px 10px;
+  border-radius: 0px 0px 10px 10px;
+}
+  
+.{{ content_wrap }} .overlay-label .metafield-rich_text_field {
+  font-size: clamp(16px, 3vw, 18px);
+}
+
+@media (max-width: 768px) {
+  .pdp-section-title p{
+    text-align: center;
+  }
+
+  .pdp-section-sub-title p{
+    text-align: center;
+  }
+}
+
+{% endstyle %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+        const marqueeSlider = new Swiper('.video-marquee', {
+          spaceBetween: 0,
+          speed: 4000,
+          autoplay: {
+            delay: 0,
+          },
+          loop: true,
+          slidesPerView:1.7,
+          allowTouchMove: false,
+          disableOnInteraction: true,
+          waitForTransition: false,
+          breakpoints: {
+            768: {
+              slidesPerView: 2,
+              autoplay: {
+                delay: 0,
+              },
+              speed: 4000,
+            },
+          },
+        });
+      });
+</script>
