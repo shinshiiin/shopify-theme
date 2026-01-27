@@ -1,9 +1,4 @@
-
-
-{% capture section_id %}pdp-section-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
-{% capture content_wrap %}wrap-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
-
-<div class="section is-width-standard {{ section_id }}">
+<div class="ugc-vids-section">
   <div class="{{ content_wrap }} container is-flex-row ">
     <div class="three-sevenths column is-flex is-align-center is-justify-center medium-down--one-whole">
       <div class="pdp-section-title-wrap">
@@ -46,7 +41,7 @@
 
 {% style %}
   
-.{{ section_id }} .pdp-section-title {
+.pdp-section-title {
   max-width: 400px;
   text-align: left;
   font-weight: 500;
@@ -54,20 +49,20 @@
   letter-spacing: -0.02em;
 }
 
-.{{ section_id }} .pdp-section-title  .metafield-rich_text_field p strong {
+.pdp-section-title  .metafield-rich_text_field p strong {
   font-weight: 500 !important;
 }
 
-.{{ section_id }} .pdp-section-sub-title {
+.pdp-section-sub-title {
   max-width: 400px;
   margin-bottom: 20px;
 }
 
-.{{ section_id }} .pdp-section-sub-title .metafield-rich_text_field  {
+.pdp-section-sub-title .metafield-rich_text_field  {
   font-size: clamp(14px, 2vw, 16px);
 }
 
-.{{ section_id }} .{{ content_wrap }} {
+.{{ content_wrap }} {
   margin-top: clamp(0px,3vw,15px);
 }
 
