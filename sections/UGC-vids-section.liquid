@@ -43,7 +43,11 @@
 </div>
 
 {% style %}
-  
+.{{ section.id }} {
+  margin-top: clamp(0px,3vw,15px);
+  background: {{ section.settings.section_background }};  
+}
+
 {{ section.id }} .section-title {
   max-width: 400px;
   text-align: left;
@@ -63,10 +67,6 @@
 
 .{{ section.id }} .section-subtitle {
   font-size: clamp(14px, 2vw, 16px);
-}
-
-.{{ section.id }} {
-  margin-top: clamp(0px,3vw,15px);
 }
 
 .{{ section.id }} .right-column {
