@@ -16,7 +16,7 @@
         <div class="swiper video-marquee">
           <div class="swiper-pagination"></div>
           <div class="swiper-wrapper">
-            {% assign videos = section_item.videos.value  %}
+            {% assign video_data = section.settings.video_metaobject  %}
             {% for video in videos %}
               {% assign url  = video.video | file_url %}
               <div class="swiper-slide">
@@ -172,7 +172,7 @@
     "settings": [
       {
         "type": "metaobject",
-        "id": "review_metaobject",
+        "id": "video_metaobject",
         "label": "Select Video Data",
         "metaobject_type": "product_ugc_video"
       },
