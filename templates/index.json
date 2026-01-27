@@ -142,6 +142,7 @@
         "testimonial_be3m8f",
         "testimonial_6qYLTb"
       ],
+      "disabled": true,
       "name": "Verified Reviews Carousel",
       "settings": {
         "section_title": "What Our Customers Say",
@@ -353,7 +354,6 @@
     },
     "verified_review_carousel_metaobject_edition_dgew6B": {
       "type": "verified-review-carousel-metaobject-edition",
-      "disabled": true,
       "name": "Reviews Carousel (Meta)",
       "settings": {
         "review_metaobject": "velvet",
