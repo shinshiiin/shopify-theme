@@ -352,7 +352,7 @@
       "type": "verified-review-carousel-metaobject-edition",
       "name": "Reviews Carousel (Meta)",
       "settings": {
-        "review_metaobject": []
+        "review_metaobject": "velvet"
       }
     }
   },
