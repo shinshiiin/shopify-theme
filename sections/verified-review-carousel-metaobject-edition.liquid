@@ -19,7 +19,7 @@ Fields: Image - [One] Image
 {% endcomment %}
 
 
-<div class="section verified-review-section">
+<div class="section verified-review-section {{ section.id }}">
   <div class="container">
     <div class="section-title">
       <h2>
@@ -107,12 +107,8 @@ Fields: Image - [One] Image
           </div>
         {% endfor %}
       {% endif %}
-
-
-
     </div>
-</div>
-  
+
 
     <div class="carousel-controls">
       <button class="carousel-button" id="prev-btn-{{ section.id }}" type="button" aria-label="Previous testimonial">
@@ -129,6 +125,7 @@ Fields: Image - [One] Image
         </svg>
       </button>
     </div>
+
   </div>
 </div>
 
