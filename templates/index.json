@@ -51,6 +51,7 @@
         "slide_YYfLra",
         "slide_HYD63D"
       ],
+      "disabled": true,
       "name": "t:sections.slideshow.presets.name",
       "settings": {
         "layout": "full_bleed",
@@ -141,6 +142,7 @@
         "testimonial_be3m8f",
         "testimonial_6qYLTb"
       ],
+      "disabled": true,
       "name": "Verified Reviews Carousel",
       "settings": {
         "section_title": "What Our Customers Say",
@@ -228,6 +230,7 @@
     },
     "guarantee_section_BjpgBW": {
       "type": "guarantee-section",
+      "disabled": true,
       "name": "Guarantee Section",
       "settings": {
         "title": "30-Day Satisfaction Guarantee",
@@ -331,6 +334,7 @@
         "ingredient_JQdy9n",
         "ingredient_PNjTbL"
       ],
+      "disabled": true,
       "name": "Product Ingredients",
       "settings": {
         "section_title": "Product Ingredients",
@@ -352,7 +356,26 @@
       "type": "verified-review-carousel-metaobject-edition",
       "name": "Reviews Carousel (Meta)",
       "settings": {
-        "review_metaobject": "velvet"
+        "review_metaobject": "velvet",
+        "section_title": "What Our Customers Say",
+        "title_color": "#605471",
+        "title_size": 40,
+        "section_subtitle": "Verified Customer Reviews",
+        "subtitle_color": "#656565",
+        "subtitle_size": 20,
+        "section_background": "#f7f9fd",
+        "card_color": "#fcfaff",
+        "button_color": "#605471",
+        "card_zoom": true,
+        "card_active_color": "#e6e1ec",
+        "testimonial_star_color": "#ffa500",
+        "testimonial_author_color": "#000000",
+        "testimonial_author_size": 22,
+        "badge_color": "#605471",
+        "testimonial_title_color": "#000000",
+        "testimonial_title_size": 18,
+        "testimonial_content_color": "#656565",
+        "testimonial_content_size": 16
       }
     }
   },
