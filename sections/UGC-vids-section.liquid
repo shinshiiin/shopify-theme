@@ -1,29 +1,5 @@
-{% comment %}
-
-  Metaobject: PDP Section - Review
-  /settings/custom_data/metaobjects/pdp_section_review
-
-  Fields:
-  section_item.name (format: product name #number)
-  section_item.section_type
-  section_item.section_title
-  section_item.sub_title
-  section_item.videos
-
-  Metaobject: Data - Video
-  /content/metaobjects/entries/data_product
-
-  Fields:
-  .name (format: product name #number)
-  .video
-  
-{% endcomment %}
-
-{% capture section_id %}pdp-section-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
-{% capture content_wrap %}wrap-{{ section_item.section_type | handleize }}-{{ section_index }}{% endcapture %}
-
-<div class="section is-width-standard {{ section_id }}">
-  <div class="{{ content_wrap }} container is-flex-row ">
+<div class="section is-width-standard {{ section.id }}">
+  <div class="container is-flex-row ">
     <div class="three-sevenths column is-flex is-align-center is-justify-center medium-down--one-whole">
       <div class="pdp-section-title-wrap">
         <h2 class="pdp-section-title">{{ section_item.section_title | metafield_tag }}</h2>
@@ -37,7 +13,7 @@
       </div>
     </div>
     <div class="four-sevenths column is-align-center medium-down--one-whole video-column">
-        <div class="swiper swiper-{{ section_id }} video-marquee">
+        <div class="swiper swiper-{{ section.id }} video-marquee">
           <div class="swiper-pagination"></div>
           <div class="swiper-wrapper">
             {% assign videos = section_item.videos.value  %}
@@ -65,7 +41,7 @@
 
 {% style %}
   
-.{{ section_id }} .pdp-section-title {
+.{{ section.id }} .pdp-section-title {
   max-width: 400px;
   text-align: left;
   font-weight: 500;
@@ -73,50 +49,50 @@
   letter-spacing: -0.02em;
 }
 
-.{{ section_id }} .pdp-section-title  .metafield-rich_text_field p strong {
+.{{ section.id }} .pdp-section-title  .metafield-rich_text_field p strong {
   font-weight: 500 !important;
 }
 
-.{{ section_id }} .pdp-section-sub-title {
+.{{ section.id }} .pdp-section-sub-title {
   max-width: 400px;
   margin-bottom: 20px;
 }
 
-.{{ section_id }} .pdp-section-sub-title .metafield-rich_text_field  {
+.{{ section.id }} .pdp-section-sub-title .metafield-rich_text_field  {
   font-size: clamp(14px, 2vw, 16px);
 }
 
-.{{ section_id }} .{{ content_wrap }} {
+.{{ section.id }} .{{ section.id }} {
   margin-top: clamp(0px,3vw,15px);
 }
 
-.{{ content_wrap }} .video-column {
+.{{ section.id }} .video-column {
   overflow: hidden;
 }
 
-.{{ content_wrap }} .video-marquee {
+.{{ section.id }} .video-marquee {
   width: 100%;
   overflow: visible;
   z-index: 0;
 }
 
-.{{ content_wrap }} .video-marquee .swiper-wrapper {
+.{{ section.id }} .video-marquee .swiper-wrapper {
   -webkit-transition-timing-function: linear !important;
   -o-transition-timing-function: linear !important;
   transition-timing-function: linear !important;
 }
 
-.{{ content_wrap }} .swiper-slide {
+.{{ section.id }} .swiper-slide {
   height: 100%;
   margin: 0px 10px;
 }
 
-.{{ content_wrap }} .swiper-slide > div {
+.{{ section.id }} .swiper-slide > div {
   padding: 0px 5px;
   width: fit-content;
 }
 
-.{{ content_wrap }} .swiper-slide video {
+.{{ section.id }} .swiper-slide video {
   max-width: 340px;
   height: 100%;
   border-radius: 10px;
@@ -124,7 +100,7 @@
   width: 100%;
 }
     
-.{{ content_wrap }} button {
+.{{ section.id }} button {
   font-size: clamp(15px, 3vw, 18px);
   background: linear-gradient(90deg, #605471 0%, #B7A0D7 100%);
   border-color: #BACBE7;
@@ -133,7 +109,7 @@
   margin-top: 10px;
 }
 
-.{{ content_wrap }} .overlay-label {
+.{{ section.id }} .overlay-label {
   width: calc(100% - 10px);
   margin:0 auto;
   left:0;
@@ -146,7 +122,7 @@
   border-radius: 0px 0px 10px 10px;
 }
   
-.{{ content_wrap }} .overlay-label .metafield-rich_text_field {
+.{{ section.id }} .overlay-label .metafield-rich_text_field {
   font-size: clamp(16px, 3vw, 18px);
 }
 
