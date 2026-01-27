@@ -1,5 +1,5 @@
 {% comment %} 
- 
+
 Create Metaobjects for Testimonial Data
 
 {Main Metaobject}
@@ -57,7 +57,7 @@ Fields: Image - [One] Image
 
                 <div class="author-stars">
                   {% assign max = 5 %}
-                  {% assign filled = review.customer_rating.value | default: 5 %}
+                  {% assign filled = review.rating.value | default: 5 %}
                   {% assign empty = max | minus: filled %}
                   {% for i in (1..filled) %}★{% endfor %}
                   {% for i in (1..empty) %}☆{% endfor %}
@@ -83,9 +83,9 @@ Fields: Image - [One] Image
                   </h3>
                 {% endif %}
 
-                {% if review.customer_review %}
+                {% if review.review_content %}
                   <p class="testimonial-content">
-                    {{ review.customer_review }}
+                    {{ review.review_content }}
                   </p>
                 {% endif %}
 
