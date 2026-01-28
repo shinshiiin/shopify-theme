@@ -77,7 +77,6 @@
         "description",
         "share"
       ],
-      "disabled": true,
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
@@ -113,37 +112,11 @@
         "padding_bottom": 28
       }
     },
-    "verified_review_carousel_metaobject_edition_W6Ar47": {
-      "type": "verified-review-carousel-metaobject-edition",
-      "name": "Reviews Carousel (Meta)",
-      "settings": {
-        "review_metaobject": "velvet",
-        "section_title": "What Our Customers Say",
-        "title_color": "#605471",
-        "title_size": 40,
-        "section_subtitle": "Verified Customer Reviews",
-        "subtitle_color": "#656565",
-        "subtitle_size": 20,
-        "section_background": "#f7f9fd",
-        "card_color": "#fcfaff",
-        "button_color": "#605471",
-        "card_zoom": true,
-        "card_active_color": "#e6e1ec",
-        "testimonial_star_color": "#ffa500",
-        "testimonial_author_color": "#000000",
-        "testimonial_author_size": 22,
-        "badge_color": "#605471",
-        "testimonial_title_color": "#000000",
-        "testimonial_title_size": 18,
-        "testimonial_content_color": "#656565",
-        "testimonial_content_size": 16
-      }
-    },
     "ugc_vids_section_nJYkgD": {
       "type": "UGC-vids-section",
       "name": "UGC Vids",
       "settings": {
-        "videos_metaobject": "velvet",
+        "videos_metaobject": "",
         "section_title": "They Saw Results After One Night. You Will Too.",
         "title_color": "#605471",
         "title_size": 40,
@@ -155,7 +128,7 @@
         "rating_size": 16,
         "button_text": "Learn More",
         "button_color": "linear-gradient(90deg, rgba(96, 84, 113, 1), rgba(183, 160, 215, 1) 100%)",
-        "section_background": "#354e7e"
+        "section_background": "#ffffff"
       }
     },
     "product_ingredients_TpfK3J": {
@@ -270,13 +243,39 @@
         "image_size": 360,
         "all_ingredients": ""
       }
+    },
+    "verified_review_carousel_metaobject_edition_Yt7gEr": {
+      "type": "verified-review-carousel-metaobject-edition",
+      "name": "Reviews Carousel (Meta)",
+      "settings": {
+        "review_metaobject": "velvet",
+        "section_title": "What Our Customers Say",
+        "title_color": "#605471",
+        "title_size": 40,
+        "section_subtitle": "Verified Customer Reviews",
+        "subtitle_color": "#656565",
+        "subtitle_size": 20,
+        "section_background": "#f7f9fd",
+        "card_color": "#FCFAFF",
+        "button_color": "#605471",
+        "card_zoom": true,
+        "card_active_color": "#e6e1ec",
+        "testimonial_star_color": "#ffa500",
+        "testimonial_author_color": "#000000",
+        "testimonial_author_size": 22,
+        "badge_color": "#605471",
+        "testimonial_title_color": "#000000",
+        "testimonial_title_size": 18,
+        "testimonial_content_color": "#656565",
+        "testimonial_content_size": 16
+      }
     }
   },
   "order": [
     "main",
     "related-products",
-    "verified_review_carousel_metaobject_edition_W6Ar47",
     "ugc_vids_section_nJYkgD",
-    "product_ingredients_TpfK3J"
+    "product_ingredients_TpfK3J",
+    "verified_review_carousel_metaobject_edition_Yt7gEr"
   ]
 }
