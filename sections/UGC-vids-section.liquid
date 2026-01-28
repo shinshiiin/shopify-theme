@@ -54,6 +54,11 @@
   max-width: 1200px;
   justify-self: center;
 }
+
+.{{ section.id }} .left-column {
+  width: calc(42.8571428571% - 20px);
+  align-content: center;
+}
   
 .{{ section.id }} .section-title {
   max-width: 400px;
@@ -80,9 +85,7 @@
   margin-top: clamp(0px,3vw,15px);
 }
 
-.{{ section.id }} .left-column {
-  width: calc(42.8571428571% - 20px);
-}
+
 
 .{{ section.id }} .video-column {
   overflow: hidden;
