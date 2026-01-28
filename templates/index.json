@@ -379,13 +379,13 @@
         "testimonial_content_size": 16
       }
     },
-    "ugc_vids_section_KAXGQT": {
+    "ugc_vids_section_W6nyGJ": {
       "type": "UGC-vids-section",
       "name": "UGC Vids",
       "settings": {
-        "section_title": "<p>They Saw Results After One Night. You Will Too.</p>",
-        "section_sub_title": "",
-        "button_text": "See Real Results",
+        "section_title": "They Saw Results After One Night. You Will Too.",
+        "section_sub_title": "Unfiltered, Authentic Experiences",
+        "button_text": "Learn More",
         "videos_metaobject": "velvet"
       }
     }
@@ -397,6 +397,6 @@
     "guarantee_section_BjpgBW",
     "product_ingredients_A4WiYf",
     "verified_review_carousel_metaobject_edition_dgew6B",
-    "ugc_vids_section_KAXGQT"
+    "ugc_vids_section_W6nyGJ"
   ]
 }
