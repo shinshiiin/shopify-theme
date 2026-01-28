@@ -4,9 +4,9 @@
       <div class="left-column">
         <div class="section-title-wrap">
           <h2 class="section-title">{{ section.settings.section_title }}</h2>
-          {% if section.settings.section_sub_title != blank %}
+          {% if section.settings.section_subtitle != blank %}
             <div class="section-subtitle">
-              {{ section.settings.section_sub_title }}
+              {{ section.settings.section_subtitle }}
             </div>
           {% endif %}
           <button class="global-button global-button--primary scroll-btn" >{{ section.settings.button_text }}</button>
@@ -383,7 +383,7 @@
       },
       {
         "type": "text",
-        "id": "section_sub_title",
+        "id": "section_subtitle",
         "label": "Section Subtitle",
         "default": "Unfiltered, Authentic Experiences"
       },
@@ -396,6 +396,28 @@
       {
         "type": "range",
         "id": "subtitle_size",
+        "min": 14,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Subtitle Size",
+        "default": 16
+      },
+      {
+        "type": "text",
+        "id": "rating_subtitle",
+        "label": "Section Subtitle",
+        "default": "Unfiltered, Authentic Experiences"
+      },
+      {
+        "type": "color",
+        "id": "rating_color",
+        "label": "Subtitle Color",
+        "default": "#656565"
+      },
+      {
+        "type": "range",
+        "id": "rating_size",
         "min": 14,
         "max": 40,
         "step": 1,
