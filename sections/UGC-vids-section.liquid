@@ -69,8 +69,9 @@
 
 {% style %}
 
-.container {
+.{{ section.id }}--container {
   margin: auto;
+  background: {{ section.settings.section_background }};
 }
 
 .{{ section.id }} {
@@ -452,7 +453,13 @@
         "id": "button_color",
         "label": "Button Color",
         "default": "linear-gradient(90deg, #605471 0%, #B7A0D7 100%)"
-      }
+      },
+      {
+        "type": "color",
+        "id": "section_background",
+        "label": "Section Background Color",
+        "default": "#f7f9fd"
+      },
     ],
     "presets": [
       {
