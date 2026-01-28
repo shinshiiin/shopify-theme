@@ -72,7 +72,7 @@
   text-align: left;
   font-weight: 500;
   font-size: 40px;
-  color: #605471 !important;
+  color: {{ section.settings.title_color }} !important;
   letter-spacing: -0.02em;
   margin: 0;
 }
@@ -80,6 +80,7 @@
 .{{ section.id }} .section-subtitle {
   max-width: 400px;
   margin-bottom: 20px;
+  color: {{ section.settings.title_color }} !important;
 }
 
 .{{ section.id }} .section-subtitle .metafield-rich_text_field  {
