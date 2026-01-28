@@ -1,3 +1,11 @@
+{% comment %} 
+  Metaobject
+  Name: Product UGC Video
+  Fields: Product Name - [One] Single-line-text
+          Videos       - [List] Video File
+{% endcomment %}
+
+
 <div class="section">
   <div class="container">
     <div class="UGC-vids-section {{ section.id }}">
@@ -100,7 +108,7 @@
 .{{ section.id }} .rating-subtitle {
   color: {{ section.settings.rating_color }};
   font-size: {{ section.settings.rating_size }}px;
-  
+
 }
 
 .{{ section.id }} .section-subtitle .metafield-rich_text_field  {
