@@ -120,6 +120,10 @@
   transition-timing-function: linear !important;
 }
 
+.{{ section.id }} .swiper-slide {
+  height: auto;
+}
+
 
 .{{ section.id }} .swiper-slide > div {
   position: relative;
@@ -209,7 +213,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", (event) => {
         const marqueeSlider = new Swiper('.video-marquee', {
-          spaceBetween: 60,
+          spaceBetween: 40,
           speed: 4000,
           autoplay: {
             delay: 0,
