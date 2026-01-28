@@ -159,11 +159,14 @@
 }
 
 @media (max-width: 768px) {
-  .section-title p{
+  .{{ section.id }} {
+    flex-direction: row;
+  }
+  .{{ section.id }} .section-title h2 {
     text-align: center;
   }
 
-  .section-subtitle p{
+  .{{ section.id }} .section-subtitle {
     text-align: center;
   }
 }
