@@ -17,7 +17,7 @@
             <div class="swiper-pagination"></div>
             <div class="swiper-wrapper">
               {% assign video_metaobject = section.settings.videos_metaobject %}
-              {% if video_metaobject %}
+              {% if video_metaobject != blank %}
                 {% for video_item in video_metaobject.videos.value %}
                   <div class="swiper-slide">
                     <div>
