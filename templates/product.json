@@ -125,7 +125,7 @@
         "subtitle_color": "#656565",
         "subtitle_size": 20,
         "section_background": "#f7f9fd",
-        "card_color": "#FCFAFF",
+        "card_color": "#fcfaff",
         "button_color": "#605471",
         "card_zoom": true,
         "card_active_color": "#e6e1ec",
@@ -138,11 +138,144 @@
         "testimonial_content_color": "#656565",
         "testimonial_content_size": 16
       }
+    },
+    "ugc_vids_section_nJYkgD": {
+      "type": "UGC-vids-section",
+      "name": "UGC Vids",
+      "settings": {
+        "videos_metaobject": "",
+        "section_title": "They Saw Results After One Night. You Will Too.",
+        "title_color": "#605471",
+        "title_size": 40,
+        "section_subtitle": "Unfiltered, Authentic Experiences",
+        "subtitle_color": "#656565",
+        "subtitle_size": 16,
+        "rating_subtitle": "⭐⭐⭐⭐⭐ 4.9 (8,247 Reviews)",
+        "rating_color": "#656565",
+        "rating_size": 16,
+        "button_text": "Learn More",
+        "button_color": "linear-gradient(90deg, rgba(96, 84, 113, 1), rgba(183, 160, 215, 1) 100%)"
+      }
+    },
+    "product_ingredients_TpfK3J": {
+      "type": "product-ingredients",
+      "blocks": {
+        "ingredient_GYqFiC": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Vitamin C",
+            "ingredient_text": "Brightens skin and helps even out tone"
+          }
+        },
+        "ingredient_rxjL9F": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Hyaluronic Acid",
+            "ingredient_text": "Provides deep hydration and plumps the skin"
+          }
+        },
+        "ingredient_qfiW8k": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Niacinamide",
+            "ingredient_text": "Helps minimize pores and improve skin texture"
+          }
+        },
+        "ingredient_ynRHpJ": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Alpha Arbutin",
+            "ingredient_text": "Targets dark spots and promotes a more even complexion"
+          }
+        },
+        "ingredient_rrqWft": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "left",
+            "ingredient_title": "Panthenol (Vitamin B5)",
+            "ingredient_text": "Soothes skin and supports the moisture barrier"
+          }
+        },
+        "ingredient_GprYkh": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Retinol",
+            "ingredient_text": "Reduces the appearance of fine lines and wrinkles"
+          }
+        },
+        "ingredient_n3fnzP": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Peptides",
+            "ingredient_text": "Supports collagen production for firmer-looking skin"
+          }
+        },
+        "ingredient_dy9tKh": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Ceramides",
+            "ingredient_text": "Strengthens the skin barrier and locks in moisture"
+          }
+        },
+        "ingredient_4ACaec": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Green Tea Extract",
+            "ingredient_text": "Provides antioxidant protection against environmental stress"
+          }
+        },
+        "ingredient_UweQQ7": {
+          "type": "ingredient",
+          "settings": {
+            "column_position": "right",
+            "ingredient_title": "Licorice Root Extract",
+            "ingredient_text": "Calms irritation and helps brighten uneven skin tone"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_GYqFiC",
+        "ingredient_rxjL9F",
+        "ingredient_qfiW8k",
+        "ingredient_ynRHpJ",
+        "ingredient_rrqWft",
+        "ingredient_GprYkh",
+        "ingredient_n3fnzP",
+        "ingredient_dy9tKh",
+        "ingredient_4ACaec",
+        "ingredient_UweQQ7"
+      ],
+      "name": "Product Ingredients",
+      "settings": {
+        "section_title": "Product Ingredients",
+        "title_color": "#605471",
+        "title_size": 40,
+        "section_subtitle": "Formulated with thoughtfully chosen ingredients for optimal results.",
+        "subtitle_color": "#656565",
+        "subtitle_size": 20,
+        "section_background": "#f7f9fd",
+        "ingredient_name_size": 24,
+        "ingredient_name_color": "#282828",
+        "description_size": 14,
+        "description_color": "#746c8a",
+        "image_size": 360,
+        "all_ingredients": ""
+      }
     }
   },
   "order": [
     "main",
     "related-products",
-    "verified_review_carousel_metaobject_edition_W6Ar47"
+    "verified_review_carousel_metaobject_edition_W6Ar47",
+    "ugc_vids_section_nJYkgD",
+    "product_ingredients_TpfK3J"
   ]
 }
