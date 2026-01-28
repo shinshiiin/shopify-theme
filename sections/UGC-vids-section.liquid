@@ -33,6 +33,14 @@
                     </div>
                   </div>
                 {% endfor %}
+              {% else %}
+                <div class="swiper-slide">
+                  <img
+                    src="{{ 'placeholder_3.webp' | asset_url }}"
+                    alt="Customer"
+                    loading="lazy"
+                  >
+                </div>
               {% endif %}
           </div>
         </div>
