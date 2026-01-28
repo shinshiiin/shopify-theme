@@ -207,48 +207,30 @@
 {% endstyle %}
 
 <script>
-  const marqueeSlider = new Swiper('.video-marquee', {
-  slidesPerView: 1.3,          // 👈 tighter on mobile
-  spaceBetween: 12,            // 👈 mobile gap
-  loop: true,
-  speed: 4000,
-  allowTouchMove: false,
-  autoplay: {
-    delay: 1,
-    disableOnInteraction: false,
-  },
-  breakpoints: {
-    480: {
-      slidesPerView: 1.5,
-      spaceBetween: 14,
-    },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 24,
-    },
-  },
-});
-  const marqueeSlider = new Swiper('.video-marquee', {
-    slidesPerView: 1.3,          // 👈 tighter on mobile
-    spaceBetween: 12,            // 👈 mobile gap
-    loop: true,
-    speed: 4000,
-    allowTouchMove: false,
-    autoplay: {
-      delay: 1,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      480: {
-        slidesPerView: 1.5,
-        spaceBetween: 14,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 24,
-      },
-    },
-  });
+  document.addEventListener("DOMContentLoaded", (event) => {
+        const marqueeSlider = new Swiper('.video-marquee', {
+          spaceBetween: 40,
+          speed: 4000,
+          autoplay: {
+            delay: 0,
+          },
+          loop: true,
+          slidesPerView:1.7,
+          allowTouchMove: false,
+          disableOnInteraction: true,
+          waitForTransition: false,
+          breakpoints: {
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+              autoplay: {
+                delay: 0,
+              },
+              speed: 4000,
+            },
+          },
+        });
+      });
 </script>
 
 {% schema %}
