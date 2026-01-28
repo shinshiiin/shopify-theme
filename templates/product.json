@@ -117,10 +117,15 @@
       "type": "UGC-vids-section",
       "name": "UGC Vids",
       "settings": {
-        "section_title": "<p>They Saw Results After One Night. You Will Too.</p>",
+        "videos_metaobject": "velvet",
+        "section_title": "They Saw Results After One Night. You Will Too.",
+        "title_color": "#605471",
+        "title_size": 40,
         "section_sub_title": "",
+        "subtitle_color": "#656565",
+        "subtitle_size": 16,
         "button_text": "See Real Results",
-        "videos_metaobject": "velvet"
+        "button_color": "linear-gradient(90deg, rgba(96, 84, 113, 1), rgba(183, 160, 215, 1) 100%)"
       }
     },
     "product_ingredients_T8FCjc": {
