@@ -383,7 +383,7 @@
       "type": "UGC-vids-section",
       "name": "UGC Vids",
       "settings": {
-        "videos_metaobject": "velvet",
+        "videos_metaobject": "",
         "section_title": "They Saw Results After One Night. You Will Too.",
         "title_color": "#605471",
         "title_size": 40,
