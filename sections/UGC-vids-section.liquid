@@ -170,7 +170,7 @@
 
   .{{ section.id }} .section-title h2 {
     text-align: center;
-    font-size: {{ section.settings.title_size | minus: 10 }}px !important;
+    font-size: calc({{ section.settings.title_size }}px - 10px);
   }
 
   .{{ section.id }} .section-subtitle {
