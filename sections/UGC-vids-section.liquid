@@ -201,6 +201,19 @@
   .{{ section.id }} .video-column {
     width: auto;
   }
+
+  .{{ content_wrap }} .swiper-slide > div {
+    padding: 0px 5px;
+    width: fit-content;
+  }
+
+  .{{ content_wrap }} .swiper-slide video {
+    max-width: 340px;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+  }
 }
 
 {% endstyle %}
