@@ -1,6 +1,6 @@
-<div class="section {{ section.id }}">
+<div class="section">
   <div class="container">
-    <div class="UGC-vids-section">
+    <div class="UGC-vids-section {{ section.id }}">
       <div class="left-column">
         <div class="section-title-wrap">
           <h2 class="section-title">{{ section.settings.section_title }}</h2>
@@ -44,7 +44,7 @@
 
 {% style %}
 
-.{{ section.id }} .container {
+.{{ section.id }} {
   display: flex;
 }
   
