@@ -133,7 +133,7 @@
     
 .{{ section.id }} button {
   font-size: clamp(15px, 3vw, 18px);
-  background: linear-gradient(90deg, #605471 0%, #B7A0D7 100%);
+  background: {{ section.settings.button_color }};
   border-color: #BACBE7;
   color: #FFFFFF;
   border-radius: 8px;
@@ -262,8 +262,8 @@
       },
       {
         "type": "color_background",
-        "id": "background",
-        "label": "Background",
+        "id": "button_color",
+        "label": "Button Color",
         "default": "linear-gradient(90deg, #605471 0%, #B7A0D7 100%)"
       }
     ],
