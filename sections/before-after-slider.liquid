@@ -22,58 +22,58 @@
     <div class="ba-slider-track-wrapper splide">
       <div class="splide__track">
         <div class="splide__list">
+          {% for block in section.blocks %}
+            <div class="splide__slide" {{ block.shopify_attributes }}>
+              <div class="ba-card">
+                <div class="ba-card-images">
+                  <div class="ba-img-wrapper">
+                    {% if block.settings.before_image %}
+                      <img
+                        src="{{ block.settings.before_image | image_url: width: 500 }}"
+                        alt="Before"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                    <span class="ba-label before">Before</span>
+                  </div>
 
-          <div class="splide__slide" {{ block.shopify_attributes }}>
-            <div class="ba-card">
-              <div class="ba-card-images">
-                <div class="ba-img-wrapper">
-                  {% if block.settings.before_image %}
-                    <img
-                      src="{{ block.settings.before_image | image_url: width: 500 }}"
-                      alt="Before"
-                      loading="lazy"
-                    >
-                  {% endif %}
-                  <span class="ba-label before">Before</span>
+                  <div class="ba-img-wrapper">
+                    {% if block.settings.after_image %}
+                      <img
+                        src="{{ block.settings.after_image | image_url: width: 500 }}"
+                        alt="After"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                    <span class="ba-label during">After</span>
+                  </div>
                 </div>
 
-                <div class="ba-img-wrapper">
-                  {% if block.settings.after_image %}
-                    <img
-                      src="{{ block.settings.after_image | image_url: width: 500 }}"
-                      alt="After"
-                      loading="lazy"
-                    >
-                  {% endif %}
-                  <span class="ba-label during">After</span>
-                </div>
-              </div>
+                <div class="ba-card-content">
+                  <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
+                    <path d="M14.832 9.6C14.832 7.776..." fill="#F23440"></path>
+                  </svg>
 
-              <div class="ba-card-content">
-                <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
-                  <path d="M14.832 9.6C14.832 7.776..." fill="#F23440"></path>
-                </svg>
+                  <p class="ba-testimonial">
+                    {{ block.settings.testimonial }}
+                  </p>
 
-                <p class="ba-testimonial">
-                  {{ block.settings.testimonial }}
-                </p>
-
-                <div class="ba-user">
-                  {% if block.settings.avatar %}
-                    <img
-                      class="ba-avatar"
-                      src="{{ block.settings.avatar | image_url: width: 80 }}"
-                      alt="{{ block.settings.name }}"
-                    >
-                  {% endif %}
-                  <span class="ba-user-name">
-                    {{ block.settings.name }}
-                  </span>
+                  <div class="ba-user">
+                    {% if block.settings.avatar %}
+                      <img
+                        class="ba-avatar"
+                        src="{{ block.settings.avatar | image_url: width: 80 }}"
+                        alt="{{ block.settings.name }}"
+                      >
+                    {% endif %}
+                    <span class="ba-user-name">
+                      {{ block.settings.name }}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
+          {% endfor %}
         </div>
       </div>
       </div>
@@ -259,6 +259,7 @@
     }
   ],
   "max_blocks": 10,
+
   "presets": [{ "name": "Before & After Slider" }]
 }
 {% endschema %}
