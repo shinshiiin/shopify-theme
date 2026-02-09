@@ -1,107 +1,36 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 
 <div class="expert-slider-{{ section.id }}">
-  <h2 class="section-title">Trusted by leading doctors. Hear from our experts.</h2>
+  <h2 class="section-title">{{ section.settings.section_title }}</h2>
 
   <div id="expert-splide-{{ section.id }}" class="splide">
     <div class="splide__track">
       <ul class="splide__list">
         
-        <li class="splide__slide">
-          <div class="expert-card">
-            <div class="image-wrapper">
-              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_dray_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Dray">
-              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/4f52e397a81c40fea2f1d382024be881/4f52e397a81c40fea2f1d382024be881.HD-1080p-7.2Mbps-29588507.mp4">
-                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
-              </button>
+        {% for block in section.blocks %}
+          <li class="splide__slide" {{ block.shopify_attributes }}>
+            <div class="expert-card">
+              <div class="image-wrapper">
+                {% if block.settings.expert_image %}
+                  <img src="{{ block.settings.expert_image | img_url: '700x' }}" class="expert-image" alt="{{ block.settings.expert_name }}">
+                {% else %}
+                  <img src="https://via.placeholder.com/700x500" class="expert-image" alt="{{ block.settings.expert_name }}">
+                {% endif %}
+                
+                {% if block.settings.video_url != blank %}
+                  <button class="play-button" data-video="{{ block.settings.video_url }}">
+                    <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
+                  </button>
+                {% endif %}
+              </div>
+              <div class="expert-info">
+                <h3>{{ block.settings.expert_name }}</h3>
+                <p class="expert-role">{{ block.settings.expert_role }}</p>
+                <p class="expert-desc">{{ block.settings.expert_description }}</p>
+              </div>
             </div>
-            <div class="expert-info">
-              <h3>Dr. Andrea Suarez</h3>
-              <p class="expert-role">Board-certified dermatologist</p>
-              <p class="expert-desc">Explains why the iRESTORE Elite is the most powerful device and why she recommends it to her patients.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="splide__slide">
-          <div class="expert-card">
-            <div class="image-wrapper">
-              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_bodian_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Adam Bodian">
-              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/f76ebac33e94450dab55ea084cabdcec/f76ebac33e94450dab55ea084cabdcec.HD-720p-4.5Mbps-18936666.mp4">
-                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
-              </button>
-            </div>
-            <div class="expert-info">
-              <h3>Dr. Adam Bodian</h3>
-              <p class="expert-role">Board-Certified Laser Surgeon</p>
-              <p class="expert-desc">Reports on how 100% of device clinical study patients experienced hair growth.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="splide__slide">
-          <div class="expert-card">
-            <div class="image-wrapper">
-              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_perera_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Eshini Perera">
-              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/2b57f66768c8449bac7c9fa6a83e9eae/2b57f66768c8449bac7c9fa6a83e9eae.HD-1080p-7.2Mbps-23656930.mp4">
-                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
-              </button>
-            </div>
-            <div class="expert-info">
-              <h3>Dr. Eshini Perera</h3>
-              <p class="expert-role">Board-certified dermatologist</p>
-              <p class="expert-desc">Explains how low-level light therapy (LLLT) works to stimulate hair growth.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="splide__slide">
-          <div class="expert-card">
-            <div class="image-wrapper">
-              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_dray_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Dray">
-              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/4f52e397a81c40fea2f1d382024be881/4f52e397a81c40fea2f1d382024be881.HD-1080p-7.2Mbps-29588507.mp4">
-                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
-              </button>
-            </div>
-            <div class="expert-info">
-              <h3>Dr. Andrea Suarez</h3>
-              <p class="expert-role">Board-certified dermatologist</p>
-              <p class="expert-desc">Explains why the iRESTORE Elite is the most powerful device and why she recommends it to her patients.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="splide__slide">
-          <div class="expert-card">
-            <div class="image-wrapper">
-              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_bodian_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Adam Bodian">
-              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/f76ebac33e94450dab55ea084cabdcec/f76ebac33e94450dab55ea084cabdcec.HD-720p-4.5Mbps-18936666.mp4">
-                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
-              </button>
-            </div>
-            <div class="expert-info">
-              <h3>Dr. Adam Bodian</h3>
-              <p class="expert-role">Board-Certified Laser Surgeon</p>
-              <p class="expert-desc">Reports on how 100% of device clinical study patients experienced hair growth.</p>
-            </div>
-          </div>
-        </li>
-
-        <li class="splide__slide">
-          <div class="expert-card">
-            <div class="image-wrapper">
-              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_perera_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Eshini Perera">
-              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/2b57f66768c8449bac7c9fa6a83e9eae/2b57f66768c8449bac7c9fa6a83e9eae.HD-1080p-7.2Mbps-23656930.mp4">
-                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
-              </button>
-            </div>
-            <div class="expert-info">
-              <h3>Dr. Eshini Perera</h3>
-              <p class="expert-role">Board-certified dermatologist</p>
-              <p class="expert-desc">Explains how low-level light therapy (LLLT) works to stimulate hair growth.</p>
-            </div>
-          </div>
-        </li>
+          </li>
+        {% endfor %}
 
       </ul>
     </div>
@@ -286,10 +215,80 @@
 {% schema %}
 {
   "name": "Expert Video Slider",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Trusted by leading doctors. Hear from our experts."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "expert",
+      "name": "Expert",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "expert_image",
+          "label": "Expert Image"
+        },
+        {
+          "type": "text",
+          "id": "expert_name",
+          "label": "Expert Name",
+          "default": "Dr. Name"
+        },
+        {
+          "type": "text",
+          "id": "expert_role",
+          "label": "Expert Role",
+          "default": "Board-certified dermatologist"
+        },
+        {
+          "type": "textarea",
+          "id": "expert_description",
+          "label": "Expert Description",
+          "default": "Description of what the expert explains in the video."
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL",
+          "info": "Direct link to the MP4 video file"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Expert Video Slider"
+      "name": "Expert Video Slider",
+      "blocks": [
+        {
+          "type": "expert",
+          "settings": {
+            "expert_name": "Dr. Andrea Suarez",
+            "expert_role": "Board-certified dermatologist",
+            "expert_description": "Explains why the iRESTORE Elite is the most powerful device and why she recommends it to her patients."
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "expert_name": "Dr. Adam Bodian",
+            "expert_role": "Board-Certified Laser Surgeon",
+            "expert_description": "Reports on how 100% of device clinical study patients experienced hair growth."
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "expert_name": "Dr. Eshini Perera",
+            "expert_role": "Board-certified dermatologist",
+            "expert_description": "Explains how low-level light therapy (LLLT) works to stimulate hair growth."
+          }
+        }
+      ]
     }
   ]
 }
