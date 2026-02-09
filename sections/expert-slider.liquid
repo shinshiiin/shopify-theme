@@ -20,10 +20,7 @@
                   <div class="swiper-slide" {{ block.shopify_attributes }}>
                     <div class="video-container">
                       {% if block.settings.video != blank %}
-                        <video preload="metadata" autoplay playsinline muted loop>
-                          <source src="{{ block.settings.video }}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
+                        {{ block.settings.video | video_tag: image_size: '1100x', autoplay: true, loop: true, controls: false, muted: true }}
                       {% elsif block.settings.video_url != blank %}
                         {{ block.settings.video_url | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
                       {% endif %}
