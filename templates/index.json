@@ -402,6 +402,16 @@
     "before_after_slider_UHhwrX": {
       "type": "before-after-slider",
       "blocks": {
+        "slide_L9Khbt": {
+          "type": "slide",
+          "settings": {
+            "before_image": "shopify://shop_images/placeholder_1.png",
+            "testimonial": "I have been using the product for 6 months and I’m seeing real results.",
+            "avatar": "shopify://shop_images/placeholder_2.webp",
+            "name": "Albert L. | 37",
+            "tag": "FULL CHEST GROOMING"
+          }
+        },
         "slide_CGdVWz": {
           "type": "slide",
           "settings": {
@@ -409,7 +419,8 @@
             "after_image": "shopify://shop_images/Rectangle_158_1.png",
             "testimonial": "I have been using the product for 6 months and I’m seeing real results.",
             "avatar": "shopify://shop_images/placeholder_2.webp",
-            "name": "Albert L. | 312"
+            "name": "Albert L. | 312",
+            "tag": "FULL CHEST GROOMING"
           }
         },
         "slide_EXLDHq": {
@@ -419,11 +430,13 @@
             "after_image": "shopify://shop_images/placeholder_1.png",
             "testimonial": "I have been using the product for 6 months and I’m seeing real results.",
             "avatar": "shopify://shop_images/placeholder_2.webp",
-            "name": "Albert L. | 37"
+            "name": "Albert L. | 37",
+            "tag": "FULL CHEST GROOMING"
           }
         }
       },
       "block_order": [
+        "slide_L9Khbt",
         "slide_CGdVWz",
         "slide_EXLDHq"
       ],
