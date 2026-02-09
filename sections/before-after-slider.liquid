@@ -299,14 +299,17 @@
     const splide = new Splide(`#ba-section-${sectionId} .splide`, {
       type: 'loop',
       gap: '1rem',
-      padding: '1rem',
+      padding: {
+        left: '0',
+        right: '160px' // 👈 controls the "half card"
+      },
       autoWidth: true,
       arrows: false,
       pagination: true, // <-- SET THIS TO TRUE
       mediaQuery: 'min',
       breakpoints: {
-        380: { gap: '1.25rem', padding: '1.25rem' },
-        1280: { gap: '2rem', padding: '0' },
+        380: { gap: '1rem', padding: { right: '80px' } },
+        1280: { gap: '2rem', { right: '220px' } },
       },
     }).mount();
 
