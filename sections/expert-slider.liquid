@@ -9,8 +9,8 @@
         
         {% for block in section.blocks %}
           <li class="splide__slide" {{ block.shopify_attributes }}>
-            <div class="expert-card">
-              <div class="image-wrapper">
+            <div class="expert-card" data-video-index="{{ forloop.index0 }}">
+              <div class="video-container">
                 {% if block.settings.video_url != blank %}
                   <video 
                     class="expert-video" 
@@ -21,28 +21,17 @@
                   >
                     <source src="{{ block.settings.video_url }}" type="video/mp4">
                   </video>
-                  <button class="unmute-button" data-video-index="{{ forloop.index }}">
-                    <svg class="muted-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93l-1.41 1.41A7.98 7.98 0 0 1 20 12a7.98 7.98 0 0 1-2.34 5.66l1.41 1.41A9.98 9.98 0 0 0 22 12c0-2.76-1.12-5.26-2.93-7.07zM16.24 7.76l-1.41 1.41A3.99 3.99 0 0 1 16 12c0 1.11-.45 2.11-1.17 2.83l1.41 1.41A5.99 5.99 0 0 0 18 12c0-1.66-.67-3.16-1.76-4.24z" fill="white"/>
-                      <line x1="2" y1="2" x2="22" y2="22" stroke="white" stroke-width="2"/>
-                    </svg>
-                    <svg class="unmuted-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
-                      <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93l-1.41 1.41A7.98 7.98 0 0 1 20 12a7.98 7.98 0 0 1-2.34 5.66l1.41 1.41A9.98 9.98 0 0 0 22 12c0-2.76-1.12-5.26-2.93-7.07zM16.24 7.76l-1.41 1.41A3.99 3.99 0 0 1 16 12c0 1.11-.45 2.11-1.17 2.83l1.41 1.41A5.99 5.99 0 0 0 18 12c0-1.66-.67-3.16-1.76-4.24z" fill="white"/>
-                    </svg>
-                  </button>
-                  <button class="fullscreen-button">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" fill="white"/>
-                    </svg>
-                  </button>
+                  <div class="play-overlay">
+                    <button class="play-button">
+                      <svg width="40" height="46" viewBox="0 0 40 46" fill="none">
+                        <circle cx="20" cy="23" r="20" fill="rgba(255,255,255,0.9)"/>
+                        <path d="M16 13L28 23L16 33V13Z" fill="#000"/>
+                      </svg>
+                    </button>
+                  </div>
                 {% else %}
                   <img src="{% if block.settings.expert_image %}{{ block.settings.expert_image | img_url: '700x' }}{% else %}https://via.placeholder.com/700x500{% endif %}" class="expert-image" alt="{{ block.settings.expert_name }}">
                 {% endif %}
-              </div>
-              <div class="expert-info">
-                <h3>{{ block.settings.expert_name }}</h3>
-                <p class="expert-role">{{ block.settings.expert_role }}</p>
-                <p class="expert-desc">{{ block.settings.expert_description }}</p>
               </div>
             </div>
           </li>
@@ -54,22 +43,22 @@
     <div class="splide__arrows">
       <button class="splide__arrow splide__arrow--prev">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
       <button class="splide__arrow splide__arrow--next">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
     </div>
   </div>
 </div>
 
-<div class="video-modal-overlay" id="ExpertVideoModal">
+<div class="video-modal-overlay" id="ExpertVideoModal-{{ section.id }}">
   <div class="video-modal-content">
     <button class="close-modal">✕</button>
-    <video id="modalVideo" controls width="100%" height="auto">
+    <video id="modalVideo-{{ section.id }}" controls width="100%" height="auto">
       <source src="" type="video/mp4">
     </video>
   </div>
@@ -79,19 +68,18 @@
 {%- style -%}
   .expert-slider-{{ section.id }} {
     padding: 60px 20px;
-    background: #1a1a1a;
+    background: #f5f5f5;
     font-family: sans-serif;
     overflow: hidden;
   }
 
   .expert-slider-{{ section.id }} .section-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     text-align: center;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    color: #000;
+    letter-spacing: 0.5px;
   }
 
   .expert-slider-{{ section.id }} .splide {
@@ -102,118 +90,85 @@
   }
 
   .expert-slider-{{ section.id }} .expert-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    height: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
   }
 
-  .expert-slider-{{ section.id }} .image-wrapper {
+  .expert-slider-{{ section.id }} .expert-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .expert-slider-{{ section.id }} .video-container {
     position: relative;
     width: 100%;
     line-height: 0;
-    background: #d3d3d3;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
   }
 
   .expert-slider-{{ section.id }} .expert-image,
   .expert-slider-{{ section.id }} .expert-video {
     width: 100%;
-    height: 280px;
+    height: 320px;
     object-fit: cover;
     display: block;
   }
 
-  .expert-slider-{{ section.id }} .expert-video {
-    background: #000;
-  }
-
-  .expert-slider-{{ section.id }} .unmute-button {
+  .expert-slider-{{ section.id }} .play-overlay {
     position: absolute;
-    bottom: 16px;
-    left: 16px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.7);
-    border: none;
-    cursor: pointer;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    z-index: 2;
+    pointer-events: none;
   }
 
-  .expert-slider-{{ section.id }} .unmute-button:hover {
-    background: rgba(0, 0, 0, 0.85);
-    transform: scale(1.1);
+  .expert-slider-{{ section.id }} .expert-card:hover .play-overlay {
+    background: rgba(0, 0, 0, 0.4);
   }
 
-  .expert-slider-{{ section.id }} .fullscreen-button {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.7);
+  .expert-slider-{{ section.id }} .play-overlay.hidden {
+    opacity: 0;
+  }
+
+  .expert-slider-{{ section.id }} .play-button {
+    width: 60px;
+    height: 60px;
     border: none;
+    background: transparent;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 2;
+    transition: transform 0.3s ease;
+    pointer-events: all;
   }
 
-  .expert-slider-{{ section.id }} .fullscreen-button:hover {
-    background: rgba(0, 0, 0, 0.85);
+  .expert-slider-{{ section.id }} .play-button:hover {
     transform: scale(1.1);
-  }
-
-  .expert-slider-{{ section.id }} .expert-info {
-    padding: 20px;
-    background: #fff;
-  }
-
-  .expert-slider-{{ section.id }} .expert-info h3 {
-    font-size: 1.25rem;
-    margin: 0 0 8px 0;
-    font-weight: 700;
-    color: #000;
-  }
-
-  .expert-slider-{{ section.id }} .expert-role {
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    color: #666;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-    font-weight: 600;
-  }
-
-  .expert-slider-{{ section.id }} .expert-desc {
-    font-size: 0.95rem;
-    color: #444;
-    line-height: 1.5;
   }
 
   /* Arrow Styles */
   .expert-slider-{{ section.id }} .splide__arrow {
     width: 48px;
     height: 48px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    background: #fff;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    color: #000;
   }
 
   .expert-slider-{{ section.id }} .splide__arrow:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #f0f0f0;
     transform: scale(1.05);
   }
 
@@ -237,7 +192,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.95);
     display: none;
     justify-content: center;
     align-items: center;
@@ -263,15 +218,16 @@
     right: 15px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border: none;
     cursor: pointer;
     z-index: 10;
-    font-size: 18px;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 300;
   }
 
   .close-modal:hover {
@@ -297,11 +253,21 @@
       width: 40px;
       height: 40px;
     }
+
+    .expert-slider-{{ section.id }} .expert-video,
+    .expert-slider-{{ section.id }} .expert-image {
+      height: 250px;
+    }
   }
 
   @media (max-width: 640px) {
     .expert-slider-{{ section.id }} .splide {
       padding: 0 35px;
+    }
+
+    .expert-slider-{{ section.id }} .expert-video,
+    .expert-slider-{{ section.id }} .expert-image {
+      height: 200px;
     }
   }
 {%- endstyle -%}
@@ -310,105 +276,131 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    const sectionId = '{{ section.id }}';
+    
     // Initialize Slider with infinite loop
-    const splide = new Splide('#expert-splide-{{ section.id }}', {
+    const splide = new Splide('#expert-splide-' + sectionId, {
       type   : 'loop',
-      perPage: 4,
-      gap    : '20px',
+      perPage: 5,
+      gap    : '16px',
       pagination: false,
       autoplay: false,
       pauseOnHover: true,
+      speed: 600,
       breakpoints: {
-        1200: { perPage: 3 },
-        900: { perPage: 2 },
+        1400: { perPage: 4 },
+        1024: { perPage: 3 },
+        768: { perPage: 2 },
         640:  { perPage: 1 }
       }
     }).mount();
 
-    // Video autoplay with Intersection Observer
-    const videos = document.querySelectorAll('.expert-slider-{{ section.id }} .expert-video');
-    
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5
-    };
+    // Auto-rotation logic
+    const videos = document.querySelectorAll('.expert-slider-' + sectionId + ' .expert-video');
+    let currentPlayingIndex = 0;
+    let autoRotateInterval;
+    let isModalOpen = false;
 
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const video = entry.target;
-        if (entry.isIntersecting) {
-          video.play().catch(e => console.log('Autoplay prevented:', e));
-        } else {
-          video.pause();
-        }
+    function playVideoAtIndex(index) {
+      // Pause all videos
+      videos.forEach((v, i) => {
+        v.pause();
+        v.currentTime = 0;
+        const overlay = v.closest('.video-container').querySelector('.play-overlay');
+        overlay.classList.remove('hidden');
       });
-    }, observerOptions);
 
-    videos.forEach(video => {
-      videoObserver.observe(video);
-    });
-
-    // Unmute/Mute toggle
-    document.querySelectorAll('.unmute-button').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const card = this.closest('.expert-card');
-        const video = card.querySelector('.expert-video');
-        const mutedIcon = this.querySelector('.muted-icon');
-        const unmutedIcon = this.querySelector('.unmuted-icon');
+      // Play the video at the specified index
+      if (videos[index]) {
+        const video = videos[index];
+        const overlay = video.closest('.video-container').querySelector('.play-overlay');
         
-        if (video.muted) {
-          video.muted = false;
-          mutedIcon.style.display = 'none';
-          unmutedIcon.style.display = 'block';
-        } else {
-          video.muted = true;
-          mutedIcon.style.display = 'block';
-          unmutedIcon.style.display = 'none';
-        }
-      });
-    });
+        video.play().then(() => {
+          overlay.classList.add('hidden');
+        }).catch(e => console.log('Autoplay prevented:', e));
+      }
+    }
 
-    // Fullscreen modal
-    const modal = document.getElementById('ExpertVideoModal');
-    const modalVideo = document.getElementById('modalVideo');
+    function startAutoRotation() {
+      if (autoRotateInterval) clearInterval(autoRotateInterval);
+      
+      autoRotateInterval = setInterval(() => {
+        if (!isModalOpen) {
+          currentPlayingIndex = (currentPlayingIndex + 1) % videos.length;
+          playVideoAtIndex(currentPlayingIndex);
+        }
+      }, 3000); // 3 seconds per video
+    }
+
+    function stopAutoRotation() {
+      if (autoRotateInterval) {
+        clearInterval(autoRotateInterval);
+      }
+      videos.forEach(v => {
+        v.pause();
+        const overlay = v.closest('.video-container').querySelector('.play-overlay');
+        overlay.classList.remove('hidden');
+      });
+    }
+
+    // Start auto-rotation on page load
+    setTimeout(() => {
+      playVideoAtIndex(0);
+      startAutoRotation();
+    }, 500);
+
+    // Click to open modal
+    const modal = document.getElementById('ExpertVideoModal-' + sectionId);
+    const modalVideo = document.getElementById('modalVideo-' + sectionId);
     const closeBtn = modal.querySelector('.close-modal');
 
-    document.querySelectorAll('.fullscreen-button').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const card = this.closest('.expert-card');
-        const video = card.querySelector('.expert-video');
-        const videoSrc = video.querySelector('source').src;
-        
-        // Pause all videos in slider
-        videos.forEach(v => v.pause());
-        
-        modalVideo.querySelector('source').src = videoSrc;
-        modalVideo.load();
-        modal.classList.add('active');
-        modalVideo.play();
+    document.querySelectorAll('.expert-slider-' + sectionId + ' .expert-card').forEach((card, index) => {
+      card.addEventListener('click', function() {
+        const video = this.querySelector('.expert-video');
+        if (video) {
+          const videoSrc = video.querySelector('source').src;
+          
+          // Stop auto-rotation
+          stopAutoRotation();
+          isModalOpen = true;
+          
+          modalVideo.querySelector('source').src = videoSrc;
+          modalVideo.load();
+          modal.classList.add('active');
+          modalVideo.play();
+        }
       });
     });
 
     const closeModal = () => {
       modal.classList.remove('active');
       modalVideo.pause();
+      modalVideo.currentTime = 0;
+      isModalOpen = false;
       
-      // Resume playing videos that are in view
-      videos.forEach(video => {
-        const rect = video.getBoundingClientRect();
-        const isInView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-        if (isInView) {
-          video.play().catch(e => console.log('Autoplay prevented:', e));
-        }
-      });
+      // Resume auto-rotation
+      setTimeout(() => {
+        playVideoAtIndex(currentPlayingIndex);
+        startAutoRotation();
+      }, 300);
     };
 
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
       if(e.target === modal) closeModal();
+    });
+
+    // Pause auto-rotation when user hovers over slider
+    const sliderContainer = document.querySelector('.expert-slider-' + sectionId);
+    sliderContainer.addEventListener('mouseenter', () => {
+      stopAutoRotation();
+    });
+
+    sliderContainer.addEventListener('mouseleave', () => {
+      if (!isModalOpen) {
+        playVideoAtIndex(currentPlayingIndex);
+        startAutoRotation();
+      }
     });
   });
 </script>
@@ -421,43 +413,40 @@
       "type": "text",
       "id": "section_title",
       "label": "Section Title",
-      "default": "OVER 5000+ SUCCESS STORIES"
+      "default": "See the Difference, Hear the Stories"
     }
   ],
   "blocks": [
     {
       "type": "expert",
-      "name": "Expert",
+      "name": "Video",
       "settings": [
         {
           "type": "image_picker",
           "id": "expert_image",
-          "label": "Expert Image/Poster",
+          "label": "Video Thumbnail",
           "info": "Used as video poster/thumbnail"
-        },
-        {
-          "type": "text",
-          "id": "expert_name",
-          "label": "Expert Name",
-          "default": "Dr. Name"
-        },
-        {
-          "type": "text",
-          "id": "expert_role",
-          "label": "Expert Role",
-          "default": "Board-certified dermatologist"
-        },
-        {
-          "type": "textarea",
-          "id": "expert_description",
-          "label": "Expert Description",
-          "default": "Description of what the expert explains in the video."
         },
         {
           "type": "url",
           "id": "video_url",
           "label": "Video URL",
           "info": "Direct link to the MP4 video file"
+        },
+        {
+          "type": "text",
+          "id": "expert_name",
+          "label": "Name (Optional)",
+        },
+        {
+          "type": "text",
+          "id": "expert_role",
+          "label": "Role (Optional)",
+        },
+        {
+          "type": "textarea",
+          "id": "expert_description",
+          "label": "Description (Optional)",
         }
       ]
     }
@@ -467,36 +456,19 @@
       "name": "Expert Video Slider",
       "blocks": [
         {
-          "type": "expert",
-          "settings": {
-            "expert_name": "Dr. Andrea Suarez",
-            "expert_role": "Board-certified dermatologist",
-            "expert_description": "Explains why the iRESTORE Elite is the most powerful device and why she recommends it to her patients."
-          }
+          "type": "expert"
         },
         {
-          "type": "expert",
-          "settings": {
-            "expert_name": "Dr. Adam Bodian",
-            "expert_role": "Board-Certified Laser Surgeon",
-            "expert_description": "Reports on how 100% of device clinical study patients experienced hair growth."
-          }
+          "type": "expert"
         },
         {
-          "type": "expert",
-          "settings": {
-            "expert_name": "Dr. Eshini Perera",
-            "expert_role": "Board-certified dermatologist",
-            "expert_description": "Explains how low-level light therapy (LLLT) works to stimulate hair growth."
-          }
+          "type": "expert"
         },
         {
-          "type": "expert",
-          "settings": {
-            "expert_name": "Dr. Andrea Suarez",
-            "expert_role": "Board-certified dermatologist",
-            "expert_description": "Explains why the iRESTORE Elite is the most powerful device and why she recommends it to her patients."
-          }
+          "type": "expert"
+        },
+        {
+          "type": "expert"
         }
       ]
     }
