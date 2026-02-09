@@ -11,16 +11,32 @@
           <li class="splide__slide" {{ block.shopify_attributes }}>
             <div class="expert-card">
               <div class="image-wrapper">
-                {% if block.settings.expert_image %}
-                  <img src="{{ block.settings.expert_image | img_url: '700x' }}" class="expert-image" alt="{{ block.settings.expert_name }}">
-                {% else %}
-                  <img src="https://via.placeholder.com/700x500" class="expert-image" alt="{{ block.settings.expert_name }}">
-                {% endif %}
-                
                 {% if block.settings.video_url != blank %}
-                  <button class="play-button" data-video="{{ block.settings.video_url }}">
-                    <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
+                  <video 
+                    class="expert-video" 
+                    playsinline 
+                    muted 
+                    loop
+                    poster="{% if block.settings.expert_image %}{{ block.settings.expert_image | img_url: '700x' }}{% else %}https://via.placeholder.com/700x500{% endif %}"
+                  >
+                    <source src="{{ block.settings.video_url }}" type="video/mp4">
+                  </video>
+                  <button class="unmute-button" data-video-index="{{ forloop.index }}">
+                    <svg class="muted-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93l-1.41 1.41A7.98 7.98 0 0 1 20 12a7.98 7.98 0 0 1-2.34 5.66l1.41 1.41A9.98 9.98 0 0 0 22 12c0-2.76-1.12-5.26-2.93-7.07zM16.24 7.76l-1.41 1.41A3.99 3.99 0 0 1 16 12c0 1.11-.45 2.11-1.17 2.83l1.41 1.41A5.99 5.99 0 0 0 18 12c0-1.66-.67-3.16-1.76-4.24z" fill="white"/>
+                      <line x1="2" y1="2" x2="22" y2="22" stroke="white" stroke-width="2"/>
+                    </svg>
+                    <svg class="unmuted-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+                      <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93l-1.41 1.41A7.98 7.98 0 0 1 20 12a7.98 7.98 0 0 1-2.34 5.66l1.41 1.41A9.98 9.98 0 0 0 22 12c0-2.76-1.12-5.26-2.93-7.07zM16.24 7.76l-1.41 1.41A3.99 3.99 0 0 1 16 12c0 1.11-.45 2.11-1.17 2.83l1.41 1.41A5.99 5.99 0 0 0 18 12c0-1.66-.67-3.16-1.76-4.24z" fill="white"/>
+                    </svg>
                   </button>
+                  <button class="fullscreen-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" fill="white"/>
+                    </svg>
+                  </button>
+                {% else %}
+                  <img src="{% if block.settings.expert_image %}{{ block.settings.expert_image | img_url: '700x' }}{% else %}https://via.placeholder.com/700x500{% endif %}" class="expert-image" alt="{{ block.settings.expert_name }}">
                 {% endif %}
               </div>
               <div class="expert-info">
@@ -99,30 +115,59 @@
     background: #d3d3d3;
   }
 
-  .expert-slider-{{ section.id }} .expert-image {
+  .expert-slider-{{ section.id }} .expert-image,
+  .expert-slider-{{ section.id }} .expert-video {
     width: 100%;
     height: 280px;
     object-fit: cover;
+    display: block;
   }
 
-  .expert-slider-{{ section.id }} .play-button {
+  .expert-slider-{{ section.id }} .expert-video {
+    background: #000;
+  }
+
+  .expert-slider-{{ section.id }} .unmute-button {
     position: absolute;
     bottom: 16px;
     left: 16px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.7);
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease;
+    z-index: 2;
   }
 
-  .expert-slider-{{ section.id }} .play-button:hover {
+  .expert-slider-{{ section.id }} .unmute-button:hover {
+    background: rgba(0, 0, 0, 0.85);
+    transform: scale(1.1);
+  }
+
+  .expert-slider-{{ section.id }} .fullscreen-button {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+
+  .expert-slider-{{ section.id }} .fullscreen-button:hover {
+    background: rgba(0, 0, 0, 0.85);
     transform: scale(1.1);
   }
 
@@ -265,12 +310,14 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Initialize Slider
-    new Splide('#expert-splide-{{ section.id }}', {
-      type   : 'slide',
+    // Initialize Slider with infinite loop
+    const splide = new Splide('#expert-splide-{{ section.id }}', {
+      type   : 'loop',
       perPage: 4,
       gap    : '20px',
       pagination: false,
+      autoplay: false,
+      pauseOnHover: true,
       breakpoints: {
         1200: { perPage: 3 },
         900: { perPage: 2 },
@@ -278,24 +325,85 @@
       }
     }).mount();
 
-    // Modal Logic
+    // Video autoplay with Intersection Observer
+    const videos = document.querySelectorAll('.expert-slider-{{ section.id }} .expert-video');
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          video.play().catch(e => console.log('Autoplay prevented:', e));
+        } else {
+          video.pause();
+        }
+      });
+    }, observerOptions);
+
+    videos.forEach(video => {
+      videoObserver.observe(video);
+    });
+
+    // Unmute/Mute toggle
+    document.querySelectorAll('.unmute-button').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const card = this.closest('.expert-card');
+        const video = card.querySelector('.expert-video');
+        const mutedIcon = this.querySelector('.muted-icon');
+        const unmutedIcon = this.querySelector('.unmuted-icon');
+        
+        if (video.muted) {
+          video.muted = false;
+          mutedIcon.style.display = 'none';
+          unmutedIcon.style.display = 'block';
+        } else {
+          video.muted = true;
+          mutedIcon.style.display = 'block';
+          unmutedIcon.style.display = 'none';
+        }
+      });
+    });
+
+    // Fullscreen modal
     const modal = document.getElementById('ExpertVideoModal');
-    const video = document.getElementById('modalVideo');
+    const modalVideo = document.getElementById('modalVideo');
     const closeBtn = modal.querySelector('.close-modal');
 
-    document.querySelectorAll('.play-button').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const videoSrc = this.getAttribute('data-video');
-        video.querySelector('source').src = videoSrc;
-        video.load();
+    document.querySelectorAll('.fullscreen-button').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const card = this.closest('.expert-card');
+        const video = card.querySelector('.expert-video');
+        const videoSrc = video.querySelector('source').src;
+        
+        // Pause all videos in slider
+        videos.forEach(v => v.pause());
+        
+        modalVideo.querySelector('source').src = videoSrc;
+        modalVideo.load();
         modal.classList.add('active');
-        video.play();
+        modalVideo.play();
       });
     });
 
     const closeModal = () => {
       modal.classList.remove('active');
-      video.pause();
+      modalVideo.pause();
+      
+      // Resume playing videos that are in view
+      videos.forEach(video => {
+        const rect = video.getBoundingClientRect();
+        const isInView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+        if (isInView) {
+          video.play().catch(e => console.log('Autoplay prevented:', e));
+        }
+      });
     };
 
     closeBtn.addEventListener('click', closeModal);
@@ -324,7 +432,8 @@
         {
           "type": "image_picker",
           "id": "expert_image",
-          "label": "Expert Image"
+          "label": "Expert Image/Poster",
+          "info": "Used as video poster/thumbnail"
         },
         {
           "type": "text",
