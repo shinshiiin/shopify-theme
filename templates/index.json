@@ -456,50 +456,49 @@
           "type": "expert",
           "settings": {
             "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "video_url": "",
             "expert_name": "Dr. Name",
             "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video.",
-            "video_url": ""
+            "expert_description": "Description of what the expert explains in the video."
           }
         },
         "expert_PWAjTM": {
           "type": "expert",
           "settings": {
             "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "video_url": "",
             "expert_name": "Dr. Name",
             "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video.",
-            "video_url": ""
+            "expert_description": "Description of what the expert explains in the video."
           }
         },
         "expert_W7awHC": {
           "type": "expert",
           "settings": {
             "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "video_url": "",
             "expert_name": "Dr. Name",
             "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video.",
-            "video_url": ""
+            "expert_description": "Description of what the expert explains in the video."
           }
         },
         "expert_9gwMLa": {
           "type": "expert",
           "settings": {
-            "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "video_url": "",
             "expert_name": "Dr. Name",
             "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video.",
-            "video_url": ""
+            "expert_description": "Description of what the expert explains in the video."
           }
         },
         "expert_6pFkkq": {
           "type": "expert",
           "settings": {
             "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "video_url": "",
             "expert_name": "Dr. Name",
             "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video.",
-            "video_url": ""
+            "expert_description": "Description of what the expert explains in the video."
           }
         }
       },
