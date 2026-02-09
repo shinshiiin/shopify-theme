@@ -401,6 +401,21 @@
     },
     "before_after_slider_UHhwrX": {
       "type": "before-after-slider",
+      "blocks": {
+        "slide_8W8ay3": {
+          "type": "slide",
+          "settings": {
+            "before_image": "shopify://shop_images/placeholder_1.png",
+            "after_image": "shopify://shop_images/placeholder_1.png",
+            "testimonial": "I have been using the product for 6 months and I’m seeing real results.",
+            "avatar": "shopify://shop_images/placeholder_2.webp",
+            "name": "Albert L. | 37"
+          }
+        }
+      },
+      "block_order": [
+        "slide_8W8ay3"
+      ],
       "name": "Before & After Slider",
       "settings": {
         "title": "Helmet Hair Has Never Looked Better",
