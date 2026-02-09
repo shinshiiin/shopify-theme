@@ -451,8 +451,25 @@
     },
     "expert_slider_GBkhHr": {
       "type": "expert-slider",
+      "blocks": {
+        "expert_6pFkkq": {
+          "type": "expert",
+          "settings": {
+            "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "expert_name": "Dr. Name",
+            "expert_role": "Board-certified dermatologist",
+            "expert_description": "Description of what the expert explains in the video.",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "expert_6pFkkq"
+      ],
       "name": "Expert Video Slider",
-      "settings": {}
+      "settings": {
+        "section_title": "Trusted by leading doctors. Hear from our experts."
+      }
     }
   },
   "order": [
