@@ -398,6 +398,16 @@
         "button_color": "linear-gradient(90deg, rgba(96, 84, 113, 1), rgba(183, 160, 215, 1) 100%)",
         "section_background": "#f7f9fd"
       }
+    },
+    "before_after_slider_UHhwrX": {
+      "type": "before-after-slider",
+      "name": "Before & After Slider",
+      "settings": {
+        "title": "Helmet Hair Has Never Looked Better",
+        "subtitle": "Join over 600,000 customers who overcame hair loss with iRESTORE.",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -407,6 +417,7 @@
     "guarantee_section_BjpgBW",
     "product_ingredients_A4WiYf",
     "verified_review_carousel_metaobject_edition_dgew6B",
-    "ugc_vids_section_H9UFtq"
+    "ugc_vids_section_H9UFtq",
+    "before_after_slider_UHhwrX"
   ]
 }
