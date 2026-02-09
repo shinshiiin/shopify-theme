@@ -452,6 +452,14 @@
     "expert_slider_GBkhHr": {
       "type": "expert-slider",
       "blocks": {
+        "video_ipxDJh": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/selori-ugc-5.mp4",
+            "video_url": "",
+            "label": ""
+          }
+        },
         "video_63rLRh": {
           "type": "video",
           "settings": {
@@ -486,6 +494,7 @@
         }
       },
       "block_order": [
+        "video_ipxDJh",
         "video_63rLRh",
         "video_8nE9Dj",
         "video_DMX9EQ",
