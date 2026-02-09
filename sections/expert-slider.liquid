@@ -4,15 +4,6 @@
       <div class="left-column">
         <div class="section-title-wrap">
           <h2 class="section-title">{{ section.settings.section_title }}</h2>
-          {% if section.settings.section_subtitle != blank %}
-            <div class="section-subtitle">
-              {{ section.settings.section_subtitle }}
-            </div>
-            <div class="rating-subtitle">
-              {{ section.settings.rating_subtitle }}
-            </div>
-          {% endif %}
-          <button class="global-button global-button--primary scroll-btn" >{{ section.settings.button_text }}</button>
         </div>
       </div>
       <div class="video-column">
@@ -360,12 +351,6 @@
     "name": "UGC Vids",
     "settings": [
       {
-        "type": "metaobject",
-        "id": "videos_metaobject",
-        "label": "Videos Metaobject",
-        "metaobject_type": "product_ugc_video"
-      },
-      {
         "type": "header",
         "content": "Section Settings"
       },
@@ -390,62 +375,6 @@
         "unit": "px",
         "label": "Title Size",
         "default": 40
-      },
-      {
-        "type": "text",
-        "id": "section_subtitle",
-        "label": "Section Subtitle",
-        "default": "Unfiltered, Authentic Experiences"
-      },
-      {
-        "type": "color",
-        "id": "subtitle_color",
-        "label": "Subtitle Color",
-        "default": "#656565"
-      },
-      {
-        "type": "range",
-        "id": "subtitle_size",
-        "min": 14,
-        "max": 40,
-        "step": 1,
-        "unit": "px",
-        "label": "Subtitle Size",
-        "default": 16
-      },
-      {
-        "type": "text",
-        "id": "rating_subtitle",
-        "label": "Section Subtitle",
-        "default": "⭐⭐⭐⭐⭐ 4.9 (8,247 Reviews)"
-      },
-      {
-        "type": "color",
-        "id": "rating_color",
-        "label": "Rating Text Color",
-        "default": "#656565"
-      },
-      {
-        "type": "range",
-        "id": "rating_size",
-        "min": 14,
-        "max": 40,
-        "step": 1,
-        "unit": "px",
-        "label": "Rating Text Size",
-        "default": 16
-      },
-      {
-        "type": "text",
-        "id": "button_text",
-        "label": "Button Text",
-        "default": "Learn More"
-      },
-      {
-        "type": "color_background",
-        "id": "button_color",
-        "label": "Button Color",
-        "default": "linear-gradient(90deg, #605471 0%, #B7A0D7 100%)"
       },
       {
         "type": "color",
