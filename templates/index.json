@@ -452,67 +452,51 @@
     "expert_slider_GBkhHr": {
       "type": "expert-slider",
       "blocks": {
-        "expert_pdGjA8": {
-          "type": "expert",
+        "video_63rLRh": {
+          "type": "video",
           "settings": {
-            "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "video": "shopify://files/videos/selori-ugc-1.mp4",
             "video_url": "",
-            "expert_name": "Dr. Name",
-            "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video."
+            "label": ""
           }
         },
-        "expert_PWAjTM": {
-          "type": "expert",
+        "video_8nE9Dj": {
+          "type": "video",
           "settings": {
-            "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "video": "shopify://files/videos/selori-ugc-2.mp4",
             "video_url": "",
-            "expert_name": "Dr. Name",
-            "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video."
+            "label": ""
           }
         },
-        "expert_W7awHC": {
-          "type": "expert",
+        "video_DMX9EQ": {
+          "type": "video",
           "settings": {
-            "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "video": "shopify://files/videos/selori-ugc-3.mp4",
             "video_url": "",
-            "expert_name": "Dr. Name",
-            "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video."
+            "label": ""
           }
         },
-        "expert_9gwMLa": {
-          "type": "expert",
+        "video_BmX8XH": {
+          "type": "video",
           "settings": {
-            "expert_image": "shopify://shop_images/Rectangle_158_1.png",
+            "video": "shopify://files/videos/selori-ugc-4.mp4",
             "video_url": "",
-            "expert_name": "Dr. Name",
-            "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video."
-          }
-        },
-        "expert_6pFkkq": {
-          "type": "expert",
-          "settings": {
-            "expert_image": "shopify://shop_images/Rectangle_158_1.png",
-            "video_url": "",
-            "expert_name": "Dr. Name",
-            "expert_role": "Board-certified dermatologist",
-            "expert_description": "Description of what the expert explains in the video."
+            "label": ""
           }
         }
       },
       "block_order": [
-        "expert_pdGjA8",
-        "expert_PWAjTM",
-        "expert_W7awHC",
-        "expert_9gwMLa",
-        "expert_6pFkkq"
+        "video_63rLRh",
+        "video_8nE9Dj",
+        "video_DMX9EQ",
+        "video_BmX8XH"
       ],
       "name": "Expert Video Slider",
       "settings": {
-        "section_title": "Trusted by leading doctors. Hear from our experts."
+        "section_title": "Trusted by leading doctors. Hear from our experts.",
+        "title_color": "#2d2d2d",
+        "title_size": 36,
+        "section_background": "#ffffff"
       }
     }
   },
