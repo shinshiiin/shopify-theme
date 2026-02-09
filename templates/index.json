@@ -440,6 +440,7 @@
         "slide_CGdVWz",
         "slide_EXLDHq"
       ],
+      "disabled": true,
       "name": "Before & After Slider",
       "settings": {
         "title": "Helmet Hair Has Never Looked Better",
@@ -447,6 +448,11 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "expert_slider_GBkhHr": {
+      "type": "expert-slider",
+      "name": "Expert Video Slider",
+      "settings": {}
     }
   },
   "order": [
@@ -457,6 +463,7 @@
     "product_ingredients_A4WiYf",
     "verified_review_carousel_metaobject_edition_dgew6B",
     "ugc_vids_section_H9UFtq",
-    "before_after_slider_UHhwrX"
+    "before_after_slider_UHhwrX",
+    "expert_slider_GBkhHr"
   ]
 }
