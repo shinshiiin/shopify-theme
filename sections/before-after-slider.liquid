@@ -22,7 +22,7 @@
     <div class="ba-slider-track-wrapper splide">
       <div class="splide__track">
         <div class="splide__list">
-          
+
           <div class="splide__slide" {{ block.shopify_attributes }}>
             <div class="ba-card">
               <div class="ba-card-images">
@@ -223,6 +223,42 @@
       "default": 60
     }
   ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Before & After Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "before_image",
+          "label": "Before Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "after_image",
+          "label": "After Image"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial",
+          "label": "Testimonial Text",
+          "default": "I have been using the product for 6 months and I’m seeing real results."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "User Avatar"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name & Age",
+          "default": "Albert L. | 37"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
   "presets": [{ "name": "Before & After Slider" }]
 }
 {% endschema %}
