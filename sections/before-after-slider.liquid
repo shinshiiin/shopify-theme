@@ -71,7 +71,7 @@
                     </span>
                   </div>
                   <div class="ba-tag">
-
+                    {{ block.settings.tag }}
                   </div>
                 </div>
               </div>
@@ -387,6 +387,12 @@
           "id": "name",
           "label": "Name & Age",
           "default": "Albert L. | 37"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag",
+          "default": "FULL CHEST GROOMING"
         }
       ]
     }
