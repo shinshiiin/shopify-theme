@@ -1,0 +1,295 @@
+{%- style -%}
+  .expert-slider-{{ section.id }} {
+    padding: 60px 0;
+    font-family: sans-serif;
+    overflow: hidden;
+  }
+
+  .expert-slider-{{ section.id }} .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .expert-slider-{{ section.id }} .expert-card {
+    padding: 10px;
+  }
+
+  .expert-slider-{{ section.id }} .image-wrapper {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+  }
+
+  .expert-slider-{{ section.id }} .expert-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .expert-slider-{{ section.id }} .play-button {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+  }
+
+  .expert-slider-{{ section.id }} .play-button:hover {
+    transform: scale(1.1);
+  }
+
+  .expert-slider-{{ section.id }} .expert-info h3 {
+    font-size: 1.5rem;
+    margin: 15px 0 5px 0;
+    font-weight: 700;
+  }
+
+  .expert-slider-{{ section.id }} .expert-role {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: #666;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .expert-slider-{{ section.id }} .expert-desc {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.4;
+  }
+
+  /* Modal Styles */
+  .video-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .video-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .video-modal-overlay.active {
+    display: flex;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  @media (max-width: 768px) {
+    .expert-slider-{{ section.id }} .section-title {
+      font-size: 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
+<div class="expert-slider-{{ section.id }}">
+  <h2 class="section-title">Trusted by leading doctors. Hear from our experts.</h2>
+
+  <div id="expert-splide-{{ section.id }}" class="splide">
+    <div class="splide__track">
+      <ul class="splide__list">
+        
+        <li class="splide__slide">
+          <div class="expert-card">
+            <div class="image-wrapper">
+              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_dray_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Dray">
+              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/4f52e397a81c40fea2f1d382024be881/4f52e397a81c40fea2f1d382024be881.HD-1080p-7.2Mbps-29588507.mp4">
+                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
+              </button>
+            </div>
+            <div class="expert-info">
+              <h3>Dr. Andrea Suarez</h3>
+              <p class="expert-role">Board-certified dermatologist</p>
+              <p class="expert-desc">Explains why the iRESTORE Elite is the most powerful device and why she recommends it to her patients.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="splide__slide">
+          <div class="expert-card">
+            <div class="image-wrapper">
+              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_bodian_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Adam Bodian">
+              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/f76ebac33e94450dab55ea084cabdcec/f76ebac33e94450dab55ea084cabdcec.HD-720p-4.5Mbps-18936666.mp4">
+                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
+              </button>
+            </div>
+            <div class="expert-info">
+              <h3>Dr. Adam Bodian</h3>
+              <p class="expert-role">Board-Certified Laser Surgeon</p>
+              <p class="expert-desc">Reports on how 100% of device clinical study patients experienced hair growth.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="splide__slide">
+          <div class="expert-card">
+            <div class="image-wrapper">
+              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_perera_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Eshini Perera">
+              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/2b57f66768c8449bac7c9fa6a83e9eae/2b57f66768c8449bac7c9fa6a83e9eae.HD-1080p-7.2Mbps-23656930.mp4">
+                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
+              </button>
+            </div>
+            <div class="expert-info">
+              <h3>Dr. Eshini Perera</h3>
+              <p class="expert-role">Board-certified dermatologist</p>
+              <p class="expert-desc">Explains how low-level light therapy (LLLT) works to stimulate hair growth.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="splide__slide">
+          <div class="expert-card">
+            <div class="image-wrapper">
+              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_dray_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Dray">
+              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/4f52e397a81c40fea2f1d382024be881/4f52e397a81c40fea2f1d382024be881.HD-1080p-7.2Mbps-29588507.mp4">
+                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
+              </button>
+            </div>
+            <div class="expert-info">
+              <h3>Dr. Andrea Suarez</h3>
+              <p class="expert-role">Board-certified dermatologist</p>
+              <p class="expert-desc">Explains why the iRESTORE Elite is the most powerful device and why she recommends it to her patients.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="splide__slide">
+          <div class="expert-card">
+            <div class="image-wrapper">
+              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_bodian_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Adam Bodian">
+              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/f76ebac33e94450dab55ea084cabdcec/f76ebac33e94450dab55ea084cabdcec.HD-720p-4.5Mbps-18936666.mp4">
+                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
+              </button>
+            </div>
+            <div class="expert-info">
+              <h3>Dr. Adam Bodian</h3>
+              <p class="expert-role">Board-Certified Laser Surgeon</p>
+              <p class="expert-desc">Reports on how 100% of device clinical study patients experienced hair growth.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="splide__slide">
+          <div class="expert-card">
+            <div class="image-wrapper">
+              <img src="https://www.irestorelaser.com/cdn/shop/files/dr_perera_thumbnail.webp?v=1730503453&width=700" class="expert-image" alt="Dr. Eshini Perera">
+              <button class="play-button" data-video="https://www.irestorelaser.com/cdn/shop/videos/c/vp/2b57f66768c8449bac7c9fa6a83e9eae/2b57f66768c8449bac7c9fa6a83e9eae.HD-1080p-7.2Mbps-23656930.mp4">
+                <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M0.98 0.09L14.67 8.41C15 8.6 15 9.4 14.67 9.58L0.98 17.9C0.5 18.2 0 17.8 0 17.3V0.7C0 0.2 0.5 -0.2 0.98 0.09Z" fill="#494940"/></svg>
+              </button>
+            </div>
+            <div class="expert-info">
+              <h3>Dr. Eshini Perera</h3>
+              <p class="expert-role">Board-certified dermatologist</p>
+              <p class="expert-desc">Explains how low-level light therapy (LLLT) works to stimulate hair growth.</p>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="video-modal-overlay" id="ExpertVideoModal">
+  <div class="video-modal-content">
+    <button class="close-modal">✕</button>
+    <video id="modalVideo" controls width="100%" height="auto">
+      <source src="" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Initialize Slider
+    new Splide('#expert-splide-{{ section.id }}', {
+      type   : 'slide',
+      perPage: 3,
+      gap    : '24px',
+      padding: { right: '10%' },
+      breakpoints: {
+        1024: { perPage: 2 },
+        640:  { perPage: 1 }
+      }
+    }).mount();
+
+    // Modal Logic
+    const modal = document.getElementById('ExpertVideoModal');
+    const video = document.getElementById('modalVideo');
+    const closeBtn = modal.querySelector('.close-modal');
+
+    document.querySelectorAll('.play-button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const videoSrc = this.getAttribute('data-video');
+        video.querySelector('source').src = videoSrc;
+        video.load();
+        modal.classList.add('active');
+        video.play();
+      });
+    });
+
+    const closeModal = () => {
+      modal.classList.remove('active');
+      video.pause();
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) closeModal();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Expert Video Slider",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Expert Video Slider"
+    }
+  ]
+}
+{% endschema %}
