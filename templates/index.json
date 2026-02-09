@@ -354,6 +354,7 @@
     },
     "verified_review_carousel_metaobject_edition_dgew6B": {
       "type": "verified-review-carousel-metaobject-edition",
+      "disabled": true,
       "name": "Reviews Carousel (Meta)",
       "settings": {
         "review_metaobject": "velvet",
@@ -380,17 +381,22 @@
     },
     "ugc_vids_section_H9UFtq": {
       "type": "UGC-vids-section",
+      "disabled": true,
       "name": "UGC Vids",
       "settings": {
         "videos_metaobject": "",
         "section_title": "They Saw Results After One Night. You Will Too.",
         "title_color": "#605471",
         "title_size": 40,
-        "section_sub_title": "Unfiltered, Authentic Experiences",
+        "section_subtitle": "Unfiltered, Authentic Experiences",
         "subtitle_color": "#656565",
         "subtitle_size": 16,
+        "rating_subtitle": "⭐⭐⭐⭐⭐ 4.9 (8,247 Reviews)",
+        "rating_color": "#656565",
+        "rating_size": 16,
         "button_text": "Learn More",
-        "button_color": "linear-gradient(90deg, rgba(96, 84, 113, 1), rgba(183, 160, 215, 1) 100%)"
+        "button_color": "linear-gradient(90deg, rgba(96, 84, 113, 1), rgba(183, 160, 215, 1) 100%)",
+        "section_background": "#f7f9fd"
       }
     }
   },
