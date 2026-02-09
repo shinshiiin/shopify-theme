@@ -1,3 +1,57 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
+<section id="ba-section-{{ section.id }}" class="ba-slider-section">
+  <div class="ba-slider-container">
+    
+    <div class="ba-slider-info">
+      <div class="ba-slider-headings">
+        <h2 class="ba-title">{{ section.settings.title }}</h2>
+        <h3 class="ba-subtitle">{{ section.settings.subtitle }}</h3>
+      </div>
+
+      <div class="ba-slider-controls">
+        <button class="ba-arrow splide__arrow--prev" aria-label="Previous slide">
+          <svg width="8" height="12" viewBox="0 0 8 12" fill="none"><path d="M2.62344 5.99966L7.02344 10.3997L5.76655 11.6566L0.10966 5.99966L5.76655 0.342773L7.02344 1.59966L2.62344 5.99966Z" fill="currentColor"></path></svg>
+        </button>
+        <button class="ba-arrow splide__arrow--next" aria-label="Next slide">
+          <svg width="8" height="12" viewBox="0 0 8 12" fill="none"><path d="M5.38437 6.00034L0.984375 1.60034L2.24126 0.34345L7.89815 6.00034L2.24126 11.6572L0.984375 10.4003L5.38437 6.00034Z" fill="currentColor"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="ba-slider-track-wrapper splide">
+      <div class="splide__track">
+        <div class="splide__list">
+          {%- for i in (1..5) -%}
+          <div class="splide__slide">
+            <div class="ba-card">
+              <div class="ba-card-images">
+                <div class="ba-img-wrapper">
+                  <img src="https://www.irestorelaser.com/cdn/shop/files/Before_ID505_Male_Albert_L_FB_Group_2022_250x250_94284e7f-8d25-4468-9e7e-101076ddf172.jpg?v=1713909742&width=500" alt="Before" loading="lazy">
+                  <span class="ba-label before">Before</span>
+                </div>
+                <div class="ba-img-wrapper">
+                  <img src="https://www.irestorelaser.com/cdn/shop/files/After_ID505_Male_Albert_L_FB_Group_2022_250x250_9b26cfc8-13dc-4255-b84e-17feaff1ac84.jpg?v=1713909753&width=500" alt="During" loading="lazy">
+                  <span class="ba-label during">During</span>
+                </div>
+              </div>
+              <div class="ba-card-content">
+                <svg width="15" height="13" viewBox="0 0 15 13" fill="none"><path d="M14.832 9.6C14.832 7.776 13.536 6.672 11.952 6.672C11.472 6.672 11.136 6.816 10.992 6.912C11.04 4.944 12.48 2.736 14.592 2.256V0C11.904 0.287999 8.208 2.736 8.208 8.4C8.208 11.136 9.84 12.48 11.712 12.48C13.488 12.48 14.832 11.184 14.832 9.6ZM6.624 9.6C6.624 7.776 5.328 6.672 3.744 6.672C3.264 6.672 2.928 6.816 2.784 6.912C2.832 4.944 4.272 2.736 6.384 2.256V0C3.696 0.287999 0 2.736 0 8.4C0 11.136 1.632 12.48 3.504 12.48C5.28 12.48 6.624 11.184 6.624 9.6Z" fill="#F23440"></path></svg>
+                <p class="ba-testimonial">I have been using the iRestore for 6 months. I am seeing significant growth in my crown.</p>
+                <div class="ba-user">
+                  <img class="ba-avatar" src="https://www.irestorelaser.com/cdn/shop/files/UGC_ID510_Male_David_W_SMS_2024_75x75_fde169d6-503f-4596-91d2-ee0e9b4473b8.webp?crop=center&height=80&width=80" alt="User">
+                  <span class="ba-user-name">Albert L. | 37</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      </div>
+  </div>
+</section>
+
 {%- style -%}
   .ba-slider-section {
     padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px 20px;
@@ -76,60 +130,6 @@
   }
 {%- endstyle -%}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-
-<section id="ba-section-{{ section.id }}" class="ba-slider-section">
-  <div class="ba-slider-container">
-    
-    <div class="ba-slider-info">
-      <div class="ba-slider-headings">
-        <h2 class="ba-title">{{ section.settings.title }}</h2>
-        <h3 class="ba-subtitle">{{ section.settings.subtitle }}</h3>
-      </div>
-
-      <div class="ba-slider-controls">
-        <button class="ba-arrow splide__arrow--prev" aria-label="Previous slide">
-          <svg width="8" height="12" viewBox="0 0 8 12" fill="none"><path d="M2.62344 5.99966L7.02344 10.3997L5.76655 11.6566L0.10966 5.99966L5.76655 0.342773L7.02344 1.59966L2.62344 5.99966Z" fill="currentColor"></path></svg>
-        </button>
-        <button class="ba-arrow splide__arrow--next" aria-label="Next slide">
-          <svg width="8" height="12" viewBox="0 0 8 12" fill="none"><path d="M5.38437 6.00034L0.984375 1.60034L2.24126 0.34345L7.89815 6.00034L2.24126 11.6572L0.984375 10.4003L5.38437 6.00034Z" fill="currentColor"></path></svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="ba-slider-track-wrapper splide">
-      <div class="splide__track">
-        <div class="splide__list">
-          {%- for i in (1..5) -%}
-          <div class="splide__slide">
-            <div class="ba-card">
-              <div class="ba-card-images">
-                <div class="ba-img-wrapper">
-                  <img src="https://www.irestorelaser.com/cdn/shop/files/Before_ID505_Male_Albert_L_FB_Group_2022_250x250_94284e7f-8d25-4468-9e7e-101076ddf172.jpg?v=1713909742&width=500" alt="Before" loading="lazy">
-                  <span class="ba-label before">Before</span>
-                </div>
-                <div class="ba-img-wrapper">
-                  <img src="https://www.irestorelaser.com/cdn/shop/files/After_ID505_Male_Albert_L_FB_Group_2022_250x250_9b26cfc8-13dc-4255-b84e-17feaff1ac84.jpg?v=1713909753&width=500" alt="During" loading="lazy">
-                  <span class="ba-label during">During</span>
-                </div>
-              </div>
-              <div class="ba-card-content">
-                <svg width="15" height="13" viewBox="0 0 15 13" fill="none"><path d="M14.832 9.6C14.832 7.776 13.536 6.672 11.952 6.672C11.472 6.672 11.136 6.816 10.992 6.912C11.04 4.944 12.48 2.736 14.592 2.256V0C11.904 0.287999 8.208 2.736 8.208 8.4C8.208 11.136 9.84 12.48 11.712 12.48C13.488 12.48 14.832 11.184 14.832 9.6ZM6.624 9.6C6.624 7.776 5.328 6.672 3.744 6.672C3.264 6.672 2.928 6.816 2.784 6.912C2.832 4.944 4.272 2.736 6.384 2.256V0C3.696 0.287999 0 2.736 0 8.4C0 11.136 1.632 12.48 3.504 12.48C5.28 12.48 6.624 11.184 6.624 9.6Z" fill="#F23440"></path></svg>
-                <p class="ba-testimonial">I have been using the iRestore for 6 months. I am seeing significant growth in my crown.</p>
-                <div class="ba-user">
-                  <img class="ba-avatar" src="https://www.irestorelaser.com/cdn/shop/files/UGC_ID510_Male_David_W_SMS_2024_75x75_fde169d6-503f-4596-91d2-ee0e9b4473b8.webp?crop=center&height=80&width=80" alt="User">
-                  <span class="ba-user-name">Albert L. | 37</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          {%- endfor -%}
-        </div>
-      </div>
-      </div>
-  </div>
-</section>
-
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
 <script>
@@ -162,10 +162,38 @@
 {
   "name": "Before & After Slider",
   "settings": [
-    { "type": "text", "id": "title", "label": "Heading", "default": "Helmet Hair Has Never Looked Better" },
-    { "type": "textarea", "id": "subtitle", "label": "Subheading", "default": "Join over 600,000 customers who overcame hair loss with iRESTORE." },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding Top", "default": 60 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 60 }
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Helmet Hair Has Never Looked Better" 
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Join over 600,000 customers who overcame hair loss with iRESTORE."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
   ],
   "presets": [{ "name": "Before & After Slider" }]
 }
