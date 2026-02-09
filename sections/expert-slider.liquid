@@ -34,6 +34,19 @@
 
       </ul>
     </div>
+
+    <div class="splide__arrows">
+      <button class="splide__arrow splide__arrow--prev">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="splide__arrow splide__arrow--next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -49,35 +62,46 @@
 
 {%- style -%}
   .expert-slider-{{ section.id }} {
-    padding: 60px 0;
+    padding: 60px 20px;
+    background: #1a1a1a;
     font-family: sans-serif;
     overflow: hidden;
   }
 
   .expert-slider-{{ section.id }} .section-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 30px;
-    padding: 0 20px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .expert-slider-{{ section.id }} .splide {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 60px;
   }
 
   .expert-slider-{{ section.id }} .expert-card {
-    padding: 10px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
   }
 
   .expert-slider-{{ section.id }} .image-wrapper {
     position: relative;
     width: 100%;
     line-height: 0;
+    background: #d3d3d3;
   }
 
   .expert-slider-{{ section.id }} .expert-image {
     width: 100%;
-    height: auto;
-    border-radius: 12px;
+    height: 280px;
     object-fit: cover;
   }
 
@@ -102,24 +126,63 @@
     transform: scale(1.1);
   }
 
+  .expert-slider-{{ section.id }} .expert-info {
+    padding: 20px;
+    background: #fff;
+  }
+
   .expert-slider-{{ section.id }} .expert-info h3 {
-    font-size: 1.5rem;
-    margin: 15px 0 5px 0;
+    font-size: 1.25rem;
+    margin: 0 0 8px 0;
     font-weight: 700;
+    color: #000;
   }
 
   .expert-slider-{{ section.id }} .expert-role {
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: #666;
     letter-spacing: 1px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    font-weight: 600;
   }
 
   .expert-slider-{{ section.id }} .expert-desc {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #444;
-    line-height: 1.4;
+    line-height: 1.5;
+  }
+
+  /* Arrow Styles */
+  .expert-slider-{{ section.id }} .splide__arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .expert-slider-{{ section.id }} .splide__arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  .expert-slider-{{ section.id }} .splide__arrow--prev {
+    left: 0;
+  }
+
+  .expert-slider-{{ section.id }} .splide__arrow--next {
+    right: 0;
+  }
+
+  .expert-slider-{{ section.id }} .splide__arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
   }
 
   /* Modal Styles */
@@ -129,7 +192,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
     display: none;
     justify-content: center;
     align-items: center;
@@ -139,7 +202,7 @@
   .video-modal-content {
     position: relative;
     width: 90%;
-    max-width: 800px;
+    max-width: 900px;
     background: #000;
     border-radius: 15px;
     overflow: hidden;
@@ -151,20 +214,49 @@
 
   .close-modal {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #fff;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border: none;
     cursor: pointer;
     z-index: 10;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .close-modal:hover {
+    background: #fff;
+  }
+
+  @media (max-width: 1024px) {
+    .expert-slider-{{ section.id }} .splide {
+      padding: 0 50px;
+    }
   }
 
   @media (max-width: 768px) {
     .expert-slider-{{ section.id }} .section-title {
       font-size: 1.5rem;
+    }
+
+    .expert-slider-{{ section.id }} .splide {
+      padding: 0 40px;
+    }
+
+    .expert-slider-{{ section.id }} .splide__arrow {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .expert-slider-{{ section.id }} .splide {
+      padding: 0 35px;
     }
   }
 {%- endstyle -%}
@@ -176,11 +268,12 @@
     // Initialize Slider
     new Splide('#expert-splide-{{ section.id }}', {
       type   : 'slide',
-      perPage: 3,
-      gap    : '24px',
-      padding: { right: '10%' },
+      perPage: 4,
+      gap    : '20px',
+      pagination: false,
       breakpoints: {
-        1024: { perPage: 2 },
+        1200: { perPage: 3 },
+        900: { perPage: 2 },
         640:  { perPage: 1 }
       }
     }).mount();
@@ -220,7 +313,7 @@
       "type": "text",
       "id": "section_title",
       "label": "Section Title",
-      "default": "Trusted by leading doctors. Hear from our experts."
+      "default": "OVER 5000+ SUCCESS STORIES"
     }
   ],
   "blocks": [
@@ -286,6 +379,14 @@
             "expert_name": "Dr. Eshini Perera",
             "expert_role": "Board-certified dermatologist",
             "expert_description": "Explains how low-level light therapy (LLLT) works to stimulate hair growth."
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "expert_name": "Dr. Andrea Suarez",
+            "expert_role": "Board-certified dermatologist",
+            "expert_description": "Explains why the iRESTORE Elite is the most powerful device and why she recommends it to her patients."
           }
         }
       ]
