@@ -1,11 +1,3 @@
-{% comment %} 
-  Metaobject
-  Name: Product UGC Video
-  Fields: Product Name - [One] Single-line-text
-          Videos       - [List] Video File
-{% endcomment %}
-
-
 <div class="section">
   <div class="container {{ section.id }}-container">
     <div class="UGC-vids-section {{ section.id }}">
@@ -76,6 +68,7 @@
 
 .{{ section.id }} {
   display: flex;
+  flex-direction: column;
   padding: 40px 10px;
   max-width: 1200px;
   justify-self: center;
