@@ -18,9 +18,8 @@
               {% else %}
                 <div class="card-placeholder"></div>
               {% endif %}
+              <div class="routine-text">{{ block.settings.text }}</div>
             </div>
-            <h3 class="routine-step-title">{{ block.settings.title }}</h3>
-            <div class="routine-text">{{ block.settings.text }}</div>
           </div>
         {% endfor %}
       </div>
@@ -217,18 +216,12 @@
   "blocks": [
     {
       "type": "card",
-      "name": "Routine Step",
+      "name": "Card Settings",
       "settings": [
         {
           "type": "video",
           "id": "video",
           "label": "Video"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Step Title",
-          "default": "Step title"
         },
         {
           "type": "richtext",

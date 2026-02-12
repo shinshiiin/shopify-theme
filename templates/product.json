@@ -118,28 +118,24 @@
         "card_VNTDdm": {
           "type": "card",
           "settings": {
-            "title": "Step title",
-            "text": ""
+            "text": "<p>sdasdasdadsads</p>"
           }
         },
         "card_Khzyf6": {
           "type": "card",
           "settings": {
-            "title": "Step title",
             "text": ""
           }
         },
         "card_pmEVVa": {
           "type": "card",
           "settings": {
-            "title": "Step title",
             "text": ""
           }
         },
         "card_QECkBx": {
           "type": "card",
           "settings": {
-            "title": "Step title",
             "text": ""
           }
         }
