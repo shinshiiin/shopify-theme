@@ -112,31 +112,31 @@
         "padding_bottom": 28
       }
     },
-    "ugc_vids_2_k6YmKY": {
+    "ugc_vids_2_QpMdMV": {
       "type": "ugc-vids-2",
       "blocks": {
-        "card_NXqPMF": {
+        "card_VNTDdm": {
           "type": "card",
           "settings": {
             "title": "Step title",
             "text": ""
           }
         },
-        "card_8kEYrx": {
+        "card_Khzyf6": {
           "type": "card",
           "settings": {
             "title": "Step title",
             "text": ""
           }
         },
-        "card_jWGPW3": {
+        "card_pmEVVa": {
           "type": "card",
           "settings": {
             "title": "Step title",
             "text": ""
           }
         },
-        "card_6mgz9H": {
+        "card_QECkBx": {
           "type": "card",
           "settings": {
             "title": "Step title",
@@ -145,16 +145,16 @@
         }
       },
       "block_order": [
-        "card_NXqPMF",
-        "card_8kEYrx",
-        "card_jWGPW3",
-        "card_6mgz9H"
+        "card_VNTDdm",
+        "card_Khzyf6",
+        "card_pmEVVa",
+        "card_QECkBx"
       ],
       "name": "UGC Videos 2",
       "settings": {
-        "title": "Your Complete Daily Routine",
+        "title": "Title",
         "title_color": "#d65a6d",
-        "subtitle": "Your Complete Daily Routine",
+        "subtitle": "Subtitle",
         "subtitle_color": "#292929"
       }
     }
@@ -162,6 +162,6 @@
   "order": [
     "main",
     "related-products",
-    "ugc_vids_2_k6YmKY"
+    "ugc_vids_2_QpMdMV"
   ]
 }
