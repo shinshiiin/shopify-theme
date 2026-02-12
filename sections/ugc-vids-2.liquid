@@ -25,19 +25,6 @@
       </div>
     </div>
 
-    {% if section.settings.tip_text != blank %}
-      <div class="routine-tip">
-        <span class="tip-icon">
-            <img
-            src="{{ 'idea.webp' | asset_url }}"
-            alt=""
-            class="first_image"
-            loading="lazy">
-        </span>
-        <p>{{ section.settings.tip_text }}</p>
-      </div>
-    {% endif %}
-
   </div>
 </div>
 
@@ -205,7 +192,7 @@
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "Your Complete Daily Routine"
+      "default": "Title"
     },
     {
       "type": "color",
@@ -217,19 +204,13 @@
       "type": "text",
       "id": "subtitle",
       "label": "Section Subtitle",
-      "default": "Your Complete Daily Routine"
+      "default": "Subtitle"
     },
     {
       "type": "color",
       "id": "subtitle_color",
       "label": "Subtitle Color",
       "default": "#292929"
-    },
-    {
-      "type": "textarea",
-      "id": "tip_text",
-      "label": "Pro Tip Text",
-      "default": "Pro Tip: Use the Gray Repair Serum at night so it can work while you sleep. Apply the Spray in the morning and evening for continuous follicle support—without chemicals or damage."
     }
   ],
   "blocks": [
