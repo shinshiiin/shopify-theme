@@ -1,45 +1,43 @@
-<div class="bb">
-  <div class="section {{ section.id }}" id="tutorials">
-    <div class="container">
+<div class="section {{ section.id }}" id="tutorials">
+  <div class="container">
 
-      {% if section.settings.title != blank %}
-        <h2 class="routine-title">{{ section.settings.title }}</h2>
-      {% endif %}
-      {% if section.settings.subtitle != blank %}
-        <p class="routine-subtitle">{{ section.settings.subtitle }}</p>
-      {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="routine-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="routine-subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
 
-      <div class="routine-grid">
-        <div class="routine-scroll-wrapper"> {% for block in section.blocks %}
-            <div class="routine-card" {{ block.shopify_attributes }}>
-              <div class="routine-image">
-                {% if block.settings.video %}
-                  {{ block.settings.video | video_tag: image_size: '1100x', autoplay: true, loop: true, controls: false, muted: true }}
-                {% else %}
-                  <div class="routine-placeholder"></div>
-                {% endif %}
-              </div>
-              <h3 class="routine-step-title">{{ block.settings.title }}</h3>
-              <div class="routine-text">{{ block.settings.text }}</div>
+    <div class="routine-grid">
+      <div class="routine-scroll-wrapper"> {% for block in section.blocks %}
+          <div class="routine-card" {{ block.shopify_attributes }}>
+            <div class="routine-image">
+              {% if block.settings.video %}
+                {{ block.settings.video | video_tag: image_size: '1100x', autoplay: true, loop: true, controls: false, muted: true }}
+              {% else %}
+                <div class="routine-placeholder"></div>
+              {% endif %}
             </div>
-          {% endfor %}
-        </div>
+            <h3 class="routine-step-title">{{ block.settings.title }}</h3>
+            <div class="routine-text">{{ block.settings.text }}</div>
+          </div>
+        {% endfor %}
       </div>
-
-      {% if section.settings.tip_text != blank %}
-        <div class="routine-tip">
-          <span class="tip-icon">
-              <img
-              src="{{ 'idea.webp' | asset_url }}"
-              alt=""
-              class="first_image"
-              loading="lazy">
-          </span>
-          <p>{{ section.settings.tip_text }}</p>
-        </div>
-      {% endif %}
-
     </div>
+
+    {% if section.settings.tip_text != blank %}
+      <div class="routine-tip">
+        <span class="tip-icon">
+            <img
+            src="{{ 'idea.webp' | asset_url }}"
+            alt=""
+            class="first_image"
+            loading="lazy">
+        </span>
+        <p>{{ section.settings.tip_text }}</p>
+      </div>
+    {% endif %}
+
   </div>
 </div>
 
@@ -201,7 +199,7 @@
 
 {% schema %}
 {
-  "name": "Daily Routine",
+  "name": "UGC Videos 2",
   "settings": [
     {
       "type": "text",
@@ -236,7 +234,7 @@
   ],
   "blocks": [
     {
-      "type": "step",
+      "type": "card",
       "name": "Routine Step",
       "settings": [
         {
@@ -261,12 +259,12 @@
   "max_blocks": 4,
   "presets": [
     {
-      "name": "Daily Routine",
+      "name": "UGC Videos 2",
       "blocks": [
-        { "type": "step" },
-        { "type": "step" },
-        { "type": "step" },
-        { "type": "step" }
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
       ]
     }
   ]
