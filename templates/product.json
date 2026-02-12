@@ -112,31 +112,31 @@
         "padding_bottom": 28
       }
     },
-    "ugc_vids_2_HYAEcg": {
+    "ugc_vids_2_k6YmKY": {
       "type": "ugc-vids-2",
       "blocks": {
-        "card_x3dNXM": {
+        "card_NXqPMF": {
           "type": "card",
           "settings": {
             "title": "Step title",
             "text": ""
           }
         },
-        "card_DeRzMH": {
+        "card_8kEYrx": {
           "type": "card",
           "settings": {
             "title": "Step title",
             "text": ""
           }
         },
-        "card_P8VwRJ": {
+        "card_jWGPW3": {
           "type": "card",
           "settings": {
             "title": "Step title",
             "text": ""
           }
         },
-        "card_qygFNG": {
+        "card_6mgz9H": {
           "type": "card",
           "settings": {
             "title": "Step title",
@@ -145,24 +145,23 @@
         }
       },
       "block_order": [
-        "card_x3dNXM",
-        "card_DeRzMH",
-        "card_P8VwRJ",
-        "card_qygFNG"
+        "card_NXqPMF",
+        "card_8kEYrx",
+        "card_jWGPW3",
+        "card_6mgz9H"
       ],
       "name": "UGC Videos 2",
       "settings": {
         "title": "Your Complete Daily Routine",
         "title_color": "#d65a6d",
         "subtitle": "Your Complete Daily Routine",
-        "subtitle_color": "#292929",
-        "tip_text": "Pro Tip: Use the Gray Repair Serum at night so it can work while you sleep. Apply the Spray in the morning and evening for continuous follicle support—without chemicals or damage."
+        "subtitle_color": "#292929"
       }
     }
   },
   "order": [
     "main",
     "related-products",
-    "ugc_vids_2_HYAEcg"
+    "ugc_vids_2_k6YmKY"
   ]
 }
