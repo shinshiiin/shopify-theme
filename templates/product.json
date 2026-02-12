@@ -150,7 +150,7 @@
       "settings": {
         "title": "Title",
         "title_color": "#d65a6d",
-        "subtitle": "Subtitle",
+        "subtitle": "",
         "subtitle_color": "#292929"
       }
     }
