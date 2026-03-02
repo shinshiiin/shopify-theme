@@ -63,7 +63,9 @@
                 <caption class="visually-hidden">
                   {{ 'sections.cart.title' | t }}
                 </caption>
-                <thead>
+
+                {% comment %} Table Header Removed {% endcomment %}
+                {% comment %} <thead>
                   <tr>
                     <th class="caption-with-letter-spacing" colspan="2" scope="col">
                       {{ 'sections.cart.headings.product' | t }}
@@ -82,7 +84,7 @@
                       {{ 'sections.cart.headings.total' | t }}
                     </th>
                   </tr>
-                </thead>
+                </thead> {% endcomment %}
 
                 <tbody>
                   {%- for item in cart.items -%}
