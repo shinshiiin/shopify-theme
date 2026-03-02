@@ -34,9 +34,6 @@
   <div class="page-width">
     <div class="title-wrapper-with-link">
       <h1 class="title title--primary">Shopping Cart</h1>
-      <a href="{{ routes.all_products_collection_url }}" class="underlined-link">
-        {{- 'general.continue_shopping' | t -}}
-      </a>
     </div>
 
     <div class="cart__warnings">
@@ -549,6 +546,10 @@
                   >
                     {{ 'sections.cart.checkout' | t }}
                   </button>
+
+                  <a href="{{ routes.all_products_collection_url }}" class="underlined-link">
+                    {{- 'general.continue_shopping' | t -}}
+                  </a>
                 </div>
 
                 {%- if additional_checkout_buttons -%}
