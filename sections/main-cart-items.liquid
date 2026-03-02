@@ -11,7 +11,7 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
-  .custom-cart-container {
+  .cart-container {
     display: flex;
   }
 
@@ -30,7 +30,7 @@
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
 <cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
-  <div class="page-width custom-cart-container">
+  <div class="page-width">
     <div class="title-wrapper-with-link">
       <h1 class="title title--primary">Shopping Cart</h1>
       <a href="{{ routes.all_products_collection_url }}" class="underlined-link">
