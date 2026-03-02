@@ -11,6 +11,16 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  .feature-divider {
+    width: 100%;
+    margin-bottom: 20px;
+    display: block;
+    border: 0;
+    border-color: #dedede;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+
   .cart-container {
     display: flex;
     justify-content: space-between;
@@ -39,6 +49,8 @@
     <div class="title-wrapper-with-link">
       <h1 class="title title--primary">Shopping Cart</h1>
     </div>
+
+    <div class="feature-divider"></div>
 
     <div class="cart__warnings">
         <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
