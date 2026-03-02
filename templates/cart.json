@@ -11,6 +11,20 @@
   "sections": {
     "cart-items": {
       "type": "main-cart-items",
+      "blocks": {
+        "subtotal_PVBPP9": {
+          "type": "subtotal",
+          "settings": {}
+        },
+        "buttons_Mp6eHi": {
+          "type": "buttons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "subtotal_PVBPP9",
+        "buttons_Mp6eHi"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "padding_top": 36,
@@ -33,6 +47,7 @@
         "subtotal",
         "buttons"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "padding_top": 20,
